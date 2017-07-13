@@ -3,9 +3,3 @@ body{background-color:lightgrey; border:2px solid yellow;}
 
 /**/
 .zone{border: 2px solid;  padding: 5px;} /**/
-
-#help{
-  position:absolute;
-  top:5px;
-  left:20px;
-}
