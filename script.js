@@ -51,10 +51,9 @@ CTapp.directive("zsPane",function(){
       }
     }],
 
-    templateUrl: "debug/z-debug.html"
+    template: zDebugHTML
   };
 });/**/
-
 
 //alert();
 //-------------------------------------------------------------------------------------

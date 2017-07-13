@@ -18,4 +18,3 @@ Next v1.1:
 
 
 issues:
-- AngularJS's directive's templateURL doesn't work across chrome, edge, ie, but it works for firefox
