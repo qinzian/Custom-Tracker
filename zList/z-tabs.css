@@ -1,0 +1,37 @@
+z-tabs{
+  position: relative;
+  top: -10px;
+}
+
+.tab-content{
+  position:relative;
+  left:200px;
+  top:-500px;
+
+  width:850px;
+  height:500px;
+
+  background-color: rgb(205, 180, 180);
+
+  overflow-x:hidden;
+  overflow-y:auto;
+
+  border: 4px brown dashed;
+}
+
+.tab{
+  position: relative;
+
+  width: 220px;
+  height:100px;
+
+  font-size: 35px;
+  text-align: left;
+}
+
+.selectedTab{
+  text-align:right;
+  background-color:yellow;
+
+  z-index:2;
+}

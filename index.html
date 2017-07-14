@@ -3,8 +3,10 @@
   <head>
     <meta charset="utf-8">
     <title>Custom Tracker v1.1</title>
-    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="debug/debugStyle.css">
+    <link rel="stylesheet" href="zList/z-tabs.css">
+    <link rel="stylesheet" href="zList/z-folders.css">
+    <link rel="stylesheet" href="style.css">
 
     <script src="onlineScripts/angular-1.6.4.js"></script>
     <script src="onlineScripts/jquery-2.2.4.js"></script>
@@ -14,12 +16,15 @@
     <script src = "templates/z-debugHTML.js"></script>
     <script src = "templates/z-tabsHTML.js"></script>
     <script src = "templates/z-paneHTML.js"></script>
-    <script src = "templates/z-listHTML.js"></script>
+    <script src = "templates/z-foldersHTML.js"></script>
+    <script src = "templates/z-entriesHTML.js"></script>
     <script src = "CTapp-script.js"></script>
   </head>
 
 
   <body ng-app = "CustomTracker">
+    <z-folders></z-folders>
+
     <z-tabs class = "zone">
       <z-pane index = "0" label = "1.Home"> instructions / manage folders</z-pane>
       <z-pane index = "1" label = "2.Viewer"> view/create entries</z-pane>
@@ -29,6 +34,7 @@
     </z-tabs>
 
 
+    <!--z-entries></z-entries><!---->
 
     <z-debug></z-debug>
   </body>

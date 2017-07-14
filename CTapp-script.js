@@ -13,6 +13,8 @@ angular.module("CustomTracker",[])
           pane.selected = false;
         });
         $(".selectedTab").removeClass("selectedTab");
+
+
         $("#tab-"+pane.index.toString()).addClass("selectedTab");
         pane.selected = true;
       };
@@ -44,13 +46,12 @@ angular.module("CustomTracker",[])
     template: z_paneHTML
   };
 })
-.directive("zList",function(){
+.directive("zFolders",function(){
   return {
     restrict: 'E',
-    transclude: true,
     scope: {},
-    controller: ['$scope', function MyListController($scope) {
-      $scope.entries = [];
+    controller: ['$scope', function MyFolderController($scope) {
+      $scope.folders = [1,2,3,4,5,6,0];
 
       $scope.rmEntry = function(id){
 
@@ -60,12 +61,20 @@ angular.module("CustomTracker",[])
 
       }
 
-      $scope.selectEntry = function(){
-
+      $scope.select = function(folder){
+        alert(folder);
       }
 
     }],
-    template: z_listHTML
+
+    template: z_foldersHTML
+  };
+})
+.directive("zEntries",function(){
+  return {
+
+
+    template: z_entriesHTML
   };
 })
 .directive("zDebug",function(){

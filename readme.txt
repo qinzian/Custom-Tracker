@@ -2,8 +2,6 @@ personal project4: custom tracker
 rendered view:	
 http://htmlpreview.github.io/?https://github.com/qinzian/Custom-Tracker/blob/master/index.html
 
-see issue below: right now I'm using firefox to preview
-
 pictures credits / src:
 	-bg
 		

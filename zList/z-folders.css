@@ -1,0 +1,28 @@
+.folder-container {
+  height:90px;
+  width: 1000px;
+  background-color: black;
+  overflow-y:auto;
+}
+
+.folder-container:hover {
+  height:140px;
+}
+
+.folder-container a {
+    height:60px;
+    width: 120px;
+}
+
+.folder:hover {
+    background-color: lightgrey;
+}
+
+.folder{ /*this is so that the <button> cover the <a>*/
+  width:inherit;
+  height:inherit;
+
+  text-align: center;
+
+  font-size:25px;
+}
