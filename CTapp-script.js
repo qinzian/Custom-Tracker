@@ -1,6 +1,6 @@
 //angular stuff---------------------------------------------------------------
 angular.module("CustomTracker",[])
-.directive('myTabs', function() {
+.directive('zTabs', function() {
   return {
     restrict: 'E',
     transclude: true,
@@ -27,11 +27,11 @@ angular.module("CustomTracker",[])
     template: z_tabsHTML
   };
 })
-.directive('myPane', function() {
+.directive('zPane', function() {
   return {
 
     restrict: 'E',
-    require: '^^myTabs',
+    require: '^^zTabs',
 
     scope: {
       label: '@'
@@ -49,7 +49,7 @@ angular.module("CustomTracker",[])
     restrict: 'E',
     transclude: true,
     scope: {},
-    controller: ['$scope', function MyTabsController($scope) {
+    controller: ['$scope', function MyListController($scope) {
       $scope.entries = [];
 
       $scope.rmEntry = function(id){
@@ -61,7 +61,7 @@ angular.module("CustomTracker",[])
       }
 
       $scope.selectEntry = function(){
-        
+
       }
 
     }],
@@ -85,7 +85,20 @@ angular.module("CustomTracker",[])
       $scope.test = function(a){
         alert("debug test func w/ input: "+a);
       }
+
+      this.updateMousePos = function(x,y){
+        $scope.$apply(function(){ // forcing the ng-digest-cycle to include mousePos' update
+            $scope.mousePos = strf("({},{})",[x,y]);
+        });
+      }
     }],
+
+    require: "zDebug",
+    link: function(scope, element, attrs,debugCtrler){
+      	$(".zone").mousemove(function(event){
+      		debugCtrler.updateMousePos(event.offsetX,event.offsetY);
+      	});
+    },
 
     template: z_debugHTML
   };

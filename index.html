@@ -8,8 +8,8 @@
 
     <script src="onlineScripts/angular-1.6.4.js"></script>
     <script src="onlineScripts/jquery-2.2.4.js"></script>
-    <!--script src="onlineScripts/jquery-ui.js"></script>
-    <script src="onlineScripts/jquery-rotate.js"></script><!---->
+    <script src="onlineScripts/jquery-ui.js"></script>
+    <!--script src="onlineScripts/jquery-rotate.js"></script><!---->
 
     <script src = "templates/z-debugHTML.js"></script>
     <script src = "templates/z-tabsHTML.js"></script>
@@ -20,18 +20,23 @@
 
 
   <body ng-app = "CustomTracker">
-    <my-tabs>
-      <my-pane index = "0" label = "1.Home"> instructions / manage folders</my-pane>
-      <my-pane index = "1" label = "2.Viewer"> view/create entries</my-pane>
-      <my-pane index = "2" label = "3.Create"> create forms for entries</my-pane>
-      <my-pane index = "3" label = "4.Setting"> manage app / features</my-pane>
-      <my-pane index = "4" label = "5.Summary"> generate graphs / organize stats</my-pane>
-    </my-tabs>
+    <z-tabs class = "zone">
+      <z-pane index = "0" label = "1.Home"> instructions / manage folders</z-pane>
+      <z-pane index = "1" label = "2.Viewer"> view/create entries</z-pane>
+      <z-pane index = "2" label = "3.Create"> create forms for entries</z-pane>
+      <z-pane index = "3" label = "4.Setting"> manage app / features</z-pane>
+      <z-pane index = "4" label = "5.Summary"> generate graphs / organize stats</z-pane>
+    </z-tabs>
 
-    <p>lalala</p>
-    <my-debug></my-debug>
-    <p>lalala</p>
+
+
+    <z-debug></z-debug>
   </body>
+
+  <script src= "helper.js"></script>
+
+  <script src= "debug/debugFunctions.js"></script>
+
 
   <script src= "script.js"></script>
 

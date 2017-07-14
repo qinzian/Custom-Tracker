@@ -18,3 +18,4 @@ Next v1.1:
 
 
 issues:
+- need to work on the customized debug directive
