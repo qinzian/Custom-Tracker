@@ -3,35 +3,36 @@
   <head>
     <meta charset="utf-8">
     <title>Custom Tracker v1.1</title>
-    <!--link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="debug/debugStyle.css"-->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="debug/debugStyle.css">
 
     <script src="onlineScripts/angular-1.6.4.js"></script>
-    <!--script src="onlineScripts/jquery-2.2.4.js"></script>
-    <script src="onlineScripts/jquery-ui.js"></script>
+    <script src="onlineScripts/jquery-2.2.4.js"></script>
+    <!--script src="onlineScripts/jquery-ui.js"></script>
     <script src="onlineScripts/jquery-rotate.js"></script><!---->
 
-    <!--script src = "templates/z-debugHTML.js"></script-->
+    <script src = "templates/z-debugHTML.js"></script>
     <script src = "templates/z-tabsHTML.js"></script>
     <script src = "templates/z-paneHTML.js"></script>
-    <!--script src = "templates/z-listHTML.js"></script-->
-    <script src = "script.js"></script>
+    <script src = "templates/z-listHTML.js"></script>
+    <script src = "CTapp-script.js"></script>
   </head>
 
 
   <body ng-app = "CustomTracker">
     <my-tabs>
-      <my-pane title = "1.Home"> instructions / manage folders</my-pane>
-      <my-pane title = "2.Viewer"> view/create entries</my-pane>
-      <my-pane title = "3.Setting"> manage app / features</my-pane>
-      <my-pane title = "4.Create"> create forms for entries</my-pane>
-      <my-pane title = "5.Summary"> generate graphs / organize stats</my-pane>
+      <my-pane index = "0" label = "1.Home"> instructions / manage folders</my-pane>
+      <my-pane index = "1" label = "2.Viewer"> view/create entries</my-pane>
+      <my-pane index = "2" label = "3.Create"> create forms for entries</my-pane>
+      <my-pane index = "3" label = "4.Setting"> manage app / features</my-pane>
+      <my-pane index = "4" label = "5.Summary"> generate graphs / organize stats</my-pane>
     </my-tabs>
 
-    <!--my-list class = "zone"></my-list>
-
-
-
-    <my-debug class = "zone"></my-debug><!---->
+    <p>lalala</p>
+    <my-debug></my-debug>
+    <p>lalala</p>
   </body>
+
+  <script src= "script.js"></script>
+
 </html>

@@ -1,14 +1,14 @@
-var z_tabsHTML ='<div class="tabbable">  '+
-    '<div ng-repeat="pane in panes"">'+
-    '  <a href="" ng-click="select(pane)">{{pane.title}}</a>'+
+var z_tabsHTML ='<div class="tab-container">  '+
+    '<div ng-repeat="pane in panes">'+
+    '  <button id = "tab-{{$index}}" class = "tab" ng-click="select(pane)">{{pane.label}}</button>'+
     '</div>  '+
   '<div class="tab-content" ng-transclude></div></div>';
 
 
 /* -------------------------------------The-above-string-is-taken-from-----------
-<div class="tabbable">
+<div class="tab-container">
     <div ng-repeat="pane in panes"">
-      <a href="" ng-click="select(pane)">{{pane.title}}</a>
+      <button id = "tab-{{$index}}" class = "tab" ng-click="select(pane)">{{pane.label}}</button>'+
     </div>
   <div class="tab-content" ng-transclude></div></div>
 */
