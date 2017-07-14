@@ -1,14 +1,14 @@
-var z_entriesHTML ='<div class="entry-container">  '+
-    '<a ng-repeat="entry in [1,2,3,4]">'+
-    '  <button id = "entry-{{$index}}" class = "entry" ng-click="alert()">entry.title</button>'+
-    '</a>  '+
-  '</div>';
+var z_entriesHTML ='<ul class="entry-container">  '+
+    '<ol class = "entry" ng-repeat="entry in [1,2,3,4]">'+
+    '  <button id = "entry-{{$index}}" class = "entryButton" ng-click="select(entry)">entry.title</button>'+
+    '</ol>  '+
+  '</ul>';
 
 
 /* -------------------------------------The-above-string-is-taken-from-----------
-<div class="entry-container">
-    <div ng-repeat="entry in entries">
+<ul class="entry-container">
+    <li ng-repeat="entry in entries">
       <button id = "entry-{{$index}}" class = "entry" ng-click="select(entry)">entry.title</button>'+
-    </div>
-</div>
+    </li>
+</ul>
 */

@@ -1,0 +1,33 @@
+z-entries{
+  position: absolute;
+  top:100px;
+  left:850px;
+}
+
+.entry-container {
+  height:500px;
+  width: 150px;
+  background-color: grey;
+  overflow-y:auto;
+}
+
+.entry:hover {
+  background-color: lightgrey;
+}
+
+.entry{
+  position:relative;
+  left:-55px;
+  top:20px;
+
+  width:150px;
+  height:50px;
+
+  text-align: center;
+
+  font-size:25px;
+}
+.entryButton{
+  width:inherit;
+  height:inherit;
+}

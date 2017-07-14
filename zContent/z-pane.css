@@ -1,0 +1,6 @@
+z-pane{
+  width:inherit;
+  height:inherit;
+
+  overflow-y:auto;
+}

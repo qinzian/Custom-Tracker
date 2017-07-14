@@ -1,4 +1,4 @@
-var z_debugHTML = '<div id = "debugZone" class = "zone">'+
+var z_debugHTML = '<div id = "debugZone">'+
   '<button id = "debugToggleButton" ng-click = "toggleDebugP()">Debug On/Off</button>'+
   '<button ng-click = "test(true)">Do stuff</button>'+
   '<div id = "debugInfo" ng-show = "showDebugger">'+

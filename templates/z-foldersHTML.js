@@ -1,6 +1,6 @@
-var z_foldersHTML ='<div class="folder-container zone">  '+
-    '<a ng-repeat="folder in folders">'+
-    '  <button id = "folder-{{$index}}" class = "folder" ng-click="select(folder)">aaaaaaa</button>'+
+var z_foldersHTML ='<div class="folder-container">  '+
+    '<a class = "folder" ng-repeat="folder in folders">'+
+    '  <button id = "folder-{{$index}}" class = "folderButton" ng-click="select(folder)">aaaaaaa</button>'+
     '</a>'+
   '</div>';
 

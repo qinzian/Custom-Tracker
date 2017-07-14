@@ -1,6 +1,6 @@
 z-tabs{
-  position: relative;
-  top: -10px;
+  position: absolute;
+  top: 100px;
 }
 
 .tab-content{
@@ -8,7 +8,7 @@ z-tabs{
   left:200px;
   top:-500px;
 
-  width:850px;
+  width:600px;
   height:500px;
 
   background-color: rgb(205, 180, 180);
