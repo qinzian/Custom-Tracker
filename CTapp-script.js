@@ -51,7 +51,7 @@ angular.module("CustomTracker",[])
     restrict: 'E',
     scope: {},
     controller: ['$scope', function MyFolderController($scope) {
-      $scope.folders = [1,2,3,4,5,6,0,7,8,9];
+      $scope.folders = [];
       $scope.folderC = 0;
 
       $scope.rmFolder = function(id){
@@ -59,19 +59,13 @@ angular.module("CustomTracker",[])
       }
 
       $scope.addFolder = function(){
-        var folder_name = prompt("create folder with id: folder"+$scope.folderC);
-
-
-        if (person == null || person == "") {
-          alert("User cancelled the prompt.");
-        } else {
-          $scope.folders.push($scope.folderC);
-          $("#folder--"+$scope.folderC).html("folder_name");
-        }
+        $scope.folders.push("folder-"+$scope.folderC);
+        $scope.folderC++;
+        //log("reached end of zFolders.addFolder()");
       }
 
-      $scope.select = function(folder){
-        alert(folder);
+      $scope.select = function(folderId,e){
+        alert(folderId==e.target.id);
       }
 
     }],
@@ -118,6 +112,13 @@ angular.module("CustomTracker",[])
 
     template: z_debugHTML
   };
+})
+.factory("FolderSelection",function(){
+  var factory = {};
+
+  factory.
+
+  return factory;
 });/**/
 
 //alert();
