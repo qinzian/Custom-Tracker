@@ -9,11 +9,10 @@ pictures credits / src:
 	-pics
 		
 
-Next v1.1:
-- basic layout
-- can switch between tabs
-- can create and delete entries in my-list
+Next v1.2:
+- can create and delete entries and folders
+- change name, add, and delete entries / folders
 
 
 issues:
-- need to work on the customized debug directive
+- display of contents inside the <z-tabs>...</z-tabs>
