@@ -1,6 +1,9 @@
 z-tabs{
   position: absolute;
   top: 100px;
+
+  width:800px;
+  height:500px;
 }
 
 .tab-content{

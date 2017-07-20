@@ -1,5 +1,5 @@
 /*id takes priority when conflicting changes occur*/
-body{height:600px;}
+body{height:600px; background-color:rgb(150,250,250)}
 
 /**/
 .zone{border: 2px solid;  padding: 5px;} /**/

@@ -51,7 +51,7 @@ angular.module("CustomTracker",[])
     restrict: 'E',
     scope: {},
     controller: ['$scope', function MyFolderController($scope) {
-      $scope.folders = [1,2,3,4,5,6,0];
+      $scope.folders = [1,2,3,4,5,6,0,7,8,9];
 
       $scope.rmEntry = function(id){
 
