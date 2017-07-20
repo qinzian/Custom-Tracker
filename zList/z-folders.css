@@ -1,7 +1,8 @@
 z-folders{
   position: absolute;
+  left:80px;
   height:90px;
-  width: 1000px;
+  width: 900px;
 }
 z-folders:hover{
   height:180px;
@@ -24,6 +25,24 @@ z-folders:hover{
 
 .folderButton:hover {
     background-color: lightgrey;
+}
+
+#addFolderButton{
+  position: absolute;
+  left:-60px;
+  top:0px;
+
+  height:180px;
+  width: 60px;
+
+  background-image: url("../pics/num0.png");
+  background-repeat: no-repeat;
+
+  font-size: 20px;
+  text-align:center;
+  font-weight: bold;
+  font-style: oblique;
+  line-height: 100px;
 }
 
 .folderButton{

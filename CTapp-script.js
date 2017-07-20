@@ -52,13 +52,22 @@ angular.module("CustomTracker",[])
     scope: {},
     controller: ['$scope', function MyFolderController($scope) {
       $scope.folders = [1,2,3,4,5,6,0,7,8,9];
+      $scope.folderC = 0;
 
-      $scope.rmEntry = function(id){
+      $scope.rmFolder = function(id){
 
       }
 
-      $scope.addEntry = function(){
+      $scope.addFolder = function(){
+        var folder_name = prompt("create folder with id: folder"+$scope.folderC);
 
+
+        if (person == null || person == "") {
+          alert("User cancelled the prompt.");
+        } else {
+          $scope.folders.push($scope.folderC);
+          $("#folder--"+$scope.folderC).html("folder_name");
+        }
       }
 
       $scope.select = function(folder){
@@ -82,8 +91,6 @@ angular.module("CustomTracker",[])
     restrict: "E",
     scope:{},
     controller: ["$scope",function ZDebugCtrler($scope){
-      $scope.info1 = "info1";
-      $scope.info2 = "info2";
       $scope.mousePos = "( , )";
       $scope.showDebugger = true;
 
@@ -115,4 +122,3 @@ angular.module("CustomTracker",[])
 
 //alert();
 //-------------------------------------------------------------------------------------
-//log("done loading script.js");

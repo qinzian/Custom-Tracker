@@ -68,19 +68,18 @@ function radToDeg(r){
 function objToString(obj){
   var tmp = "";
   for (var i in obj) {
-    tmp+= strf("{}:{}<br>",[i,obj[i]]);
+    if (obj.hasOwnProperty(i)){
+      tmp+= strf("{}:{}<br>\n",[i,obj[i]]);
+    }
   }
   return tmp;
 }
 
+var msgs = [];
+
 function log(msg){
-  $("#debug").html(msg);
+  msgs.push(msg.toString())
+  alert(objToString(msgs));
 }
 
-function logObj(obj){
-  $("#objInfo").html(obj.toString());
-}
-
-function logxy(pt){
-  log(strf("({},{})",[pt.x,pt.y]));
-}
+//log("helper.js loaded");

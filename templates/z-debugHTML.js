@@ -7,8 +7,8 @@ var z_debugHTML = ''+
     '<br> {{debugInput1}} <br>'+
     '<textarea ng-model = "debugInput2" class = "info"></textarea>'+
     '<br> {{debugInput2}} <br>'+
-    '<p id = "debug1" class = "info"></p>'+
+    '<p id = "debug1" class = "info">debug1 here</p>'+
     '<p class = "info">{{mousePos}}</p>'+
-    '<p id = "debug2"class = "info"></p>'+
+    '<p id = "debug2" class = "info">debug2 here</p>'+
   '</div>'+
 '</div>';
