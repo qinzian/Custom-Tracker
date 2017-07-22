@@ -9,10 +9,11 @@ pictures credits / src:
 	-pics
 		
 
-Next v1.2:
-- can create and delete entries and folders
+Next v1.3:
 - change name, add, and delete entries / folders
 
+- each folders have their own number of entries
 
-issues:
-- display of contents inside the <z-tabs>...</z-tabs>
+- switch between folders and entries will alter the what's in the tab-content box
+
+
