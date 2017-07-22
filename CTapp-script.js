@@ -75,7 +75,27 @@ angular.module("CustomTracker",[])
 })
 .directive("zEntries",function(){
   return {
+    restrict: 'E',
+    scope: {},
+    controller: ['$scope', function MyEntryController($scope) {
+      $scope.entries = [];
+      $scope.entryC = 0;
 
+      $scope.rmEntry = function(id){
+
+      }
+
+      $scope.addEntry = function(){
+        $scope.entries.push("entry-"+$scope.entryC);
+        $scope.entryC++;
+        //log("reached end of zEntry.addFolder()");
+      }
+
+      $scope.select = function(entryId,e){
+        alert(""+entryId+""+e.target.id);
+      }
+
+    }],
 
     template: z_entriesHTML
   };

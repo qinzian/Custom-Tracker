@@ -2,16 +2,16 @@ z-tabs{
   position: absolute;
   top: 100px;
 
-  width:800px;
+  width:830px;
   height:500px;
 }
 
 .tab-content{
-  position:relative;
+  position:absolute;
   left:200px;
-  top:-500px;
+  top:0px;
 
-  width:600px;
+  width:630px;
   height:500px;
 
   background-color: rgb(205, 180, 180);
@@ -33,7 +33,7 @@ z-tabs{
 }
 
 .selectedTab{
-  text-align:right;
+  text-align:center;
   background-color:yellow;
 
   z-index:2;

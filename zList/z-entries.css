@@ -1,12 +1,18 @@
 z-entries{
   position: absolute;
-  top:100px;
+  top:70px;
   left:850px;
+
+  height:520px;
+  width: 150px;
 }
 
 .entry-container {
-  height:500px;
-  width: 150px;
+  position:absolute;
+  top:-5px;
+
+  height:95%;
+  width: 70%;
   background-color: grey;
   overflow-y:auto;
 }
@@ -17,17 +23,38 @@ z-entries{
 
 .entry{
   position:relative;
-  left:-75px;
+  left:-70px;
   top:20px;
 
-  width:150px;
+  width:120px;
   height:50px;
 
   text-align: center;
 
   font-size:25px;
 }
+
+#addEntryButton{
+  position: absolute;
+  left:0px;
+  top:-60px;
+
+  width:150px;
+  height: 60px;
+
+  background-image: url("../pics/num0.png");
+  background-repeat: no-repeat;
+
+  font-size: 20px;
+  text-align:center;
+  font-weight: bold;
+  font-style: oblique;
+  line-height: 70px;
+}
+
 .entryButton{
+  position:relative;
+
   width:inherit;
   height:inherit;
 }

@@ -1,11 +1,11 @@
 z-folders{
   position: absolute;
-  left:80px;
+  left:70px;
   height:90px;
-  width: 900px;
+  width: 770px;
 }
 z-folders:hover{
-  height:180px;
+  height:140px;
   z-index:5;
 }
 
@@ -30,7 +30,7 @@ z-folders:hover{
 #addFolderButton{
   position: absolute;
   left:-60px;
-  top:0px;
+  top:-5px;
 
   height:180px;
   width: 60px;
@@ -42,7 +42,7 @@ z-folders:hover{
   text-align:center;
   font-weight: bold;
   font-style: oblique;
-  line-height: 100px;
+  line-height: 130px;
 }
 
 .folderButton{

@@ -1,6 +1,7 @@
-var z_entriesHTML =
+var z_entriesHTML = ''+
+'<a id = "addEntryButton" ng-click = "addEntry()">New</a>'+
 '<ul class="entry-container">  '+
-    '<ol class = "entry" ng-repeat="entry in [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]">'+
-    '  <button id = "entry-{{$index}}" class = "entryButton" ng-click="select(entry)">entry.title</button>'+
+    '<ol class = "entry" ng-repeat="entry in entries">'+
+    '  <button id = "entry-{{$index}}" class = "entryButton" ng-click="select(entry,$event)">{{entry}}</button>'+
     '</ol>  '+
 '</ul>';
