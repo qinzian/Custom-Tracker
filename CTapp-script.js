@@ -113,10 +113,17 @@ angular.module("CustomTracker",[])
     template: z_debugHTML
   };
 })
-.factory("FolderSelection",function(){
+.factory("Selection",function(){
   var factory = {};
 
-  factory.
+  factory.folders = [];
+  factory.currFolder = undefined;
+  factory.setCurrFolder = function(id){
+    factory.currFolder = id; // something like this
+  }
+  factory.getEntries = function(){
+    return [12,3,"new stuff","factory entries"];
+  }
 
   return factory;
 });/**/
