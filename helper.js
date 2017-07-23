@@ -69,7 +69,7 @@ function objToString(obj){
   var tmp = "";
   for (var i in obj) {
     if (obj.hasOwnProperty(i)){
-      tmp+= strf("{}:{}<br>\n",[i,obj[i]]);
+      tmp+= strf("{}:-    {}<br>\n",[i,obj[i]]);
     }
   }
   return tmp;
