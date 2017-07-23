@@ -16,4 +16,4 @@ Next v1.3:
 
 - switch between folders and entries will alter the what's in the tab-content box
 
-
+- automatically scroll to bottom of list upon appending enough items to overflow container

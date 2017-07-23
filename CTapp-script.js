@@ -1,6 +1,6 @@
 //angular stuff---------------------------------------------------------------
 angular.module("CustomTracker",[])
-.directive('zTabs', function() {
+.directive('zTabs', function() {                    //TODO TODO TODO TODO TODO
   return {
     restrict: 'E',
     transclude: true,
@@ -17,6 +17,8 @@ angular.module("CustomTracker",[])
 
         $("#tab-"+pane.index.toString()).addClass("selectedTab");
         pane.selected = true;
+
+        //gen_tab_content(pane.index,$scope.currEntryId);
       };
 
       this.addPane = function(pane) {
@@ -29,7 +31,7 @@ angular.module("CustomTracker",[])
     template: z_tabsHTML
   };
 })
-.directive('zPane', function() {
+.directive('zPane', function() {                    //TODO TODO TODO TODO TODO
   return {
 
     restrict: 'E',
@@ -38,6 +40,7 @@ angular.module("CustomTracker",[])
     scope: {
       label: '@'
     },
+
     transclude: true,
     link: function(scope, element, attrs, tabsCtrl) {
       scope.index = attrs.index;
@@ -46,7 +49,7 @@ angular.module("CustomTracker",[])
     template: z_paneHTML
   };
 })
-.directive("zFolders",function(){
+.directive("zFolders",function(){                    //TODO TODO TODO TODO TODO
   return {
     restrict: 'E',
     scope: {},
@@ -73,7 +76,7 @@ angular.module("CustomTracker",[])
     template: z_foldersHTML
   };
 })
-.directive("zEntries",function(){
+.directive("zEntries",function(){                    //TODO TODO TODO TODO TODO
   return {
     restrict: 'E',
     scope: {},
@@ -100,7 +103,7 @@ angular.module("CustomTracker",[])
     template: z_entriesHTML
   };
 })
-.directive("zDebug",function(){
+.directive("zDebug",function(){                    //TODO TODO TODO TODO TODO
   return {
     restrict: "E",
     scope:{},
@@ -132,20 +135,6 @@ angular.module("CustomTracker",[])
 
     template: z_debugHTML
   };
-})
-.factory("Selection",function(){
-  var factory = {};
-
-  factory.folders = [];
-  factory.currFolder = undefined;
-  factory.setCurrFolder = function(id){
-    factory.currFolder = id; // something like this
-  }
-  factory.getEntries = function(){
-    return [12,3,"new stuff","factory entries"];
-  }
-
-  return factory;
 });/**/
 
 //alert();
