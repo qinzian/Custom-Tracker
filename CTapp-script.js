@@ -1,5 +1,33 @@
 //angular stuff---------------------------------------------------------------
 angular.module("CustomTracker",[])
+.factory("FolderManipulator",function(){                    //TODO TODO TODO TODO TODO
+  var factory = {};
+
+  factory.folders = {};
+  factory.currFolderId ="";
+
+  factory.setCurrFolderId = function(id){
+      this.currFolderId = id; // something like this
+  }
+
+  factory.getEntries = function(){
+      return this.folders[this.currFolderId];
+  }
+
+
+  return factory;
+})
+.factory("EntryManipulator",function(){                    //TODO TODO TODO TODO TODO
+  var factory = {};
+
+  factory.entries = {};
+  factory.currEntryId ="";
+
+  factory.setCurrEntryId = function(id){
+      this.currEntryId = id; // something like this
+  }
+  return factory;
+})
 .directive('zTabs', function() {                    //TODO TODO TODO TODO TODO
   return {
     restrict: 'E',
@@ -17,8 +45,6 @@ angular.module("CustomTracker",[])
 
         $("#tab-"+pane.index.toString()).addClass("selectedTab");
         pane.selected = true;
-
-        //gen_tab_content(pane.index,$scope.currEntryId);
       };
 
       this.addPane = function(pane) {
@@ -53,8 +79,10 @@ angular.module("CustomTracker",[])
   return {
     restrict: 'E',
     scope: {},
-    controller: ['$scope', function MyFolderController($scope) {
-      $scope.folders = [];
+    controller: ['$scope',"FolderManipulator", function MyFolderController($scope,FolderManipulator) {
+      $scope.fm = FolderManipulator;
+      $scope.folders = $scope.fm.folders;
+      $scope.currFolderId = $scope.fm.currFolderId;
       $scope.folderC = 0;
 
       $scope.rmFolder = function(id){
@@ -62,7 +90,7 @@ angular.module("CustomTracker",[])
       }
 
       $scope.addFolder = function(){
-        $scope.folders.push("folder-"+$scope.folderC);
+        $scope.folders["folder-"+$scope.folderC] = new Folder($scope.folderC);
         $scope.folderC++;
         //log("reached end of zFolders.addFolder()");
       }
