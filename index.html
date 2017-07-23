@@ -4,9 +4,8 @@
     <meta charset="utf-8">
     <title>Custom Tracker v1.3</title>
     <link rel="stylesheet" href="debug/debugStyle.css">
-    <link rel="stylesheet" href="zList/z-tabs.css">
-    <link rel="stylesheet" href="zList/z-folders.css">
-    <link rel="stylesheet" href="zList/z-entries.css">
+    <link rel="stylesheet" href="styles/z-tabs.css">
+    <link rel="stylesheet" href="styles/z-list.css">
     <link rel="stylesheet" href="style.css">
 
     <script src="onlineScripts/angular-1.6.4.js"></script>
@@ -17,26 +16,24 @@
     <script src = "templates/z-debugHTML.js"></script>
     <script src = "templates/z-tabsHTML.js"></script>
     <script src = "templates/z-paneHTML.js"></script>
-    <script src = "templates/z-foldersHTML.js"></script>
-    <script src = "templates/z-entriesHTML.js"></script>
+    <script src = "templates/z-listHTML.js"></script>
 
-    <script src = "objs/collectionObjs.js"></script>
+    <!--script src = "objs/collectionObjs.js"></script><!---->
     <script src = "CTapp-script.js"></script>
   </head>
 
 
   <body class = "zone" ng-app = "CustomTracker">
-    <z-folders class = "zone"></z-folders>
-
     <z-tabs class = "zone">
-      <z-pane index = "0" label = "Home"> instructions / manage folders</z-pane>
+      <z-pane index = "0" label = "Home"> instructions / manage folders
+      </z-pane>
       <z-pane index = "1" label = "Viewer"> view/create entries</z-pane>
       <z-pane index = "2" label = "Summary"> generate graphs / organize stats</z-pane>
       <z-pane index = "3" label = "Create"> create forms for entries</z-pane>
       <z-pane index = "4" label = "Setting"> manage app / features</z-pane><!---->
     </z-tabs>
 
-    <z-entries class = "zone"></z-entries><!---->
+    <z-list class = "zone"></z-list><!---->
 
     <z-debug class = "zone"></z-debug>
   </body>

@@ -1,31 +1,22 @@
 //angular stuff---------------------------------------------------------------
 angular.module("CustomTracker",[])
-.factory("FolderManipulator",function(){                    //TODO TODO TODO TODO TODO
+.factory("ItemsManipulator",function(){                    //TODO TODO TODO TODO TODO
   var factory = {};
 
+  factory.mode = "folders";
+  factory.folderC = 0;
   factory.folders = {};
   factory.currFolderId ="";
+  factory.currList = factory.folders;
 
-  factory.setCurrFolderId = function(id){
-      this.currFolderId = id; // something like this
+  factory.switchList = function(mode){
+    if (mode == "folders"){
+      this.currList = this.folders;
+    } else if (mode == "entries"){
+      this.currList = this.folders[this.currFolderId].getEntries();
+    }
   }
 
-  factory.getEntries = function(){
-      return this.folders[this.currFolderId];
-  }
-
-
-  return factory;
-})
-.factory("EntryManipulator",function(){                    //TODO TODO TODO TODO TODO
-  var factory = {};
-
-  factory.entries = {};
-  factory.currEntryId ="";
-
-  factory.setCurrEntryId = function(id){
-      this.currEntryId = id; // something like this
-  }
   return factory;
 })
 .directive('zTabs', function() {                    //TODO TODO TODO TODO TODO
@@ -75,60 +66,45 @@ angular.module("CustomTracker",[])
     template: z_paneHTML
   };
 })
-.directive("zFolders",function(){                    //TODO TODO TODO TODO TODO
+.directive("zList",function(){                    //TODO TODO TODO TODO TODO
   return {
     restrict: 'E',
     scope: {},
-    controller: ['$scope',"FolderManipulator", function MyFolderController($scope,FolderManipulator) {
-      $scope.fm = FolderManipulator;
-      $scope.folders = $scope.fm.folders;
-      $scope.currFolderId = $scope.fm.currFolderId;
-      $scope.folderC = 0;
+    controller: ['$scope',"ItemsManipulator", function MyListController($scope,ItemsManipulator) {
+      $scope.im = ItemsManipulator;
+      $scope.folders = $scope.im.folders;
+      $scope.currFolderId = $scope.im.currFolderId;
+      $scope.folderC = $scope.im.folderC;
+      $scope.mode = $scope.im.mode;
+      $scope.currList = $scope.im.currList;
 
       $scope.rmFolder = function(id){
 
       }
 
-      $scope.addFolder = function(){
-        $scope.folders["folder-"+$scope.folderC] = new Folder($scope.folderC);
-        $scope.folderC++;
-        //log("reached end of zFolders.addFolder()");
+      $scope.addItem = function(){
+        alert("clicked additem, mode="+$scope.mode);
+        if ($scope.mode == "folders"){
+          $scope.currFolderId = "folder-"+$scope.folderC;
+          $scope.folders[$scope.currFolderId] = $scope.currFolderId; // use this for now
+          // $scope.folders[$scope.currFolderId] = new Folder($scope.currFolderId);
+          $scope.folderC++;
+        } else if ($scope.mode == "entries"){
+          alert("mode == entries");
+        } else {
+          alert("invalid mode");
+        }
       }
 
       $scope.select = function(folderId,e){
-        alert(folderId==e.target.id);
+        $scope.currFolderId = folderId;
+
+        $scope.im.switchList("entries");
       }
 
     }],
 
-    template: z_foldersHTML
-  };
-})
-.directive("zEntries",function(){                    //TODO TODO TODO TODO TODO
-  return {
-    restrict: 'E',
-    scope: {},
-    controller: ['$scope', function MyEntryController($scope) {
-      $scope.entries = [];
-      $scope.entryC = 0;
-
-      $scope.rmEntry = function(id){
-
-      }
-
-      $scope.addEntry = function(){
-        $scope.entries.push("entry-"+$scope.entryC);
-        $scope.entryC++;
-        //log("reached end of zEntry.addFolder()");
-      }
-
-      $scope.select = function(entryId,e){
-        alert(""+entryId+""+e.target.id);
-      }
-
-    }],
-
-    template: z_entriesHTML
+    template: z_listHTML
   };
 })
 .directive("zDebug",function(){                    //TODO TODO TODO TODO TODO
@@ -165,5 +141,5 @@ angular.module("CustomTracker",[])
   };
 });/**/
 
-//alert();
+alert();
 //-------------------------------------------------------------------------------------

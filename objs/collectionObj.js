@@ -1,3 +1,5 @@
+alert();
+
 function CollectionObj(type,id){
   this.title = "";
   this.date = "";
@@ -6,7 +8,7 @@ function CollectionObj(type,id){
   this.type = type;
 }
 
-function Folder(id){
+function MyFolder(id){
   CollectionObj.call(this, "folder",id);
 
   this.entries = {}; // collection of date to EntryObj pairs
@@ -19,13 +21,14 @@ function Folder(id){
 
   }
 }
-Folder.prototype = Object.create(CollectionObj.prototype);
-Folder.prototype.constructor = Folder;
+MyFolder.prototype = Object.create(CollectionObj.prototype);
+MyFolder.prototype.constructor = MyFolder;
 
-function Entry(id){
+
+function MyEntry(id){
   CollectionObj.call(this, "folder",id);
 
-  this.details = {info:{},counter:{},poll:{}}; // may add in location later
+  //this.details = {info:{},counter:{},poll:{}}; // may add in location later
 }
-Entry.prototype = Object.create(CollectionObj.prototype);
-Entry.prototype.constructor = Entry;
+MyEntry.prototype = Object.create(CollectionObj.prototype);
+MyEntry.prototype.constructor = MyEntry;
