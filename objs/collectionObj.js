@@ -19,9 +19,13 @@ function Folder(id){
 
   }
 }
+Folder.prototype = Object.create(CollectionObj.prototype);
+Folder.prototype.constructor = Folder;
 
 function Entry(id){
   CollectionObj.call(this, "folder",id);
 
-  this.details = "";
+  this.details = {info:{},counter:{},poll:{}}; // may add in location later
 }
+Entry.prototype = Object.create(CollectionObj.prototype);
+Entry.prototype.constructor = Entry;
