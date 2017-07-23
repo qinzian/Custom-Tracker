@@ -1,6 +1,7 @@
 //angular stuff---------------------------------------------------------------
-angular.module("CustomTracker",[])
-.factory("ItemsManipulator",function(){                    //TODO TODO TODO TODO TODO
+CTapp = angular.module("CustomTracker",[]);
+
+CTapp.factory("ItemsManipulator",function(){                    //TODO TODO TODO TODO TODO
   var factory = {};
 
   factory.mode = "folders";
@@ -12,8 +13,10 @@ angular.module("CustomTracker",[])
   factory.switchList = function(mode){
     if (mode == "folders"){
       this.currList = this.folders;
-    } else if (mode == "entries"){
-      this.currList = this.folders[this.currFolderId].getEntries();
+    } else if (mode == "records"){
+      this.currList = this.folders[this.currFolderId].getRecords();
+    } else {
+      alert("invalid mode");
     }
   }
 
@@ -83,10 +86,10 @@ angular.module("CustomTracker",[])
       }
 
       $scope.addItem = function(){
-        alert("clicked additem, mode="+$scope.mode);
+        //alert("clicked additem, mode="+$scope.mode);
         if ($scope.mode == "folders"){
           $scope.currFolderId = "folder-"+$scope.folderC;
-          $scope.folders[$scope.currFolderId] = $scope.currFolderId; // use this for now
+          $scope.folders[$scope.currFolderId] = new Folder($scope.currFolderId); // use this for now
           // $scope.folders[$scope.currFolderId] = new Folder($scope.currFolderId);
           $scope.folderC++;
         } else if ($scope.mode == "entries"){
@@ -96,18 +99,21 @@ angular.module("CustomTracker",[])
         }
       }
 
-      $scope.select = function(folderId,e){
+      $scope.select = function(itemId,itemObj){ // itemId is NOT elem.id
         $scope.currFolderId = folderId;
 
-        $scope.im.switchList("entries");
+        $scope.im.switchList("records");
       }
 
     }],
 
     template: z_listHTML
   };
-})
-.directive("zDebug",function(){                    //TODO TODO TODO TODO TODO
+});/**/
+
+//alert();
+//-------------------------------------------------------------------------------------
+CTapp.directive("zDebug",function(){                    //TODO TODO TODO TODO TODO
   return {
     restrict: "E",
     scope:{},
@@ -139,7 +145,4 @@ angular.module("CustomTracker",[])
 
     template: z_debugHTML
   };
-});/**/
-
-alert();
-//-------------------------------------------------------------------------------------
+});

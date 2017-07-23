@@ -1,17 +1,23 @@
-alert();
-
 function CollectionObj(type,id){
-  this.title = "";
   this.date = "";
   this.highlight = false;
   this.id = id;
   this.type = type;
+  this.title = id; // by default
+
+  this.setHighlight = function(b){
+    this.highlight = b
+  }
+  this.initDate = function(){
+    //this.date = ; // yyyy/mm/dd (maybe time as well)
+  }
+  this.initDate();
 }
 
-function MyFolder(id){
+function Folder(id){
   CollectionObj.call(this, "folder",id);
 
-  this.entries = {}; // collection of date to EntryObj pairs
+  this.records = {}; // collection of date to EntryObj pairs
 
   this.addEntry = function(id){
 
@@ -20,15 +26,20 @@ function MyFolder(id){
   this.rmEntry = function(id){
 
   }
+
+  this.getRecords = function(){
+    return this.records;
+  }
 }
-MyFolder.prototype = Object.create(CollectionObj.prototype);
-MyFolder.prototype.constructor = MyFolder;
+Folder.prototype = Object.create(CollectionObj.prototype);
+Folder.prototype.constructor = Folder;
 
 
-function MyEntry(id){
-  CollectionObj.call(this, "folder",id);
+function Record(id){
+  CollectionObj.call(this, "record",id);
+
 
   //this.details = {info:{},counter:{},poll:{}}; // may add in location later
 }
-MyEntry.prototype = Object.create(CollectionObj.prototype);
-MyEntry.prototype.constructor = MyEntry;
+Record.prototype = Object.create(CollectionObj.prototype);
+Record.prototype.constructor = Record;
