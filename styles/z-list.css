@@ -1,4 +1,4 @@
-z-list{
+.zlist{
   position: absolute;
   top:100px;
   left:850px;
@@ -34,7 +34,7 @@ z-list{
   font-size:25px;
 }
 
-#addItemButton{
+.addItemButton{
   position: absolute;
   left:0px;
   top:-60px;

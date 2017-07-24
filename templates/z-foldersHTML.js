@@ -1,7 +1,7 @@
-var z_foldersHTML =''+
-'<a id = "addFolderButton" ng-click = "addFolder()">New</a>'+
-'<div class="folder-container">  '+
-  '<a class = "folder" ng-repeat="folder in folders">'+
-  '  <button id = "folder-{{$index}}" class = "folderButton" ng-click="select(folder,$event)">{{folder}}</button>'+
-  '</a>'+
-'</div>';
+var z_foldersHTML = ''+
+'<a class = "addItemButton" ng-click = "addFolder()">New Folder</a>'+
+'<ul class="item-container">  '+
+    '<ol class = "item" ng-repeat="(id,obj) in folders">'+
+    '  <button id = "folder-{{$index}}" class = "itemButton" ng-click="select(id,obj)">{{obj.title}}</button>'+
+    '</ol>  '+
+'</ul>';

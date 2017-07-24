@@ -16,7 +16,8 @@
     <script src = "templates/z-debugHTML.js"></script>
     <script src = "templates/z-tabsHTML.js"></script>
     <script src = "templates/z-paneHTML.js"></script>
-    <script src = "templates/z-listHTML.js"></script>
+    <script src = "templates/z-foldersHTML.js"></script>
+    <script src = "templates/z-recordsHTML.js"></script>
 
     <script src = "objs/collectionObj.js"></script><!---->
     <script src = "CTapp-script.js"></script>
@@ -33,7 +34,11 @@
       <z-pane index = "4" label = "Setting"> manage app / features</z-pane><!---->
     </z-tabs>
 
-    <z-list class = "zone"></z-list><!---->
+    <div class = "zlist zone" ng-controller = "MyListsController">
+      <z-folders ng-show = "mode == 'folders'"></z-folders><!---->
+      <z-records ng-show = "mode == 'records'"></z-records><!---->
+    </div>
+
 
     <z-debug class = "zone"></z-debug>
   </body>

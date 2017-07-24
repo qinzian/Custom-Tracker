@@ -11,13 +11,20 @@ CTapp.factory("ItemsManipulator",function(){                    //TODO TODO TODO
   factory.currList = factory.folders;
 
   factory.switchList = function(mode){
-    if (mode == "folders"){
+    this.mode = mode;
+
+    if (this.mode == "folders"){
+      alert("in mode == folders");
       this.currList = this.folders;
-    } else if (mode == "records"){
+
+    } else if (this.mode == "records"){
+      alert("in mode == records");
       this.currList = this.folders[this.currFolderId].getRecords();
+
     } else {
       alert("invalid mode");
     }
+    alert("done switching list");
   }
 
   return factory;
@@ -27,7 +34,9 @@ CTapp.factory("ItemsManipulator",function(){                    //TODO TODO TODO
     restrict: 'E',
     transclude: true,
     scope: {},
-    controller: ['$scope', function MyTabsController($scope) {
+    controller: ['$scope',"ItemsManipulator", function MyTabsController($scope,ItemsManipulator) {
+      $scope.im = ItemsManipulator;
+
       $scope.panes = [];
 
       $scope.select = function(pane) {
@@ -39,6 +48,11 @@ CTapp.factory("ItemsManipulator",function(){                    //TODO TODO TODO
 
         $("#tab-"+pane.index.toString()).addClass("selectedTab");
         pane.selected = true;
+
+        if (pane.index == 1){
+          $scope.im.switchList("records");
+        }
+
       };
 
       this.addPane = function(pane) {
@@ -69,49 +83,52 @@ CTapp.factory("ItemsManipulator",function(){                    //TODO TODO TODO
     template: z_paneHTML
   };
 })
-.directive("zList",function(){                    //TODO TODO TODO TODO TODO
+.controller("MyListsController", ["$scope","ItemsManipulator",function($scope,ItemsManipulator){
+  /*
+  $scope.im = ItemsManipulator;
+  $scope.folders = $scope.im.folders;
+  $scope.currFolderId = $scope.im.currFolderId;
+  $scope.folderC = $scope.im.folderC;
+  $scope.mode = $scope.im.mode;*/
+
+  $scope.mode = "folders";
+  $scope.folders = {};
+  $scope.folderC = 0;
+  $scope.currFolderId = "";
+  $scope.currFolder = undefined;
+  $scope.records = {"default":{title:123}};
+
+  $scope.addFolder = function(){
+    $scope.currFolderId = "folder-"+$scope.folderC;
+
+    $scope.folders[$scope.currFolderId] = new Folder($scope.currFolderId);
+    $scope.currFoder = $scope.folders[$scope.currFolderId];
+  }
+
+  $scope.addRecord = function(){
+
+  }
+
+}])
+.directive("zFolders",function(){                    //TODO TODO TODO TODO TODO
   return {
     restrict: 'E',
     scope: {},
-    controller: ['$scope',"ItemsManipulator", function MyListController($scope,ItemsManipulator) {
-      $scope.im = ItemsManipulator;
-      $scope.folders = $scope.im.folders;
-      $scope.currFolderId = $scope.im.currFolderId;
-      $scope.folderC = $scope.im.folderC;
-      $scope.mode = $scope.im.mode;
-      $scope.currList = $scope.im.currList;
 
-      $scope.rmFolder = function(id){
+    template: z_foldersHTML
+  };
+})
+.directive("zRecords",function(){                    //TODO TODO TODO TODO TODO
+  return {
+    restrict: 'E',
+    scope: {},
 
-      }
 
-      $scope.addItem = function(){
-        //alert("clicked additem, mode="+$scope.mode);
-        if ($scope.mode == "folders"){
-          $scope.currFolderId = "folder-"+$scope.folderC;
-          $scope.folders[$scope.currFolderId] = new Folder($scope.currFolderId); // use this for now
-          // $scope.folders[$scope.currFolderId] = new Folder($scope.currFolderId);
-          $scope.folderC++;
-        } else if ($scope.mode == "entries"){
-          alert("mode == entries");
-        } else {
-          alert("invalid mode");
-        }
-      }
-
-      $scope.select = function(itemId,itemObj){ // itemId is NOT elem.id
-        $scope.currFolderId = folderId;
-
-        $scope.im.switchList("records");
-      }
-
-    }],
-
-    template: z_listHTML
+    template: z_recordsHTML
   };
 });/**/
 
-//alert();
+alert();
 //-------------------------------------------------------------------------------------
 CTapp.directive("zDebug",function(){                    //TODO TODO TODO TODO TODO
   return {
