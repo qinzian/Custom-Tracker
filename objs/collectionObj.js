@@ -17,7 +17,7 @@ function CollectionObj(type,id){
 function Folder(id){
   CollectionObj.call(this, "folder",id);
 
-  this.records = {}; // collection of date to EntryObj pairs
+  this.records = {"something":"default"}; // collection of date to EntryObj pairs
 
   this.addEntry = function(id){
 
@@ -29,6 +29,10 @@ function Folder(id){
 
   this.getRecords = function(){
     return this.records;
+  }
+
+  this.toString = function(){
+    return strf("{}     id:{}     title:{}",[this.type,this.id,this.title]);
   }
 }
 Folder.prototype = Object.create(CollectionObj.prototype);
