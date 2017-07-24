@@ -83,52 +83,54 @@ CTapp.factory("ItemsManipulator",function(){                    //TODO TODO TODO
     template: z_paneHTML
   };
 })
-.controller("MyListsController", ["$scope","ItemsManipulator",function($scope,ItemsManipulator){
-  /*
-  $scope.im = ItemsManipulator;
-  $scope.folders = $scope.im.folders;
-  $scope.currFolderId = $scope.im.currFolderId;
-  $scope.folderC = $scope.im.folderC;
-  $scope.mode = $scope.im.mode;*/
+.directive("zLists",function(){
+  return{
+    restrict:'E',
+    scope:{},
 
-  $scope.mode = "folders";
-  $scope.folders = {};
-  $scope.folderC = 0;
-  $scope.currFolderId = "";
-  $scope.currFolder = undefined;
-  $scope.records = {"default":{title:123}};
+    controller: ["$scope",function($scope){
+      /*
+      $scope.im = ItemsManipulator;
+      $scope.folders = $scope.im.folders;
+      $scope.currFolderId = $scope.im.currFolderId;
+      $scope.folderC = $scope.im.folderC;
+      $scope.mode = $scope.im.mode;//*/
 
-  $scope.addFolder = function(){
-    $scope.currFolderId = "folder-"+$scope.folderC;
+      $scope.mode = "records";
+      $scope.folders = {laala:{title:"default folder title"}};
+      $scope.folderC = 0;
+      $scope.currFolderId = "";
+      $scope.currFolder = undefined;
+      $scope.records = {laala:{title:"default record title"}};
 
-    $scope.folders[$scope.currFolderId] = new Folder($scope.currFolderId);
-    $scope.currFoder = $scope.folders[$scope.currFolderId];
-  }
+      $scope.addFolder = function(){
+        alert("add folder");
+      }
 
-  $scope.addRecord = function(){
+      $scope.addRecord = function(){
+        alert("add record");
+      }
 
-  }
+      $scope.selectFolder = function(){
+        alert("selectFolder");
+      }
 
-}])
-.directive("zFolders",function(){                    //TODO TODO TODO TODO TODO
-  return {
-    restrict: 'E',
-    scope: {},
+      $scope.selectRecord = function(){
+        alert("selectRecord");
+      }
 
-    template: z_foldersHTML
+      $scope.test = function(input){
+        $scope.mode = $scope.mode == "folders" ? "records":"folders";
+      }
+
+    }],
+
+    template:z_listsHTML
   };
 })
-.directive("zRecords",function(){                    //TODO TODO TODO TODO TODO
-  return {
-    restrict: 'E',
-    scope: {},
+;/**/
 
-
-    template: z_recordsHTML
-  };
-});/**/
-
-alert();
+//alert();
 //-------------------------------------------------------------------------------------
 CTapp.directive("zDebug",function(){                    //TODO TODO TODO TODO TODO
   return {
