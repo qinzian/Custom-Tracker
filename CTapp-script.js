@@ -82,53 +82,7 @@ CTapp.factory("ItemsManipulator",function(){                    //TODO TODO TODO
     },
     template: z_paneHTML
   };
-})
-.directive("zLists",function(){
-  return{
-    restrict:'E',
-    scope:{},
-
-    controller: ["$scope",function($scope){
-      /*
-      $scope.im = ItemsManipulator;
-      $scope.folders = $scope.im.folders;
-      $scope.currFolderId = $scope.im.currFolderId;
-      $scope.folderC = $scope.im.folderC;
-      $scope.mode = $scope.im.mode;//*/
-
-      $scope.mode = "records";
-      $scope.folders = {laala:{title:"default folder title"}};
-      $scope.folderC = 0;
-      $scope.currFolderId = "";
-      $scope.currFolder = undefined;
-      $scope.records = {laala:{title:"default record title"}};
-
-      $scope.addFolder = function(){
-        alert("add folder");
-      }
-
-      $scope.addRecord = function(){
-        alert("add record");
-      }
-
-      $scope.selectFolder = function(){
-        alert("selectFolder");
-      }
-
-      $scope.selectRecord = function(){
-        alert("selectRecord");
-      }
-
-      $scope.test = function(input){
-        $scope.mode = $scope.mode == "folders" ? "records":"folders";
-      }
-
-    }],
-
-    template:z_listsHTML
-  };
-})
-;/**/
+});/**/
 
 //alert();
 //-------------------------------------------------------------------------------------

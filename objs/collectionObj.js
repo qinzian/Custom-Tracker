@@ -35,14 +35,13 @@ function Folder(id){
   this.title = id; // by default
 
   this.records = []; // collection of id to RecordObj pairs
-  this.records.push(new Record("default"));
 
   this.addRecord = function(){
-
+    this.records.push(new Record("record-"+this.records.length));
   }
 
   this.rmRecord = function(id){
-
+    alert("delete record with id: "+id)
   }
 
   this.getRecords = function(){
