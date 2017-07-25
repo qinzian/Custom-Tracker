@@ -9,11 +9,13 @@ pictures credits / src:
 	-pics
 		
 
-Next v1.3:
+Next v1.4:
 - change name, add, and delete entries / folders
-
-- each folders have their own number of entries
 
 - switch between folders and entries will alter the what's in the tab-content box
 
 - automatically scroll to bottom of list upon appending enough items to overflow container
+
+issue:
+- when creating new itemButtons from calls to "addFolder", I'd like to highlight the itemButton right after creation
+for I can't do it during creation, as the specific <elem> has not been created yet.
