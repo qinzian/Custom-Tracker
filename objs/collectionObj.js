@@ -1,29 +1,47 @@
 function CollectionObj(type,id){
-  this.date = "";
+  this.dateTime = "";
   this.highlight = false;
   this.id = id;
   this.type = type;
-  this.title = id; // by default
 
   this.setHighlight = function(b){
     this.highlight = b
   }
   this.initDate = function(){
-    //this.date = ; // yyyy/mm/dd (maybe time as well)
+    var today = new Date();
+
+    // month +1 because start from 0
+    this.dateTime = strf("{}-{}-{}     {}:{}",[today.getFullYear(),
+                                               today.getMonth()+1,
+                                               today.getDate(),today.getHours(),
+                                               today.getMinutes()]);
   }
   this.initDate();
 }
 
+function Record(id){
+  CollectionObj.call(this, "record",id);
+
+
+  //this.details = {info:{},counter:{},poll:{}}; // may add in location later
+}
+Record.prototype = Object.create(CollectionObj.prototype);
+Record.prototype.constructor = Record;
+
+
 function Folder(id){
   CollectionObj.call(this, "folder",id);
 
-  this.records = {"something":"default"}; // collection of date to EntryObj pairs
+  this.title = id; // by default
 
-  this.addEntry = function(id){
+  this.records = []; // collection of id to RecordObj pairs
+  this.records.push(new Record("default"));
+
+  this.addRecord = function(){
 
   }
 
-  this.rmEntry = function(id){
+  this.rmRecord = function(id){
 
   }
 
@@ -37,13 +55,3 @@ function Folder(id){
 }
 Folder.prototype = Object.create(CollectionObj.prototype);
 Folder.prototype.constructor = Folder;
-
-
-function Record(id){
-  CollectionObj.call(this, "record",id);
-
-
-  //this.details = {info:{},counter:{},poll:{}}; // may add in location later
-}
-Record.prototype = Object.create(CollectionObj.prototype);
-Record.prototype.constructor = Record;
