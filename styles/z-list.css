@@ -58,3 +58,7 @@ z-lists{
   width:inherit;
   height:inherit;
 }
+
+.selectedFolder{
+  border: 5px dashed pink;
+}
