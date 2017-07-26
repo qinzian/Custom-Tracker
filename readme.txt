@@ -9,12 +9,10 @@ pictures credits / src:
 	-pics
 		
 
-Next v1.4:
-- change name, add, and delete entries / folders
+Next v1.4 (folders and records):
+- change name, add, and delete records / folders
 
-- switch between folders and entries will alter the what's in the tab-content box
-
-- automatically scroll to bottom of list upon appending enough items to overflow container
+- switch between folders and records will alter the what's in the tab-content box
 
 issue:
 - when creating new itemButtons from calls to "addFolder", I'd like to highlight the itemButton right after creation
