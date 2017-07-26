@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="debug/debugStyle.css">
     <link rel="stylesheet" href="styles/z-tabs.css">
     <link rel="stylesheet" href="styles/z-list.css">
+    <link rel="stylesheet" href="styles/z-pane.css">
     <link rel="stylesheet" href="style.css">
 
     <script src="onlineScripts/angular-1.6.4.js"></script>
@@ -28,8 +29,17 @@
 
   <body class = "zone" ng-app = "CustomTracker">
     <z-tabs class = "zone">
-      <z-pane index = "0" label = "Home"> instructions / manage folders
+      <z-pane index = "0" label = "Home">
+        <div class = "home-content">
+          <img id = "editTitleButton" src = "pics/num0.png" ng-click = "editTitleButton()">
+          <a id = "folderTitle" class = "yellowBG">lalaaaaaaaaa</a>
+          <br>
+          <a id = "folderDate" class = "yellowBG">{-{folder.date}-}</a>
+          <br><br>
+          <textarea id = "folderDescription" placeholder="[Folder Description]"></textarea>
+        </div>
       </z-pane>
+
       <z-pane index = "1" label = "Viewer"> view/create entries</z-pane>
       <z-pane index = "2" label = "Summary"> generate graphs / organize stats</z-pane>
       <z-pane index = "3" label = "Create"> create forms for entries</z-pane>

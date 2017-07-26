@@ -3,5 +3,5 @@ var z_tabsHTML =''+
   '<div ng-repeat="pane in panes">'+
     '<button id = "tab-{{$index}}" class = "tab" ng-click="select(pane)">{{pane.label}}</button>'+
   '</div>  '+
-  '<div class="tab-content" ng-transclude></div>'+
-'</div>';
+'</div>'+
+'<div class="tab-content" ng-transclude></div>';
