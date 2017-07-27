@@ -9,10 +9,9 @@ pictures credits / src:
 	-pics
 		
 
-Next v1.4 (folders and records):
-- change name, add, and delete records / folders
+Next v1.5 (folders and records):
+- name / rename folders (display using folder.title)
 
-- switch between folders and records will alter the what's in the tab-content box
 
 issue:
 - when creating new itemButtons from calls to "addFolder", I'd like to highlight the itemButton right after creation
