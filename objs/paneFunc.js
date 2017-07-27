@@ -1,4 +1,3 @@
-alert("pane Loading");
 CTapp.directive('zPane', function() {                    //TODO TODO TODO TODO TODO
   return {
     restrict: 'E',
@@ -17,4 +16,4 @@ CTapp.directive('zPane', function() {                    //TODO TODO TODO TODO T
   };
 });
 
-alert();
+//alert("pane Loaded");

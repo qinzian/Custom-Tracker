@@ -1,4 +1,4 @@
-/*function selectFolder(id){
+function selectFolder(id){
   $(".selectedFolder").removeClass("selectedFolder");
   $("#"+id).addClass("selectedFolder");
   //alert($("#"+id).hasClass("selectedFolder")); if elem dne yet then cannot add class
@@ -9,28 +9,20 @@ function selectRecord(id){
   //alert($("#"+id).hasClass("selectedFolder")); if elem dne yet then cannot add class
 }/**/
 
-alert("folders loading");
+
 CTapp.directive("zLists",function(){
   return{
     restrict:'E',
     scope:{},
 
-    controller: ["$scope",function($scope){
-/*
+    controller: ["$scope","ItemsManipulator",function($scope,ItemsManipulator){
+
       $scope.im = ItemsManipulator; // the following is to copy the pointer to zList's ctrler
-      $scope.mode = $scope.im.mode;
       $scope.folders = $scope.im.folders;
       $scope.currFolderId = $scope.im.currFolderId;
       $scope.currFolder = $scope.im.currFolder;
       $scope.currRecordId = $scope.im.currRecordId;
-      $scope.currRecord = $scope.im.currRecord;*/
-
-      $scope.mode = "folders";
-      $scope.folders = {};
-      $scope.currFolderId = "";
-      $scope.currFolder;
-      $scope.currRecordId = "$scope.im.currRecordId";
-      $scope.currRecord;
+      $scope.currRecord = $scope.im.currRecord;
 
 
       $scope.folderC = 0;
@@ -44,12 +36,11 @@ CTapp.directive("zLists",function(){
         selectFolder(id);
       }
 
-      $scope.updateCurrFolder = function(id,obj){
-        $scope.currFolderId = id;
-        $scope.currFolder = obj;
-        $scope.records = obj.getRecords();
+      $scope.updateCurrRecord = function(id,obj){
+        $scope.currRecordId = id;
+        $scope.currRecord = obj;
 
-        selectFolder(id);
+        selectRecord(id);
       }
 
       $scope.addFolder = function(){
@@ -82,13 +73,12 @@ CTapp.directive("zLists",function(){
       }
 
       $scope.test = function(input){
-        var tmp = $scope.mode == "folders" ? "records":"folders";
-        //$scope.im.setMode(tmp);
+        var t = $scope.im.mode == "folders"? "records":"folders";
+        $scope.im.setMode(t);
       }
-
     }],
 
     template:z_listsHTML
   };
 });
-alert();
+//alert("folders loaded");

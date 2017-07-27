@@ -1,4 +1,3 @@
-alert("tabs begin loading");
 CTapp.directive('zTabs', function() {                    //TODO TODO TODO TODO TODO
   return {
     restrict: 'E',
@@ -25,16 +24,21 @@ CTapp.directive('zTabs', function() {                    //TODO TODO TODO TODO T
         pane.selected = true;
 
         switch(pane.index){
-          case 0:
+          case '0':
             $scope.im.setMode("folders");
             break;
-          case 1:
+          case '1':
             $scope.im.setMode("records");
             break;
+          case '2':
+            $scope.im.setMode("folders");
+            break;
+          case '3':
+            $scope.im.setMode("forms");
+            break;
           default:
-            alert("invalid pane index @"+pane.index);
+            $scope.im.setMode("void");
         }
-
       };
 
       this.addPane = function(pane) {
@@ -47,4 +51,5 @@ CTapp.directive('zTabs', function() {                    //TODO TODO TODO TODO T
     template: z_tabsHTML
   };
 });
-alert();
+
+//alert("tabs loaded");
