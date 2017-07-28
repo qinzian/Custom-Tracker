@@ -44,13 +44,23 @@ CTapp.directive("zLists",function(){
       }
 
       $scope.addFolder = function(){
-        //alert("add folder");
         $scope.currFolderId = "folder-"+$scope.folderC;
+        var folderTitle = prompt("Name of new Folder:",$scope.currFolderId);
+
+        if (folderTitle.split("").count(" ") == folderTitle.length || folderTitle == null){
+          return; // don't make new folder if null title or title filled with spaces
+        }
+        // users are allowed to make folders with the same title
+
         $scope.folders[$scope.currFolderId] = new Folder($scope.currFolderId);
+        $scope.currFolder = $scope.folders[$scope.currFolderId];
+
+        $scope.currFolder.setTitle(folderTitle);
+
         $scope.folderC++;
 
         //alert();
-        $scope.updateCurrFolder($scope.currFolderId,$scope.folders[$scope.currFolderId]);
+        $scope.updateCurrFolder($scope.currFolderId,$scope.currFolder);
         //alert();
       }
 
@@ -76,6 +86,8 @@ CTapp.directive("zLists",function(){
         var t = $scope.im.mode == "folders"? "records":"folders";
         $scope.im.setMode(t);
       }
+
+      
     }],
 
     template:z_listsHTML

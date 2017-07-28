@@ -7,6 +7,7 @@ function CollectionObj(type,id){
   this.setHighlight = function(b){
     this.highlight = b
   }
+
   this.initDate = function(){
     var today = new Date();
 
@@ -36,6 +37,10 @@ function Folder(id){
 
   this.records = []; // collection of id to RecordObj pairs
 
+  this.setTitle = function(t){
+    this.title = t;
+  }
+  
   this.addRecord = function(){
     this.records.push(new Record("record-"+this.records.length));
   }

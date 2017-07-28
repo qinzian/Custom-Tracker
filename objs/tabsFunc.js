@@ -6,9 +6,7 @@ CTapp.directive('zTabs', function() {                    //TODO TODO TODO TODO T
     controller: ['$scope',"ItemsManipulator", function MyTabsController($scope,ItemsManipulator) {
       $scope.im = ItemsManipulator;
       $scope.currFolder = $scope.im.currFolder;
-      //$scope.currRecord = $scope.currRecord;
-
-
+      $scope.currRecord = $scope.currRecord;
 
       //-----------------------panes----------------------------------
       $scope.panes = [];

@@ -17,10 +17,6 @@ z-lists{
   overflow-y:auto;
 }
 
-.item:hover {
-  background-color: lightgrey;
-}
-
 .item{
   position:relative;
   left:-70px;
@@ -54,11 +50,16 @@ z-lists{
 
 .itemButton{
   position:relative;
+  left: 5px;
 
   width:inherit;
   height:inherit;
 }
 
 .selectedFolder{
-  border: 5px dashed pink;
+  border: 8px dashed lightpink;
+}
+
+.selectedRecord{
+  border: 8px dashed lightpink;
 }
