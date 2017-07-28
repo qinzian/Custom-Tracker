@@ -1,4 +1,2 @@
 var z_paneHTML = ''+
-'<div class="tab-pane" ng-show="selected">'+
-  '<div ng-transclude></div>'+
-'</div>';
+'<div class="tab-pane" ng-transclude ng-show = selected></div>';
