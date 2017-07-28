@@ -14,5 +14,13 @@ Next v1.5 (folders and records):
 
 
 issue:
-- when creating new itemButtons from calls to "addFolder", I'd like to highlight the itemButton right after creation
-for I can't do it during creation, as the specific <elem> has not been created yet.
+- when creating new itemButtons, the series of automated calls coming from "addFolder()" will include the hightlighting
+of the newly created element, however the element to be highlighted will be created after the series of calls end, so
+I cannot include the highlighting as part of the automated calls.
+
+(might solve this by always having a blank, placeholder obj at the end of folders, so that when items are created, 
+there would already be an itemButton existing for adding highlighting)
+
+- the id on the itemButton and obj.id cannot be the same in all cases; while they are init with same values, 
+but after removing a folder from the list, the itemButton's id will no longer correspond to that of 
+the obj that the itemButton is suppose to repr
