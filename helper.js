@@ -50,6 +50,26 @@ Array.prototype.get = function(index) {
   return this[index];
 }
 
+Array.prototype.count = function(t){
+  var c = 0;
+
+  for (var i = 0; i < this.length; i++) {
+    if (this[i] == t){
+      c++;
+    }
+  }
+  return c;
+}
+
+String.prototype.shorten = function(maxLength){
+  if (this.length > maxLength + 3) {
+    return this.substring(0,maxLength) + "...";
+  } else {
+    return this;
+  }
+
+}
+
 function subString(s,begin, end){
   if (typeof end == "undefined"){
     end = s.length;
