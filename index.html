@@ -32,7 +32,7 @@
 
   <body class = "zone" ng-app = "CustomTracker">
     <z-tabs class = "zone">
-      <z-pane index = "0" label = "Home">
+      <z-pane label = "Home" ng-init = "folderTitle = 'lalaTitle'; folderDateTime = 'some time'">
         <div class = "home-content">
           <img id = "editTitleButton" src = "pics/num0.png" ng-click = "editTitleButton()">
           <a id = "folderTitle" class = "yellowBG">{{folderTitle}}</a>
@@ -43,10 +43,10 @@
         </div>
       </z-pane>
 
-      <z-pane index = "1" label = "Viewer"> view/create entries</z-pane>
-      <z-pane index = "2" label = "Summary"> generate graphs / organize stats</z-pane>
-      <z-pane index = "3" label = "Create"> create forms for entries</z-pane>
-      <z-pane index = "4" label = "Setting"> manage app / features</z-pane><!---->
+      <z-pane label = "Viewer"> view/create entries</z-pane>
+      <z-pane label = "Summary"> generate graphs / organize stats</z-pane>
+      <z-pane label = "Create"> create forms for entries</z-pane>
+      <z-pane label = "Setting"> manage app / features</z-pane><!---->
     </z-tabs>
 
     <z-lists class = "zone">
