@@ -22,12 +22,14 @@ CTapp.factory("ItemsManipulator",function(){                    //TODO TODO TODO
     }
   }
 
-  factory.setCurrRecord = function(id,obj){
-
+  factory.setCurrRecord = function(record){
+    this.currRecord = record;
+    this.currRecordId = record.id;
   }
 
-  factory.setCurrFolder = function(id,obj){
-
+  factory.setCurrFolder = function(folder){
+    this.currFolder = folder;
+    this.currFolderId = folder.id;
   }
 
   return factory;

@@ -1,15 +1,3 @@
-function selectFolder(id){
-  $(".selectedFolder").removeClass("selectedFolder");
-  $("#"+id).addClass("selectedFolder");
-  //alert($("#"+id).hasClass("selectedFolder")); if elem dne yet then cannot add class
-}
-function selectRecord(id){
-  $(".selectedRecord").removeClass("selectedRecord");
-  $("#"+id).addClass("selectedRecord");
-  //alert($("#"+id).hasClass("selectedFolder")); if elem dne yet then cannot add class
-}/**/
-
-
 CTapp.directive("zLists",function(){
   return{
     restrict:'E',
@@ -19,75 +7,58 @@ CTapp.directive("zLists",function(){
 
       $scope.im = ItemsManipulator; // the following is to copy the pointer to zList's ctrler
       $scope.folders = $scope.im.folders;
-      $scope.currFolderId = $scope.im.currFolderId;
-      $scope.currFolder = $scope.im.currFolder;
-      $scope.currRecordId = $scope.im.currRecordId;
-      $scope.currRecord = $scope.im.currRecord;
-
 
       $scope.folderC = 0;
       $scope.records = [];
 
-      $scope.updateCurrFolder = function(id,obj){
-        $scope.currFolderId = id;
-        $scope.currFolder = obj;
-        $scope.records = obj.getRecords();
+      $scope.setCurrFolder = function(obj){
+        $(".selectedFolder").removeClass("selectedFolder");
+        $("#"+obj.id).addClass("selectedFolder");
 
-        selectFolder(id);
+        $scope.im.setCurrFolder(obj);
       }
 
-      $scope.updateCurrRecord = function(id,obj){
-        $scope.currRecordId = id;
-        $scope.currRecord = obj;
+      $scope.setCurrRecord = function(obj){
+        $(".selectedRecord").removeClass("selectedRecord");
+        $("#"+obj.id).addClass("selectedRecord");
 
-        selectRecord(id);
+        $scope.im.setCurrRecord(obj);
       }
 
       $scope.addFolder = function(){
-        $scope.currFolderId = "folder-"+$scope.folderC;
-        var folderTitle = prompt("Name of new Folder:",$scope.currFolderId);
+        var currFolderId = "folder-"+$scope.folderC;
+        var folderTitle = prompt("Name of new Folder:",currFolderId);
 
         if (folderTitle.split("").count(" ") == folderTitle.length || folderTitle == null){
           return; // don't make new folder if null title or title filled with spaces
         }
         // users are allowed to make folders with the same title
 
-        $scope.folders[$scope.currFolderId] = new Folder($scope.currFolderId);
-        $scope.currFolder = $scope.folders[$scope.currFolderId];
-
-        $scope.currFolder.setTitle(folderTitle);
+        $scope.folders[currFolderId] = new Folder(currFolderId,folderTitle);
 
         $scope.folderC++;
 
         //alert();
-        $scope.updateCurrFolder($scope.currFolderId,$scope.currFolder);
+        $scope.setCurrFolder($scope.currFolder);
         //alert();
       }
 
       $scope.addRecord = function(){
-        if(typeof $scope.currFolder !== "undefined"){
-          $scope.currFolder.addRecord();
+        if(typeof $scope.im.currFolder !== "undefined"){
+          $scope.im.currFolder.addRecord();
         } else {
           alert("no folders to add record to");
         }
       }
 
-      $scope.selectFolder = function(id,obj){
-        //alert("selectFolder");
-        $scope.updateCurrFolder(id,obj);
+      $scope.selectFolder = function(obj){
+        $scope.setCurrFolder(obj);
       }
 
-      $scope.selectRecord = function(id,obj){
-        $scope.updateCurrRecord(id,obj);
-        alert("selectRecord "+obj.id+" of folder: "+$scope.currFolderId);
+      $scope.selectRecord = function(obj){
+        $scope.setCurrRecord(obj);
       }
 
-      $scope.test = function(input){
-        var t = $scope.im.mode == "folders"? "records":"folders";
-        $scope.im.setMode(t);
-      }
-
-      
     }],
 
     template:z_listsHTML

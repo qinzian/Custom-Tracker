@@ -5,11 +5,32 @@ CTapp.directive('zTabs', function() {                    //TODO TODO TODO TODO T
     scope: {},
     controller: ['$scope',"ItemsManipulator", function MyTabsController($scope,ItemsManipulator) {
       $scope.im = ItemsManipulator;
-      $scope.currFolder = $scope.im.currFolder;
-      $scope.currRecord = $scope.currRecord;
 
+      $scope.folderDescription = $("folderDescription");
+      $scope.currFolder;
+      $scope.folderTitle = "lalal title";
+      $scope.folderDateTime = "blabla time";
       //-----------------------panes----------------------------------
       $scope.panes = [];
+
+      $scope.updateDescription = function(){
+        alert("updateDescription()");
+        //$scope.currFolder.setDescription($scope.folderDescription.text());
+        //alert("currFolder description:"+$scope.currFolder.getDescription());
+      }
+
+      $scope.loadHomeContent = function(){
+        alert("loadHomeContent");
+        $scope.currFolder = $scope.im.currFolder;
+        if (typeof $scope.currFolder == "undefined"){
+          alert("currFolder is undefined");
+        } else {
+          $scope.folderTitle = $scope.currFolder.title;
+          $scope.folderDateTime = $scope.currFolder.dateTime;
+          alert($scope.folderTitle);
+          //$scope.folderDescription.text($scope.currFolder.getDescription());
+        }
+      }
 
       $scope.select = function(pane) {
         angular.forEach($scope.panes, function(pane) {
@@ -24,6 +45,7 @@ CTapp.directive('zTabs', function() {                    //TODO TODO TODO TODO T
         switch(pane.index){
           case '0':
             $scope.im.setMode("folders");
+            $scope.loadHomeContent();
             break;
           case '1':
             $scope.im.setMode("records");

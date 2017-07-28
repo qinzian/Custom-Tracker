@@ -35,11 +35,11 @@
       <z-pane index = "0" label = "Home">
         <div class = "home-content">
           <img id = "editTitleButton" src = "pics/num0.png" ng-click = "editTitleButton()">
-          <a id = "folderTitle" class = "yellowBG">lalaaaaaaaaa</a>
+          <a id = "folderTitle" class = "yellowBG">{{folderTitle}}</a>
           <br>
-          <a id = "folderDate" class = "yellowBG">{-{folder.date}-}</a>
+          <a id = "folderDate" class = "yellowBG">{{folderDateTime}}</a>
           <br><br>
-          <textarea id = "folderDescription" placeholder="[Folder Description]"></textarea>
+          <textarea id = "folderDescription" placeholder="[Folder Description]" ng-mouseleave = "updateDescription()"></textarea>
         </div>
       </z-pane>
 

@@ -30,17 +30,19 @@ Record.prototype = Object.create(CollectionObj.prototype);
 Record.prototype.constructor = Record;
 
 
-function Folder(id){
+function Folder(id,title){
   CollectionObj.call(this, "folder",id);
 
-  this.title = id; // by default
+  this.title = title; // by default
+
+  this.description = "";
 
   this.records = []; // collection of id to RecordObj pairs
 
   this.setTitle = function(t){
     this.title = t;
   }
-  
+
   this.addRecord = function(){
     this.records.push(new Record("record-"+this.records.length));
   }
@@ -51,6 +53,14 @@ function Folder(id){
 
   this.getRecords = function(){
     return this.records;
+  }
+
+  this.setDescription = function(d){
+    this.description = d;
+  }
+
+  this.getDescription = function(){
+    return this.description;
   }
 
   this.toString = function(){
