@@ -12,6 +12,7 @@ CTapp.directive('zTabs', function() {                    //TODO TODO TODO TODO T
       $scope.folderDateTime = "blabla time";
       //-----------------------panes----------------------------------
       $scope.panes = [];
+      $scope.selected = "Home";
 
       $scope.updateDescription = function(){
         alert("updateDescription()");
@@ -20,10 +21,10 @@ CTapp.directive('zTabs', function() {                    //TODO TODO TODO TODO T
       }
 
       $scope.loadHomeContent = function(){
-        alert("loadHomeContent");
+        //alert("loadHomeContent");
         $scope.currFolder = $scope.im.currFolder;
         if (typeof $scope.currFolder == "undefined"){
-          alert("currFolder is undefined");
+          //alert("currFolder is undefined");
         } else {
           $scope.folderTitle = $scope.currFolder.title;
           $scope.folderDateTime = $scope.currFolder.dateTime;
@@ -39,21 +40,21 @@ CTapp.directive('zTabs', function() {                    //TODO TODO TODO TODO T
         $(".selectedTab").removeClass("selectedTab");
 
 
-        $("#tab-"+pane.index.toString()).addClass("selectedTab");
+        $("#"+pane.label).addClass("selectedTab");
         pane.selected = true;
 
-        switch(pane.index){
-          case '0':
+        switch(pane.label){
+          case 'Home':
             $scope.im.setMode("folders");
             $scope.loadHomeContent();
             break;
-          case '1':
+          case 'Viewer':
             $scope.im.setMode("records");
             break;
-          case '2':
+          case 'Summary':
             $scope.im.setMode("folders");
             break;
-          case '3':
+          case 'Create':
             $scope.im.setMode("forms");
             break;
           default:
