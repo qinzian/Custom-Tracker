@@ -39,7 +39,7 @@ CTapp.directive("zLists",function(){
         $scope.folderC++;
 
         //alert();
-        $scope.setCurrFolder($scope.currFolder);
+        //$scope.setCurrFolder($scope.currFolder);
         //alert();
       }
 

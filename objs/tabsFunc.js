@@ -7,12 +7,11 @@ CTapp.directive('zTabs', function() {                    //TODO TODO TODO TODO T
       $scope.im = ItemsManipulator;
 
       $scope.folderDescription = $("folderDescription");
-      $scope.currFolder;
-      $scope.folderTitle = "lalal title";
-      $scope.folderDateTime = "blabla time";
+      $scope.currFolder = {title:"a title",dateTime:"a time",description:"a text"};
       //-----------------------panes----------------------------------
-      $scope.panes = [];
-      $scope.selected = "Home";
+      $scope.paneLabels = ["Home","Viewer","Summary","Create","Setting"];
+
+      $scope.selected = "viewer";
 
       $scope.updateDescription = function(){
         alert("updateDescription()");
@@ -22,28 +21,22 @@ CTapp.directive('zTabs', function() {                    //TODO TODO TODO TODO T
 
       $scope.loadHomeContent = function(){
         //alert("loadHomeContent");
-        $scope.currFolder = $scope.im.currFolder;
-        if (typeof $scope.currFolder == "undefined"){
+        if (typeof $scope.im.currFolder == "undefined"){
           //alert("currFolder is undefined");
         } else {
-          $scope.folderTitle = $scope.currFolder.title;
-          $scope.folderDateTime = $scope.currFolder.dateTime;
-          alert($scope.folderTitle);
-          //$scope.folderDescription.text($scope.currFolder.getDescription());
+          //$scope.panes["Home"].setCurrFolder($scope.im.currFolder);
+          alert("currFolder is defined");
         }
       }
 
-      $scope.select = function(pane) {
-        angular.forEach($scope.panes, function(pane) {
-          pane.selected = false;
-        });
+      $scope.select = function(label) {
+        $scope.selected = label;
+
         $(".selectedTab").removeClass("selectedTab");
 
+        $("#"+label).addClass("selectedTab");
 
-        $("#"+pane.label).addClass("selectedTab");
-        pane.selected = true;
-
-        switch(pane.label){
+        switch(label){
           case 'Home':
             $scope.im.setMode("folders");
             $scope.loadHomeContent();
@@ -60,13 +53,6 @@ CTapp.directive('zTabs', function() {                    //TODO TODO TODO TODO T
           default:
             $scope.im.setMode("void");
         }
-      };
-
-      this.addPane = function(pane) {
-        if ($scope.panes.length === 0) { // the first tab to add into $scope.panes is shown
-          $scope.select(pane);
-        }
-        $scope.panes.push(pane);
       };
     }],
     template: z_tabsHTML

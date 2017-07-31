@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+home<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -16,7 +16,11 @@
 
     <script src = "templates/z-debugHTML.js"></script>
     <script src = "templates/z-tabsHTML.js"></script>
-    <script src = "templates/z-paneHTML.js"></script>
+    <script src = "templates/z-panes/z-homePaneHTML.js"></script>
+    <script src = "templates/z-panes/z-viewerPaneHTML.js"></script>
+    <script src = "templates/z-panes/z-summaryPaneHTML.js"></script>
+    <script src = "templates/z-panes/z-createPaneHTML.js"></script>
+    <script src = "templates/z-panes/z-settingPaneHTML.js"></script>
     <script src = "templates/z-foldersHTML.js"></script>
     <script src = "templates/z-recordsHTML.js"></script>
     <script src = "templates/z-listsHTML.js"></script>
@@ -32,25 +36,15 @@
 
   <body class = "zone" ng-app = "CustomTracker">
     <z-tabs class = "zone">
-      <z-pane label = "Home" ng-init = "folderTitle = 'lalaTitle'; folderDateTime = 'some time'">
-        <div class = "home-content">
-          <img id = "editTitleButton" src = "pics/num0.png" ng-click = "editTitleButton()">
-          <a id = "folderTitle" class = "yellowBG">{{folderTitle}}</a>
-          <br>
-          <a id = "folderDate" class = "yellowBG">{{folderDateTime}}</a>
-          <br><br>
-          <textarea id = "folderDescription" placeholder="[Folder Description]" ng-mouseleave = "updateDescription()"></textarea>
-        </div>
-      </z-pane>
+      <z-homePane ng-show = "selected == 'home'">d</z-HomePane>
 
-      <z-pane label = "Viewer"> view/create entries</z-pane>
-      <z-pane label = "Summary"> generate graphs / organize stats</z-pane>
-      <z-pane label = "Create"> create forms for entries</z-pane>
-      <z-pane label = "Setting"> manage app / features</z-pane><!---->
+      <z-viewerPane ng-show = "selected == 'viewer'"> view/create entries</z-viewerPane>
+      <z-summaryPane ng-show = "selected == 'summary'"> generate graphs / organize stats</z-summaryPane>
+      <z-creatPane ng-show = "selected == 'create'"> create forms for entries</z-creatPaneane>
+      <z-settingPane ng-show = "selected == 'setting'"> manage app / features</z-settingPane><!---->
     </z-tabs>
 
-    <z-lists class = "zone">
-    </z-lists>
+    <!--z-lists class = "zone"></z-lists><!---->
 
 
     <!--z-debug class = "zone"></z-debug><!---->

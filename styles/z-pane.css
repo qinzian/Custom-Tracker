@@ -1,11 +1,13 @@
-z-pane{
+/*.panel{
   width:inherit;
   height:inherit;
 
   overflow-y:auto;
-}
 
-.home-content{
+  border: 10px solid yellow;
+}*/
+
+z-homePane{
   position:absolute;
   top:20px;
   left: 30px;
@@ -13,7 +15,7 @@ z-pane{
 
 #folderDate{
   height:30px;
-  font-size:20px; 
+  font-size:20px;
 }
 
 #folderTitle{

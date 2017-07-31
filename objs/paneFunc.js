@@ -1,28 +1,81 @@
-CTapp.directive('zPane', function() {                    //TODO TODO TODO TODO TODO
+CTapp.directive('z_homePane', function() {                    //TODO TODO TODO TODO TODO
   return {
     restrict: 'E',
-    require: '^^zTabs',
 
-    scope: {
-      label: '@'
-    },
+    scope: {},
 
-    transclude: true,
-
-    /*
     controller: ["$scope",function($scope){
-      $scope.a = 1;
+      $scope.selected = true;
 
-      $scope.test = function(){
-        alert($scope.a++);
+      $scope.title = "title";
+      $scope.dateTime = "date";
+
+      $scope.label = "some label";
+
+      $scope.editTitleButton = function(){
+        alert("edit title button");
       }
-    }],*/
+    }],
 
-    link: function(scope, element, attrs, tabsCtrl) {
-      tabsCtrl.addPane(scope);
-    },
-    template: z_paneHTML
+    template: z_homePaneHTML
   };
-});
+})
+.directive('z_viewerPane', function() {                    //TODO TODO TODO TODO TODO
+  return {
+    restrict: 'E',
+
+    scope: {},
+
+    controller: ["$scope",function($scope){
+      $scope.selected = false;
+      $scope.label = "viewer";
+    }],
+
+    template: z_viewerPaneHTML
+  };
+})
+.directive('z_summaryPane', function() {                    //TODO TODO TODO TODO TODO
+  return {
+    restrict: 'E',
+
+    scope: {},
+
+    controller: ["$scope",function($scope){
+      $scope.selected = false;
+      $scope.label = "summary";
+    }],
+
+    template: z_summaryPaneHTML
+  };
+})
+.directive('z_createPane', function() {                    //TODO TODO TODO TODO TODO
+  return {
+    restrict: 'E',
+
+    scope: {},
+
+    controller: ["$scope",function($scope){
+      $scope.selected = false;
+
+      $scope.label = "create";
+    }],
+
+    template: z_createPaneHTML
+  };
+})
+.directive('z_settingPane', function() {                    //TODO TODO TODO TODO TODO
+  return {
+    restrict: 'E',
+
+    scope: {},
+
+    controller: ["$scope",function($scope){
+      $scope.selected = false;
+      $scope.label = "setting";
+    }],
+
+    template: z_settingPaneHTML
+  };
+})
 
 //alert("pane Loaded");
