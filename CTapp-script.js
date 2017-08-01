@@ -34,6 +34,7 @@ CTapp.factory("ItemsManipulator",function(){                    //TODO TODO TODO
   var factory = {};
 
   factory.fd = $("#folderDescription");
+  factory.ft = $("#folderTitle");
 
   factory.updateDescription = function(cf){
     cf.setDescription(this.fd.text());
@@ -44,7 +45,11 @@ CTapp.factory("ItemsManipulator",function(){                    //TODO TODO TODO
   }
 
   factory.updateTitle = function(cf){
-    cf.setDescription(this.fd.text());
+    cf.setTitle(this.ft.text());
+  }
+
+  factory.loadTitle = function(cf){
+    this.ft.text(cf.getTitle());
   }
 
   return factory;

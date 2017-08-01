@@ -39,6 +39,10 @@ function Folder(id,title){
 
   this.records = []; // collection of id to RecordObj pairs
 
+  this.getTitle = function(){
+    return this.title;
+  }
+
   this.setTitle = function(t){
     this.title = t;
   }

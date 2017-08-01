@@ -12,8 +12,8 @@ CTapp.directive('zHomePane', function() {                    //TODO TODO TODO TO
       $scope.label = "home";
       $scope.Saving = "";
 
-      $scope.editTitleButton = function(){
-        alert("edit title button");
+      $scope.updateFolderTitle = function(){
+        $scope.hpm.updateTitle($scope.im.cf);
       }
 
       $scope.updateFolderDescription = function(){

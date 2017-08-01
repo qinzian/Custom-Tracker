@@ -55,6 +55,7 @@ CTapp.directive("zLists",function(){
         $scope.records = obj.getRecords();
 
         $scope.hpm.loadDescription($scope.im.cf);
+        $scope.hpm.loadTitle($scope.im.cf);
       }
 
       $scope.selectRecord = function(obj){
