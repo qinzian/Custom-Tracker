@@ -10,8 +10,10 @@ CTapp.directive('zHomePane', function() {                    //TODO TODO TODO TO
       $scope.im = ItemsManipulator;
       $scope.label = "home";
 
+      $scope.fd = $("#folderDescription");
+
       $scope.updateDescription = function(){
-        alert("updateDescription");
+        //$scope.cf.setDescription($scope.fd.text());
       }
 
       $scope.editTitleButton = function(){

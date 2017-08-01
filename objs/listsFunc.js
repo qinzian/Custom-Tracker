@@ -11,18 +11,18 @@ CTapp.directive("zLists",function(){
       $scope.folderC = 0;
       $scope.records = [];
 
-      $scope.setCurrFolder = function(obj){
+      $scope.setCF = function(obj){
         $(".selectedFolder").removeClass("selectedFolder");
         $("#"+obj.id).addClass("selectedFolder");
 
-        $scope.im.setCurrFolder(obj);
+        $scope.im.setCF(obj);
       }
 
-      $scope.setCurrRecord = function(obj){
+      $scope.setCR = function(obj){
         $(".selectedRecord").removeClass("selectedRecord");
         $("#"+obj.id).addClass("selectedRecord");
 
-        $scope.im.setCurrRecord(obj);
+        $scope.im.setCR(obj);
       }
 
       $scope.addFolder = function(){
@@ -44,19 +44,23 @@ CTapp.directive("zLists",function(){
       }
 
       $scope.addRecord = function(){
-        if(typeof $scope.im.currFolder !== "undefined"){
-          $scope.im.currFolder.addRecord();
+        if(typeof $scope.im.cf !== "undefined"){
+          $scope.im.cf.addRecord();
+          //alert("added record");
         } else {
           alert("no folders to add record to");
         }
       }
 
       $scope.selectFolder = function(obj){
-        $scope.setCurrFolder(obj);
+        $scope.setCF(obj);
+
+        $scope.records = obj.getRecords();
+        //alert("got records");
       }
 
       $scope.selectRecord = function(obj){
-        $scope.setCurrRecord(obj);
+        $scope.setCR(obj);
       }
 
     }],
