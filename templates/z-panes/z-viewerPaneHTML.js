@@ -1,4 +1,4 @@
 var z_viewerPaneHTML = ''+
-'<div class = "panel">'+
+'<div class = "panel" ng-show = "ts.selected == \'viewer\'">'+
 'view stuff'+
-'<\div>';
+'</div>';

@@ -1,4 +1,4 @@
 var z_summaryPaneHTML = ''+
-'<div class = "panel">'+
+'<div class = "panel" ng-show = "ts.selected == \'summary\'">'+
 'summarize stuff'+
-'<\div>';
+'</div>';
