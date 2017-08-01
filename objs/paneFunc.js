@@ -10,7 +10,7 @@ CTapp.directive('zHomePane', function() {                    //TODO TODO TODO TO
       $scope.im = ItemsManipulator;
       $scope.hpm = HomePaneManager;
       $scope.label = "home";
-      $scope.textareaSaved = "Click outside the text field to SAVE";
+      $scope.Saving = "";
 
       $scope.editTitleButton = function(){
         alert("edit title button");
@@ -18,11 +18,6 @@ CTapp.directive('zHomePane', function() {                    //TODO TODO TODO TO
 
       $scope.updateFolderDescription = function(){
         $scope.hpm.updateDescription($scope.im.cf);
-        $scope.textareaSaved = "Saved";
-      }
-
-      $scope.keydown = function(){
-        $scope.textareaSaved = "Click outside the text field to SAVE";
       }
     }],
 

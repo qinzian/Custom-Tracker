@@ -7,5 +7,6 @@ var z_homePaneHTML = ''+
   '<br><br>'+
   '<textarea id = "folderDescription" placeholder="[Folder Description]" '+
   'ng-mouseleave = "updateFolderDescription()" ng-keydown = "keydown()"></textarea>'+
-  '<br>{{textareaSaved}}'+
+  '<br><br>Move / Tap outside the text field to SAVE'+
+  '<br>{{Saving}}'
 '</div>';
