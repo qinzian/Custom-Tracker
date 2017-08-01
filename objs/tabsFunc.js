@@ -34,28 +34,24 @@ CTapp.directive('zTabs', function() {                    //TODO TODO TODO TODO T
       $scope.select = function(label) {
         $scope.ts.selectTab(label);
 
-        return;
-
-
         switch(label){
-          case 'Home':
+          case 'home':
             $scope.im.setMode("folders");
             $scope.loadHomeContent();
             break;
-          case 'Viewer':
+          case 'viewer':
             $scope.im.setMode("records");
             break;
-          case 'Summary':
+          case 'summary':
             $scope.im.setMode("folders");
             break;
-          case 'Create':
+          case 'create':
             $scope.im.setMode("forms");
             break;
           default:
             $scope.im.setMode("void");
         }
-        alert(label);
-      }
+      }// select() ends
     }],
     template: z_tabsHTML
   };

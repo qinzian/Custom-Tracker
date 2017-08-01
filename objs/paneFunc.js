@@ -4,12 +4,15 @@ CTapp.directive('zHomePane', function() {                    //TODO TODO TODO TO
 
     scope: {},
 
-    controller: ["$scope","TabsSelector",function($scope,TabsSelector){
+    controller: ["$scope","TabsSelector","ItemsManipulator",
+    function($scope,TabsSelector,ItemsManipulator){
       $scope.ts = TabsSelector;
+      $scope.im = ItemsManipulator;
       $scope.label = "home";
 
-      $scope.title = "title";
-      $scope.dateTime = "date";
+      $scope.updateDescription = function(){
+        alert("updateDescription");
+      }
 
       $scope.editTitleButton = function(){
         alert("edit title button");

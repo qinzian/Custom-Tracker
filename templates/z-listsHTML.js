@@ -1,5 +1,4 @@
 var z_listsHTML = ''+
-//'<img src = "pics/num0.png" ng-click="test(1)">'+
 '<div ng-show = "im.mode == \'folders\'">'+
   '<a class = "addItemButton" ng-click = "addFolder()">New Folder</a>'+
   '<ul class="item-container">  '+
