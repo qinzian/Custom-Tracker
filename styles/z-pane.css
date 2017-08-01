@@ -1,16 +1,8 @@
-/*.panel{
+.panel{
   width:inherit;
   height:inherit;
 
   overflow-y:auto;
-
-  border: 10px solid yellow;
-}*/
-
-z-homePane{
-  position:absolute;
-  top:20px;
-  left: 30px;
 }
 
 #folderDate{
