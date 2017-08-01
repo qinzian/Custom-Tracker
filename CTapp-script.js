@@ -43,6 +43,10 @@ CTapp.factory("ItemsManipulator",function(){                    //TODO TODO TODO
     this.fd.text(cf.getDescription());
   }
 
+  factory.updateTitle = function(cf){
+    cf.setDescription(this.fd.text());
+  }
+
   return factory;
 })
 .factory("TabsSelector",function(){                    //TODO TODO TODO TODO TODO
