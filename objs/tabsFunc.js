@@ -3,16 +3,18 @@ CTapp.directive('zTabs', function() {                    //TODO TODO TODO TODO T
     restrict: 'E',
     transclude: true,
     scope: {},
-    controller: ['$scope',"ItemsManipulator", function MyTabsController($scope,ItemsManipulator) {
-      $scope.im = ItemsManipulator;
 
-      $scope.folderDescription = $("folderDescription");
+    controller: ['$scope',"ItemsManipulator", "TabsSelector",
+    function MyTabsController($scope,ItemsManipulator,TabsSelector) {
+      $scope.im = ItemsManipulator;
+      $scope.ts = TabsSelector;
+
+      //$scope.folderDescription = $("folderDescription");
       $scope.currFolder = {title:"a title",dateTime:"a time",description:"a text"};
       //-----------------------panes----------------------------------
-      $scope.paneLabels = ["Home","Viewer","Summary","Create","Setting"];
+      $scope.paneLabels = ["home","viewer","summary","create","setting"];
 
-      $scope.selected = "viewer";
-
+      /*
       $scope.updateDescription = function(){
         alert("updateDescription()");
         //$scope.currFolder.setDescription($scope.folderDescription.text());
@@ -27,14 +29,13 @@ CTapp.directive('zTabs', function() {                    //TODO TODO TODO TODO T
           //$scope.panes["Home"].setCurrFolder($scope.im.currFolder);
           alert("currFolder is defined");
         }
-      }
+      }*/
 
       $scope.select = function(label) {
-        $scope.selected = label;
+        $scope.ts.selectTab(label);
 
-        $(".selectedTab").removeClass("selectedTab");
+        return;
 
-        $("#"+label).addClass("selectedTab");
 
         switch(label){
           case 'Home':
@@ -53,7 +54,8 @@ CTapp.directive('zTabs', function() {                    //TODO TODO TODO TODO T
           default:
             $scope.im.setMode("void");
         }
-      };
+        alert(label);
+      }
     }],
     template: z_tabsHTML
   };

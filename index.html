@@ -1,4 +1,4 @@
-home<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -21,8 +21,6 @@ home<!DOCTYPE html>
     <script src = "templates/z-panes/z-summaryPaneHTML.js"></script>
     <script src = "templates/z-panes/z-createPaneHTML.js"></script>
     <script src = "templates/z-panes/z-settingPaneHTML.js"></script>
-    <script src = "templates/z-foldersHTML.js"></script>
-    <script src = "templates/z-recordsHTML.js"></script>
     <script src = "templates/z-listsHTML.js"></script>
 
     <script src = "objs/collectionObj.js"></script><!---->
@@ -36,12 +34,11 @@ home<!DOCTYPE html>
 
   <body class = "zone" ng-app = "CustomTracker">
     <z-tabs class = "zone">
-      <z-homePane ng-show = "selected == 'home'">d</z-HomePane>
-
-      <z-viewerPane ng-show = "selected == 'viewer'"> view/create entries</z-viewerPane>
-      <z-summaryPane ng-show = "selected == 'summary'"> generate graphs / organize stats</z-summaryPane>
-      <z-creatPane ng-show = "selected == 'create'"> create forms for entries</z-creatPaneane>
-      <z-settingPane ng-show = "selected == 'setting'"> manage app / features</z-settingPane><!---->
+      <z-home-pane ></z-home-pane>
+      <z-viewer-pane ></z-viewer-pane>
+      <z-summary-pane > </z-summary-pane>
+      <z-create-pane ></z-create-pane>
+      <z-setting-pane ></z-setting-pane><!---->
     </z-tabs>
 
     <!--z-lists class = "zone"></z-lists><!---->
