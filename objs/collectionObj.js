@@ -39,6 +39,20 @@ function Folder(id,title){
 
   this.records = []; // collection of id to RecordObj pairs
 
+  this.formId = undefined;
+
+  this.initFormId = function(id){
+    if (typeof this.formId == "undefined"){
+      this.formId = id;
+    } else {
+      alert("this folder already has a form, formId:"+this.formId);
+    }
+  }
+
+  this.getFormId = function(){
+    return this.formId;
+  }
+
   this.getTitle = function(){
     return this.title;
   }
