@@ -33,6 +33,21 @@ CTapp.factory("ItemsManipulator",function(){                    //TODO TODO TODO
   }
 
   return factory;
+})
+.factory("TabsSelector",function(){                    //TODO TODO TODO TODO TODO
+  var factory = {};
+
+  factory.selected = "create";
+
+  factory.selectTab = function(label){
+    this.selected = label;
+
+    $(".selectedTab").removeClass("selectedTab");
+
+    $("#"+label).addClass("selectedTab");
+  }
+
+  return factory;
 });
 
 //alert("factory loaded");
