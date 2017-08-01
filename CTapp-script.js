@@ -30,6 +30,11 @@ CTapp.factory("ItemsManipulator",function(){                    //TODO TODO TODO
 
   return factory;
 })
+.factory("CreatePaneManager",function(){
+  var factory = {};
+
+  return factory;
+})
 .factory("HomePaneManager",function(){
   var factory = {};
 
@@ -57,7 +62,7 @@ CTapp.factory("ItemsManipulator",function(){                    //TODO TODO TODO
 .factory("TabsSelector",function(){                    //TODO TODO TODO TODO TODO
   var factory = {};
 
-  factory.selected = "home";
+  factory.selected = "create";
 
   factory.selectTab = function(label){
     this.selected = label;
