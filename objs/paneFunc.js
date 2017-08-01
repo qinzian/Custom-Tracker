@@ -10,7 +10,6 @@ CTapp.directive('zHomePane', function() {                    //TODO TODO TODO TO
       $scope.im = ItemsManipulator;
       $scope.hpm = HomePaneManager;
       $scope.label = "home";
-      $scope.Saving = "";
 
       $scope.updateFolderTitle = function(){
         $scope.hpm.updateTitle($scope.im.cf);

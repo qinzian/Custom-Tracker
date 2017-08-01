@@ -9,10 +9,10 @@ pictures credits / src:
 	-pics
 
 
-Next v1.5 (folders and records):
-- <z-tabs> home-pane be able to edit folder description and folder title
-
-- basic layouts for summary, create, setting
+Next v1.6 (folders and records):
+- basic layout for summary
+- basic layout for create
+- basic layout for setting
 
 issue:
 - when creating new itemButtons, the series of automated calls coming from "addFolder()" will include the hightlighting
