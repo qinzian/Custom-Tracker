@@ -30,6 +30,21 @@ CTapp.factory("ItemsManipulator",function(){                    //TODO TODO TODO
 
   return factory;
 })
+.factory("HomePaneManager",function(){
+  var factory = {};
+
+  factory.fd = $("#folderDescription");
+
+  factory.updateDescription = function(cf){
+    cf.setDescription(this.fd.text());
+  }
+
+  factory.loadDescription = function(cf){
+    this.fd.text(cf.getDescription());
+  }
+
+  return factory;
+})
 .factory("TabsSelector",function(){                    //TODO TODO TODO TODO TODO
   var factory = {};
 

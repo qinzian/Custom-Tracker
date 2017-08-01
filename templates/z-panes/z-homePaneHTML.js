@@ -6,5 +6,5 @@ var z_homePaneHTML = ''+
   '<a id = "folderDate" class = "yellowBG">{{im.cf.dateTime}}</a>'+
   '<br><br>'+
   '<textarea id = "folderDescription" placeholder="[Folder Description]" '+
-  'ng-mouseleave = "updateDescription()"></textarea>'+
+  'ng-mouseleave = "updateFolderDescription()"></textarea>'+
 '</div>';

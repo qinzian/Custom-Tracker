@@ -3,8 +3,9 @@ CTapp.directive("zLists",function(){
     restrict:'E',
     scope:{},
 
-    controller: ["$scope","ItemsManipulator",function($scope,ItemsManipulator){
-
+    controller: ["$scope","ItemsManipulator","HomePaneManager",
+    function($scope,ItemsManipulator,HomePaneManager){
+      $scope.hpm = HomePaneManager;
       $scope.im = ItemsManipulator; // the following is to copy the pointer to zList's ctrler
       $scope.folders = $scope.im.folders;
 
@@ -37,10 +38,6 @@ CTapp.directive("zLists",function(){
         $scope.folders[currFolderId] = new Folder(currFolderId,folderTitle);
 
         $scope.folderC++;
-
-        //alert();
-        //$scope.setCurrFolder($scope.currFolder);
-        //alert();
       }
 
       $scope.addRecord = function(){
@@ -56,7 +53,8 @@ CTapp.directive("zLists",function(){
         $scope.setCF(obj);
 
         $scope.records = obj.getRecords();
-        //alert("got records");
+
+        $scope.hpm.loadDescription($scope.im.cf);
       }
 
       $scope.selectRecord = function(obj){
