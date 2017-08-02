@@ -12,6 +12,7 @@ CTapp.directive("zLists",function(){
 
       $scope.folderC = 0;
       $scope.records = [];
+      $scope.formC = 0;
 
       $scope.setCF = function(obj){
         $(".selectedFolder").removeClass("selectedFolder");
@@ -58,15 +59,15 @@ CTapp.directive("zLists",function(){
       }
 
       $scope.addForm = function(){
-        var currFolderId = "folder-"+$scope.folderC;
-        var folderTitle = prompt("Name of new Folder:",currFolderId);
+        var currFormId = "form-"+$scope.formC;
+        var formTitle = prompt("Name of new Form:",currFormId);
 
-        if (folderTitle.split("").count(" ") == folderTitle.length || folderTitle == null){
+        if (formTitle.split("").count(" ") == formTitle.length || formTitle == null){
           return; // don't make new folder if null title or title filled with spaces
         }
         // users are allowed to make folders with the same title
 
-        $scope.folders[currFolderId] = new Folder(currFolderId,folderTitle);
+        $scope.form[currFormId] = new Form(currFormId,formTitle);
       }
 
       $scope.selectFolder = function(obj){

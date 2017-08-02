@@ -6,6 +6,7 @@ CTapp.factory("ItemsManipulator",function(){                    //TODO TODO TODO
 
   factory.mode = "folders";
   factory.folders = {};
+  factory.forms = {};
   factory.cf = undefined; // currFolder obj
   factory.cr = undefined; // currRecord obj
   factory.validModes = ["folders","records","forms","void"];

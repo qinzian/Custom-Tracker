@@ -1,12 +1,7 @@
 function CollectionObj(type,id){
   this.dateTime = "";
-  this.highlight = false;
   this.id = id;
   this.type = type;
-
-  this.setHighlight = function(b){
-    this.highlight = b
-  }
 
   this.initDate = function(){
     var today = new Date();
@@ -87,3 +82,32 @@ function Folder(id,title){
 }
 Folder.prototype = Object.create(CollectionObj.prototype);
 Folder.prototype.constructor = Folder;
+
+function Form(id,title){
+  CollectionObj.call(this, "form",id);
+
+  this.title = title;
+
+  this.components = []; // the following functions will add objs into this list
+
+  this.rmComp = function(index){
+    this.components.splice(index,1);
+  }
+
+  this.getComp = function(){
+    return this.components;
+  }
+
+  this.addInfo = function(key){
+    this.components.push({type:"info",data:[key,""]});
+  }
+  this.addCounter = function(key){
+    this.components.push({type:"counter"[key,0.0]});
+  }
+  this.addPoll = function(key){
+    this.components.push({type:"poll",[key]});
+  }
+
+}
+Form.prototype = Object.create(CollectionObj.prototype);
+Form.prototype.constructor = Form;

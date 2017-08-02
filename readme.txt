@@ -9,10 +9,11 @@ pictures credits / src:
 	-pics
 
 
-Next v1.6 (folders and records):
-- basic layout for summary
+Next v1.6 (forms):
 - basic layout for create
-- basic layout for setting
+- form objects
+- making new forms
+- viewing and editing forms
 
 issue:
 - when creating new itemButtons, the series of automated calls coming from "addFolder()" will include the hightlighting
