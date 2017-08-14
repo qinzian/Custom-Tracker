@@ -14,6 +14,7 @@ Next v1.6 (forms):
 - form objects
 - making new forms
 - viewing and editing forms
+- design obj relationship / cxn of components and the forms, records, and folders.
 
 issue:
 - when creating new itemButtons, the series of automated calls coming from "addFolder()" will include the hightlighting

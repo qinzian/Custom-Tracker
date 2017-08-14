@@ -57,9 +57,25 @@ CTapp.directive('zHomePane', function() {                    //TODO TODO TODO TO
 
     scope: {},
 
-    controller: ["$scope","TabsSelector",function($scope,TabsSelector){
+    controller: ["$scope","TabsSelector","ItemsManipulator", "CreatePaneManager",
+    function($scope,TabsSelector,ItemsManipulator,CreatePaneManager){
+      $scope.cpm = CreatePaneManager;
       $scope.ts = TabsSelector;
+      $scope.im = ItemsManipulator;
       $scope.label = "create";
+      $scope.forms = $scope.im.forms;
+
+      $scope.newInfo = function(){
+        alert("create new counter");
+      }
+
+      $scope.newCounter = function(){
+        alert("create new counter");
+      }
+
+      $scope.newPoll = function(){
+        alert("create new poll");
+      }
     }],
 
     template: z_createPaneHTML

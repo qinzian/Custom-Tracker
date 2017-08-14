@@ -15,11 +15,39 @@ function CollectionObj(type,id){
   this.initDate();
 }
 
-function Record(id){
+function Record(id,template){
   CollectionObj.call(this, "record",id);
 
+  this.components = template;
 
-  //this.details = {info:{},counter:{},poll:{}}; // may add in location later
+  /*
+  this.updateInfo = function(info,val){
+    info.data[1] = val;
+  }
+  this.updateCounter = function(counter){
+    counter.data[1] += val;
+  }
+  this.updatePoll = function(poll){
+
+  }
+  this.updateComponent = function(index,val){
+    var comp = this.components[index];
+
+    switch(comp.type){
+      case "info":
+        this.updateInfo(comp,val);
+        break;
+      case "counter":
+        this.updateCounter(comp,val);
+        break;
+      case "poll":
+        this.updatePoll(comp,val);
+        break;
+      default:
+        alert("trying to update\n"+val+"\n into component with type: "+comp.type);
+        break;
+    }
+  }*/
 }
 Record.prototype = Object.create(CollectionObj.prototype);
 Record.prototype.constructor = Record;
@@ -36,7 +64,7 @@ function Folder(id,title){
 
   this.formId = undefined;
 
-  this.initFormId = function(id){
+  this.initFormId = function(id){ // to make sure that each folder can only have 1 form
     if (typeof this.formId == "undefined"){
       this.formId = id;
     } else {
@@ -90,6 +118,7 @@ function Form(id,title){
 
   this.components = []; // the following functions will add objs into this list
 
+  /*
   this.rmComp = function(index){
     this.components.splice(index,1);
   }
@@ -102,11 +131,15 @@ function Form(id,title){
     this.components.push({type:"info",data:[key,""]});
   }
   this.addCounter = function(key){
-    this.components.push({type:"counter"[key,0.0]});
+    this.components.push({type:"counter",data:[key,0.0]});
   }
   this.addPoll = function(key){
-    this.components.push({type:"poll",[key]});
+    this.components.push({type:"poll",data:{key:0}});
   }
+  this.addPollOpt = function(key){
+
+  }
+  */
 
 }
 Form.prototype = Object.create(CollectionObj.prototype);

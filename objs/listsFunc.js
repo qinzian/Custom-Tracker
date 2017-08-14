@@ -3,8 +3,9 @@ CTapp.directive("zLists",function(){
     restrict:'E',
     scope:{},
 
-    controller: ["$scope","ItemsManipulator","HomePaneManager",
-    function($scope,ItemsManipulator,HomePaneManager){
+    controller: ["$scope","ItemsManipulator","HomePaneManager","CreatePaneManager",
+    function($scope,ItemsManipulator,HomePaneManager,CreatePaneManager){
+      $scope.cpm = CreatePaneManager;
       $scope.hpm = HomePaneManager;
       $scope.im = ItemsManipulator; // the following is to copy the pointer to zList's ctrler
       $scope.folders = $scope.im.folders;
@@ -14,17 +15,20 @@ CTapp.directive("zLists",function(){
       $scope.records = [];
       $scope.formC = 0;
 
-      $scope.setCF = function(obj){
-        $(".selectedFolder").removeClass("selectedFolder");
-        $("#"+obj.id).addClass("selectedFolder");
+      $scope.setCFolder = function(obj){
+        //$(".selectedFolder").removeClass("selectedFolder");
+        //$("#"+obj.id).addClass("selectedFolder");
 
-        $scope.im.setCF(obj);
+        $scope.im.setCFolder(obj);
+      }
+
+      $scope.setCForm = function(obj){
+        $scope.im.setCForm(obj);
       }
 
       $scope.setCR = function(obj){
-        $(".selectedRecord").removeClass("selectedRecord");
-        $("#"+obj.id).addClass("selectedRecord");
-
+        //$(".selectedRecord").removeClass("selectedRecord");
+        //$("#"+obj.id).addClass("selectedRecord");
         $scope.im.setCR(obj);
       }
 
@@ -42,16 +46,16 @@ CTapp.directive("zLists",function(){
         $scope.folderC++;
       }
 
-      $scope.addRecord = function(){ // can only add record if cf exists and has a form
-        if(typeof $scope.im.cf !== "undefined"){
-          if (typeof $scope.im.cf.getFormId() !== "undefined"){
-            $scope.im.cf.addRecord();
+      $scope.addRecord = function(){ // can only add record if cfolder exists and has a form
+        if(typeof $scope.im.cfolder !== "undefined"){
+          if (typeof $scope.im.cfolder.getFormId() !== "undefined"){
+            $scope.im.cfolder.addRecord();
 
           } else { // no form present for this form, need to init form
             alert("init form for currFolder before adding new record");
 
             // prompt name of form, if successful, add form and load pane-content based on template provided by form
-            //$scope.im.cf.addRecord();
+            //$scope.im.cfolder.addRecord();
           }
         } else {
           alert("no folders to add record to");
@@ -63,28 +67,32 @@ CTapp.directive("zLists",function(){
         var formTitle = prompt("Name of new Form:",currFormId);
 
         if (formTitle.split("").count(" ") == formTitle.length || formTitle == null){
-          return; // don't make new folder if null title or title filled with spaces
+          return; // don't make new form if null title or title filled with spaces
         }
-        // users are allowed to make folders with the same title
+        // users are allowed to make forms with the same title
 
-        $scope.form[currFormId] = new Form(currFormId,formTitle);
+        $scope.forms[currFormId] = new Form(currFormId,formTitle);
+        $scope.formC++;
       }
 
       $scope.selectFolder = function(obj){
-        $scope.setCF(obj);
+        $scope.setCFolder(obj);
 
         $scope.records = obj.getRecords();
 
-        $scope.hpm.loadDescription($scope.im.cf);
-        $scope.hpm.loadTitle($scope.im.cf);
+        $scope.hpm.loadDescription($scope.im.cfolder);
+        $scope.hpm.loadTitle($scope.im.cfolder);
       }
 
       $scope.selectRecord = function(obj){
         $scope.setCR(obj);
       }
 
-      $scope.selectForm = function(){
+      $scope.selectForm = function(obj){
+        $scope.setCForm(obj);
 
+        //$scope.hpm.loadDescription($scope.im.cform);
+        //$scope.hpm.loadTitle($scope.im.cfolder);
       }
 
     }],

@@ -7,7 +7,8 @@ CTapp.factory("ItemsManipulator",function(){                    //TODO TODO TODO
   factory.mode = "folders";
   factory.folders = {};
   factory.forms = {};
-  factory.cf = undefined; // currFolder obj
+  factory.cform = undefined; // currFolder obj
+  factory.cfolder = undefined; // currFolder obj
   factory.cr = undefined; // currRecord obj
   factory.validModes = ["folders","records","forms","void"];
 
@@ -25,8 +26,12 @@ CTapp.factory("ItemsManipulator",function(){                    //TODO TODO TODO
     this.cr = record;
   }
 
-  factory.setCF = function(folder){
-    this.cf = folder;
+  factory.setCFolder = function(folder){
+    this.cfolder = folder;
+  }
+
+  factory.setCForm = function(form){
+    this.cform = form;
   }
 
   return factory;
@@ -42,20 +47,20 @@ CTapp.factory("ItemsManipulator",function(){                    //TODO TODO TODO
   factory.fd = $("#folderDescription");
   factory.ft = $("#folderTitle");
 
-  factory.updateDescription = function(cf){
-    cf.setDescription(this.fd.text());
+  factory.updateDescription = function(cfolder){
+    cfolder.setDescription(this.fd.text());
   }
 
-  factory.loadDescription = function(cf){
-    this.fd.text(cf.getDescription());
+  factory.loadDescription = function(cfolder){
+    this.fd.text(cfolder.getDescription());
   }
 
-  factory.updateTitle = function(cf){
-    cf.setTitle(this.ft.text());
+  factory.updateTitle = function(cfolder){
+    cfolder.setTitle(this.ft.text());
   }
 
-  factory.loadTitle = function(cf){
-    this.ft.text(cf.getTitle());
+  factory.loadTitle = function(cfolder){
+    this.ft.text(cfolder.getTitle());
   }
 
   return factory;
