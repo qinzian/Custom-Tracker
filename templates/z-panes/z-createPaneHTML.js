@@ -3,7 +3,7 @@ var z_createPaneHTML = ''+
   '<div class = "form-container zone" ng-show = "im.cform.id == formId" ng-repeat = "(formId,obj) in forms">'+
       '<a>{{im.cform.title}}</a>'+
       '<div id = {{formId}} class = "component-container zone">'+
-        '<div id = "component.id" ng-repeat = "component in components">'+
+        '<div id = "componentId" ng-repeat = "componentId in im.cform.components">'+
         '</div>'+
       '</div>'+
   '</div>'+

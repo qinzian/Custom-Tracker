@@ -66,7 +66,7 @@ CTapp.directive('zHomePane', function() {                    //TODO TODO TODO TO
       $scope.forms = $scope.im.forms;
 
       $scope.newInfo = function(){
-        alert("create new counter");
+        
       }
 
       $scope.newCounter = function(){

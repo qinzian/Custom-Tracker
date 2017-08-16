@@ -62,18 +62,18 @@ function Folder(id,title){
 
   this.records = []; // collection of id to RecordObj pairs
 
-  this.formId = undefined;
+  this.form = undefined;
 
-  this.initFormId = function(id){ // to make sure that each folder can only have 1 form
-    if (typeof this.formId == "undefined"){
-      this.formId = id;
+  this.initForm = function(form){ // to make sure that each folder can only have 1 form
+    if (typeof this.form == "undefined"){
+      this.form = form;
     } else {
-      alert("this folder already has a form, formId:"+this.formId);
+      alert("this folder already has a form, formTitle:"+this.form.title+"formId:"+this.form.id);
     }
   }
 
-  this.getFormId = function(){
-    return this.formId;
+  this.getForm = function(){
+    return this.form;
   }
 
   this.getTitle = function(){
@@ -110,6 +110,8 @@ function Folder(id,title){
 }
 Folder.prototype = Object.create(CollectionObj.prototype);
 Folder.prototype.constructor = Folder;
+
+
 
 function Form(id,title){
   CollectionObj.call(this, "form",id);
