@@ -65,6 +65,15 @@ CTapp.directive('zHomePane', function() {                    //TODO TODO TODO TO
       $scope.label = "create";
       $scope.forms = $scope.im.forms;
 
+      $scope.updateKey = function(k,comp){
+        var newKey = prompt("What do you want to track?","label");
+
+        if (newKey.split("").count(" ") == newKey.length || newKey == null){
+          return; // don't make new folder if null title or title filled with spaces
+        }
+        comp.updateKey(k,newKey); // func(old,new)
+      }
+
       $scope.newInfo = function(){
         $scope.im.cform.addInfo();
       }

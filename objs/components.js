@@ -53,12 +53,12 @@ function Poll(){
   Component.call(this, "poll");
 
   this.updateVal = function(k){
+    if(this.data.hasOwnProperty("replace this label")){
+      this.data["replace this label"] = 0; //add an blank option
+    }
     this.data[k]++;
   }
 
-  this.addOption = function(opt){
-    this.data[opt] = 0;
-  }
 }
 Poll.prototype = Object.create(Component.prototype);
 Poll.prototype.constructor = Poll;
