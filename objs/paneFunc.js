@@ -66,15 +66,15 @@ CTapp.directive('zHomePane', function() {                    //TODO TODO TODO TO
       $scope.forms = $scope.im.forms;
 
       $scope.newInfo = function(){
-        
+        $scope.im.cform.addInfo();
       }
 
       $scope.newCounter = function(){
-        alert("create new counter");
+        $scope.im.cform.addCounter();
       }
 
       $scope.newPoll = function(){
-        alert("create new poll");
+        $scope.im.cform.addPoll();
       }
     }],
 

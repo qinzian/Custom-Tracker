@@ -1,17 +1,6 @@
-function Component(type,id){
-  this.id = id;
-  this.sf = $("#"+id);
+function Component(type){
   this.type = type;
-  this.data = {};
-  this.title = "";
-
-  this.setTitle = function(t){
-    this.title = t;
-  }
-
-  this.getTitle = function(){
-    return this.title;
-  }
+  this.data = {"click me":0};
 
   this.getType = function(){
     return this.type;
@@ -20,39 +9,39 @@ function Component(type,id){
   this.getData = function(){
     return this.data;
   }
+
+  this.updateKey = function(oldKey,newKey){
+    var tmp = this.data[oldKey];
+    delete this.data[oldKey];
+    this.data[newKey] = tmp;
+  }
+
+  this.updateVal = function(key,v){
+    alert("abstract Component.updateVal(key = "+key+"        v = "+v+")");
+  }
+
+  this.getVal = function(k){
+    return this.data[k];
+  }
 }
 
-function Info(key,id){
-  Component.call(this, "info",id);
+function Info(){
+  Component.call(this, "info");
 
-  this.key = key;
-  this.val = "";
-
-  this.setVal = function(v){
-    this.val = v;
+  this.updateVal = function(k,v){
+    this.data[k] = v;
   }
-  this.getVal = function(){
-    return this.val;
-  }
-
 }
 Info.prototype = Object.create(Component.prototype);
 Info.prototype.constructor = Info;
 
 
 
-function Counter(key,startingVal,id){
-  Component.call(this, "counter",id);
+function Counter(){
+  Component.call(this, "counter");
 
-  this.key = key;
-  this.val = startingVal;
-
-  this.addVal = function(v){
-    this.val += v;
-  }
-
-  this.getVal = function(){
-    return this.val;
+  this.updateVal = function(k,v){
+    this.data[k] += k;
   }
 }
 Counter.prototype = Object.create(Component.prototype);
@@ -60,17 +49,15 @@ Counter.prototype.constructor = Counter;
 
 
 
-function Poll(id){
-  Component.call(this, "poll",id);
+function Poll(){
+  Component.call(this, "poll");
 
-  this.options = {};
-
-  this.selectOption = function(opt){
-    this.options[opt] += 1;
+  this.updateVal = function(k){
+    this.data[k]++;
   }
 
   this.addOption = function(opt){
-    this.options[opt] = 0;
+    this.data[opt] = 0;
   }
 }
 Poll.prototype = Object.create(Component.prototype);

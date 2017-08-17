@@ -120,7 +120,6 @@ function Form(id,title){
 
   this.components = []; // the following functions will add objs into this list
 
-  /*
   this.rmComp = function(index){
     this.components.splice(index,1);
   }
@@ -129,19 +128,15 @@ function Form(id,title){
     return this.components;
   }
 
-  this.addInfo = function(key){
-    this.components.push({type:"info",data:[key,""]});
+  this.addInfo = function(){
+    this.components.push(new Info());
   }
-  this.addCounter = function(key){
-    this.components.push({type:"counter",data:[key,0.0]});
+  this.addCounter = function(){
+    this.components.push(new Counter());
   }
-  this.addPoll = function(key){
-    this.components.push({type:"poll",data:{key:0}});
+  this.addPoll = function(){
+    this.components.push(new Poll());
   }
-  this.addPollOpt = function(key){
-
-  }
-  */
 
 }
 Form.prototype = Object.create(CollectionObj.prototype);
