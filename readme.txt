@@ -9,10 +9,9 @@ pictures credits / src:
 	-pics
 
 
-Next v2.1 (forms):
-- form objects
+Next v2.2 (forms):
 - create and edit components for each form
-- viewing and editing forms
+- create templates in viewer that's based on info in form obj to make records
 
 issue:
 - when creating new itemButtons, the series of automated calls coming from "addFolder()" will include the hightlighting

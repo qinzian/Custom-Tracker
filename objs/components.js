@@ -1,6 +1,6 @@
 function Component(type){
   this.type = type;
-  this.data = {"click me":0};
+  this.data = {"default label":0};
 
   this.getType = function(){
     return this.type;
@@ -53,10 +53,17 @@ function Poll(){
   Component.call(this, "poll");
 
   this.updateVal = function(k){
-    if(this.data.hasOwnProperty("replace this label")){
-      this.data["replace this label"] = 0; //add an blank option
-    }
     this.data[k]++;
+  }
+
+  this.updateKey = function(oldKey,newKey){
+    var tmp = this.data[oldKey];
+    delete this.data[oldKey];
+    this.data[newKey] = tmp;
+    
+    if(!this.data.hasOwnProperty("default label")){
+      this.data["default label"] = 0; //add an blank option
+    }
   }
 
 }

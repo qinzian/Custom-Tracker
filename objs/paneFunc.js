@@ -74,6 +74,10 @@ CTapp.directive('zHomePane', function() {                    //TODO TODO TODO TO
         comp.updateKey(k,newKey); // func(old,new)
       }
 
+      $scope.rmComponent = function(index){
+        $scope.im.cform.rmComp(index);
+      }
+
       $scope.newInfo = function(){
         $scope.im.cform.addInfo();
       }
