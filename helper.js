@@ -102,4 +102,12 @@ function log(msg){
   alert(objToString(msgs));
 }
 
-//log("helper.js loaded");
+function ctPrompt(promptMsg,defaultMsg){
+  var promptAns = prompt(promptMsg,defaultMsg);
+
+  if (promptAns.split("").count(" ") == promptAns.length || promptAns == null){
+    return false; // invalid promptAns
+  }
+
+  return promptAns; // return valid promptAns
+}
