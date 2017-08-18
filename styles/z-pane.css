@@ -7,6 +7,7 @@
   height:inherit;
 
   overflow-y:auto;
+  overflow-x:hidden;
 }
 
 #folderDate{
@@ -21,16 +22,9 @@
   line-height:50px;
 }
 
-#editTitleButton{
-  position: relative;
-  top: 10px;
-
-  width: 50px;
-  height:50px;
-}
 #folderDescription{
   width:550px;
-  height:300px;
+  height:auto;
 
   background-color:inherit;
   font-size: 30px;
