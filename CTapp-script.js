@@ -36,39 +36,10 @@ CTapp.factory("ItemsManipulator",function(){                    //TODO TODO TODO
 
   return factory;
 })
-.factory("CreatePaneManager",function(){
-  var factory = {};
-
-  return factory;
-})
-.factory("HomePaneManager",function(){
-  var factory = {};
-
-  factory.fd = $("#folderDescription");
-  factory.ft = $("#folderTitle");
-
-  factory.updateDescription = function(cfolder){
-    cfolder.setDescription(this.fd.text());
-  }
-
-  factory.loadDescription = function(cfolder){
-    this.fd.text(cfolder.getDescription());
-  }
-
-  factory.updateTitle = function(cfolder){
-    cfolder.setTitle(this.ft.text());
-  }
-
-  factory.loadTitle = function(cfolder){
-    this.ft.text(cfolder.getTitle());
-  }
-
-  return factory;
-})
 .factory("TabsSelector",function(){                    //TODO TODO TODO TODO TODO
   var factory = {};
 
-  factory.selected = "create";
+  factory.selected = "home";
 
   factory.selectTab = function(label){
     this.selected = label;
