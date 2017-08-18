@@ -1,11 +1,8 @@
 var z_homePaneHTML = ''+
 '<div class="panel" ng-show = "ts.selected == \'home\'">'+
-  '<textarea id = "folderTitle" class = "yellowBG"'+
-  'ng-click = "updateFolderTitle()"></textarea>'+
-  '<br>'+
-  '<a id = "folderDate" class = "yellowBG">{{im.cf.dateTime}}</a>'+
+  '<a id = "folderTitle" ng-click = "updateFolderTitle()" class = "zone yellowBG">{{im.cfolder.title}}</a>'+
   '<br><br>'+
-  '<textarea id = "folderDescription" placeholder="[Folder Description]" '+
-  'ng-click = "updateFolderDescription()"></textarea>'+
-  '<br><br>Click / Tap inside the text field to SAVE'+
+  '<a id = "folderDate" class = "zone yellowBG">{{im.cfolder.dateTime}}</a>'+
+  '<br><br>'+
+  '<p id = "folderDescription"  class = "zone" ng-click = "updateFolderDescription()">{{im.cfolder.description}}</p>'+
 '</div>';
