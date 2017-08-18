@@ -23,6 +23,10 @@ function Component(type){
   this.getVal = function(k){
     return this.data[k];
   }
+
+  this.toString = function(){
+    return objToString(this.data);
+  }
 }
 
 function Info(){
@@ -60,7 +64,7 @@ function Poll(){
     var tmp = this.data[oldKey];
     delete this.data[oldKey];
     this.data[newKey] = tmp;
-    
+
     if(!this.data.hasOwnProperty("default label")){
       this.data["default label"] = 0; //add an blank option
     }
