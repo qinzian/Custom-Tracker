@@ -9,8 +9,8 @@ pictures credits / src:
 	-pics
 
 
-Next v2.2 (forms):
-- create and edit components for each form
+Next v2.3 (forms):
+- UX for the new design for editing folder description is bad, need to redo solution
 - create templates in viewer that's based on info in form obj to make records
 
 issue:
