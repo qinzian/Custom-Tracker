@@ -17,7 +17,6 @@ CTapp.directive('zTabs', function() {                    //TODO TODO TODO TODO T
         switch(label){
           case 'home':
             $scope.im.setMode("folders");
-            $scope.loadHomeContent();
             break;
           case 'viewer':
             $scope.im.setMode("records");

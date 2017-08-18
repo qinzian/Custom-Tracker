@@ -4,19 +4,26 @@ CTapp.directive('zHomePane', function() {                    //TODO TODO TODO TO
 
     scope: {},
 
-    controller: ["$scope","TabsSelector","ItemsManipulator","HomePaneManager",
-    function($scope,TabsSelector,ItemsManipulator,HomePaneManager){
+    controller: ["$scope","TabsSelector","ItemsManipulator",
+    function($scope,TabsSelector,ItemsManipulator){
       $scope.ts = TabsSelector;
       $scope.im = ItemsManipulator;
-      $scope.hpm = HomePaneManager;
       $scope.label = "home";
 
       $scope.updateFolderTitle = function(){
-        $scope.hpm.updateTitle($scope.im.cf);
+        var newTitle = ctPrompt("New Title:",$scope.im.cfolder.getTitle());
+
+        if(newTitle){
+          $scope.im.cfolder.setTitle(newTitle);
+        }
       }
 
       $scope.updateFolderDescription = function(){
-        $scope.hpm.updateDescription($scope.im.cf);
+        var newDescription = ctPrompt("New Description:",$scope.im.cfolder.getDescription());
+
+        if(newDescription){
+          $scope.im.cfolder.setDescription(newDescription);
+        }
       }
     }],
 
@@ -57,21 +64,19 @@ CTapp.directive('zHomePane', function() {                    //TODO TODO TODO TO
 
     scope: {},
 
-    controller: ["$scope","TabsSelector","ItemsManipulator", "CreatePaneManager",
-    function($scope,TabsSelector,ItemsManipulator,CreatePaneManager){
-      $scope.cpm = CreatePaneManager;
+    controller: ["$scope","TabsSelector","ItemsManipulator",
+    function($scope,TabsSelector,ItemsManipulator){
       $scope.ts = TabsSelector;
       $scope.im = ItemsManipulator;
       $scope.label = "create";
       $scope.forms = $scope.im.forms;
 
       $scope.updateKey = function(k,comp){
-        var newKey = prompt("What do you want to track?","label");
+        var newKey = ctPrompt("What do you want to track?","label");
 
-        if (newKey.split("").count(" ") == newKey.length || newKey == null){
-          return; // don't make new folder if null title or title filled with spaces
+        if(newKey){
+          comp.updateKey(k,newKey); // func(old,new)
         }
-        comp.updateKey(k,newKey); // func(old,new)
       }
 
       $scope.rmComponent = function(index){
