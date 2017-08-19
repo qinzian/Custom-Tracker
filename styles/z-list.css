@@ -56,10 +56,6 @@ z-lists{
   height:inherit;
 }
 
-.selectedFolder{
-  border: 8px dashed lightpink;
-}
-
-.selectedRecord{
+.selectedItem{
   border: 8px dashed lightpink;
 }

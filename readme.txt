@@ -10,4 +10,4 @@ pictures credits / src:
 
 
 Next v2.3 (forms):
-- create templates in viewer that's based on info in form obj to make records
+- create templates in viewer that's based on info in form obj to make records 

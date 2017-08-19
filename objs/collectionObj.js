@@ -2,6 +2,11 @@ function CollectionObj(type,id){
   this.dateTime = "";
   this.id = id;
   this.type = type;
+  this.highlight = "";
+
+  this.setHighLight = function(h){
+      this.highlight = h? "selectedItem":"";
+  }
 
   this.initDate = function(){
     var today = new Date();
@@ -58,7 +63,7 @@ function Folder(id,title){
 
   this.title = title; // by default
 
-  this.description = "";
+  this.description = "[Click to Edit]";
 
   this.records = []; // collection of id to RecordObj pairs
 

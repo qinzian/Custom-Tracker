@@ -14,14 +14,29 @@ CTapp.directive("zLists",function(){
       $scope.formC = 0;
 
       $scope.setCFolder = function(obj){
+        for (var i = 0; i < $scope.folders.length; i++) {
+          $scope.folders[i].setHighLight(false);
+        }
+        obj.setHighLight(true);
+
         $scope.im.setCFolder(obj);
       }
 
       $scope.setCForm = function(obj){
+        for (var i = 0; i < $scope.forms.length; i++) {
+          $scope.forms[i].setHighLight(false);
+        }
+        obj.setHighLight(true);
+
         $scope.im.setCForm(obj);
       }
 
       $scope.setCR = function(obj){
+        for (var i = 0; i < $scope.records.length; i++) {
+          $scope.records[i].setHighLight(false);
+        }
+        obj.setHighLight(true);
+
         $scope.im.setCR(obj);
       }
 
@@ -30,7 +45,7 @@ CTapp.directive("zLists",function(){
         var folderTitle = ctPrompt("Name of new Folder:",currFolderId);
 
         if (folderTitle){
-          $scope.folders[currFolderId] = new Folder(currFolderId,folderTitle);
+          $scope.folders.push(new Folder(currFolderId,folderTitle));
 
           $scope.folderC++;
         }
@@ -57,7 +72,7 @@ CTapp.directive("zLists",function(){
         var formTitle = ctPrompt("Name of new Form:",currFormId);
 
         if (formTitle){
-          $scope.forms[currFormId] = new Form(currFormId,formTitle);
+          $scope.forms.push(new Form(currFormId,formTitle));
           $scope.formC++;
         }
       }
@@ -74,9 +89,6 @@ CTapp.directive("zLists",function(){
 
       $scope.selectForm = function(obj){
         $scope.setCForm(obj);
-
-        //$scope.hpm.loadDescription($scope.im.cform);
-        //$scope.hpm.loadTitle($scope.im.cfolder);
       }
 
     }],
