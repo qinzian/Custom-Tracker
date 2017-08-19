@@ -3,6 +3,7 @@ var z_homePaneHTML = ''+
   '<a id = "folderTitle" ng-click = "updateFolderTitle()" class = "zone yellowBG">{{im.cfolder.title}}</a>'+
   '<br><br>'+
   '<a id = "folderDate" class = "zone yellowBG">{{im.cfolder.dateTime}}</a>'+
-  '<br><br>'+
-  '<p id = "folderDescription"  class = "zone" ng-click = "updateFolderDescription()">{{im.cfolder.description}}</p>'+
+  '<br><br><br>'+
+  'Folder Description:'+
+  '<div id = "folderDescription"  class = "zone" ng-click = "updateFolderDescription()">{{im.cfolder.description}}</div>'+
 '</div>';

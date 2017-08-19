@@ -10,7 +10,6 @@ pictures credits / src:
 
 
 Next v2.3 (forms):
-- UX for the new design for editing folder description is bad, need to redo solution
 - create templates in viewer that's based on info in form obj to make records
 
 issue:
