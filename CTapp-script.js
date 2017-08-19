@@ -5,8 +5,8 @@ CTapp.factory("ItemsManipulator",function(){                    //TODO TODO TODO
   var factory = {};
 
   factory.mode = "folders";
-  factory.folders = {};
-  factory.forms = {};
+  factory.folders = [];
+  factory.forms = [];
   factory.cform = undefined; // currFolder obj
   factory.cfolder = undefined; // currFolder obj
   factory.cr = undefined; // currRecord obj
@@ -36,7 +36,7 @@ CTapp.factory("ItemsManipulator",function(){                    //TODO TODO TODO
 
   return factory;
 })
-.factory("TabsSelector",function(){                    //TODO TODO TODO TODO TODO
+.factory("TabsSelector",function(){                   
   var factory = {};
 
   factory.selected = "home";
