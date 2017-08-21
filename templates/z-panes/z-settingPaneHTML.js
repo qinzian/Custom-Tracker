@@ -1,4 +1,4 @@
 var z_settingPaneHTML = ''+
-'<div class = "panel" ng-show = "ts.selected == \'setting\'">'+
+'<div class = "panel" ng-show = "ts.selectedTab == \'setting\'">'+
 'set stuff'+
 '</div>';

@@ -1,5 +1,5 @@
 var z_createPaneHTML = ''+
-'<div class = "panel" ng-show = "ts.selected == \'create\'">'+
+'<div class = "panel" ng-show = "ts.selectedTab == \'create\'">'+
   '<div class = "form-container zone">'+
       '<a>{{im.cform.title}}</a>'+
       '<div class = "component-container">'+

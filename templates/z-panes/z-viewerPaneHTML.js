@@ -1,5 +1,5 @@
 var z_viewerPaneHTML = ''+
-'<div class = "panel" ng-show = "ts.selected == \'viewer\'">'+
+'<div class = "panel" ng-show = "ts.selectedTab == \'viewer\'">'+
   '<div class = "form-container zone">'+
       '<a>{{im.cform.title}}</a>'+
       '<a class = "zone yellowBG">{{im.crecord.title}}</a>'+

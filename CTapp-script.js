@@ -9,7 +9,7 @@ CTapp.factory("ItemsManipulator",function(){                    //TODO TODO TODO
   factory.forms = [];
   factory.cform = undefined; // currFolder obj
   factory.cfolder = undefined; // currFolder obj
-  factory.cr = undefined; // currRecord obj
+  factory.crecord = undefined; // currRecord obj
   factory.validModes = ["folders","records","forms","void"];
 
   factory.setMode = function(mode){
@@ -23,7 +23,7 @@ CTapp.factory("ItemsManipulator",function(){                    //TODO TODO TODO
   }
 
   factory.setCR = function(record){
-    this.cr = record;
+    this.crecord = record;
   }
 
   factory.setCFolder = function(folder){
@@ -36,13 +36,13 @@ CTapp.factory("ItemsManipulator",function(){                    //TODO TODO TODO
 
   return factory;
 })
-.factory("TabsSelector",function(){                   
+.factory("TabsSelector",function(){
   var factory = {};
 
-  factory.selected = "home";
+  factory.selectedTab = "home";
 
   factory.selectTab = function(label){
-    this.selected = label;
+    this.selectedTab = label;
 
     $(".selectedTab").removeClass("selectedTab");
 
