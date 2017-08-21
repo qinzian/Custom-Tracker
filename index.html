@@ -20,6 +20,7 @@
     <!--script src="onlineScripts/jquery-rotate.js"></script><!---->
 
     <script src = "templates/z-tabsHTML.js"></script>
+    <script src = "templates/z-helperHTML.js"></script>
     <script src = "templates/z-panes/z-homePaneHTML.js"></script>
     <script src = "templates/z-panes/z-viewerPaneHTML.js"></script>
     <script src = "templates/z-panes/z-summaryPaneHTML.js"></script>
@@ -33,12 +34,14 @@
     <script src = "objs/listsFunc.js"></script>
     <script src = "objs/tabsFunc.js"></script>
     <script src = "objs/paneFunc.js"></script>
+    <script src = "objs/helperFunc.js"></script>
     <script src= "debug/debugFunctions.js"></script>
   </head>
 
 
   <body class = "zone" ng-app = "CustomTracker">
-    <z-tabs class = "zone">
+    <z-helper></z-helper>
+    <z-tabs>
       <z-home-pane ></z-home-pane>
       <z-viewer-pane ></z-viewer-pane>
       <z-summary-pane > </z-summary-pane>
@@ -52,7 +55,7 @@
     <!--z-debug class = "zone"></z-debug><!---->
   </body>
 
-  <script src= "helper.js"></script>
+  <script src= "customFunc.js"></script>
 
   <script src= "script.js"></script>
 
