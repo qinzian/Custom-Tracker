@@ -10,6 +10,15 @@
   overflow-x:hidden;
 }
 
+.form-container{
+  width:500px;
+  height:auto;
+}
+.formTitle{
+  position: relative;
+  left:200px;
+}
+
 #folderDate{
   height:30px;
   font-size:20px;
