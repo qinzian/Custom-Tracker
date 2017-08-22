@@ -41,11 +41,9 @@ CTapp.directive('zHomePane', function() {                    //TODO TODO TODO TO
       $scope.ts = TabsSelector;
       $scope.im = ItemsManipulator;
       $scope.label = "viewer";
-      $scope.cr = $scope.im.crecord;
-      $scope.cf = $scope.im.cfolder;
 
       $scope.saveRecord = function(){
-        alert("saving record:"+$scope.cr.id);
+        alert("saving record:"+$scope.im.crecord.id);
       }
       $scope.deleteRecord = function(){
         var randCode = "randomCode"; // replace with generator later
@@ -57,6 +55,36 @@ CTapp.directive('zHomePane', function() {                    //TODO TODO TODO TO
           alert("Invalid Code");
         }
       }
+
+      $scope.alertTotVal = function(comp){
+          alert(objToString(comp.getData()));
+      }
+
+      $scope.updateVal = function(comp,key){
+        switch(comp.type){
+          case "info":
+            var val = ctPrompt(key+" :");
+
+            if (val){
+              comp.updateVal(key,val);
+            };
+            break;
+          case "counter":
+            var val = ctPrompt(key+" :"); // val is type String
+
+            if (val && !isNaN(val)){ // make sure val is a non-empty number
+              comp.updateVal(key,Number(val));
+            };
+            break;
+          case "poll":
+            comp.updateVal(key);
+            break;
+          default:
+            alert("updateVal() of invalid type of comp:"+comp.type);
+            break;
+        }
+      }
+
     }],
 
     template: z_viewerPaneHTML
@@ -90,7 +118,7 @@ CTapp.directive('zHomePane', function() {                    //TODO TODO TODO TO
       $scope.forms = $scope.im.forms;
 
       $scope.updateKey = function(k,comp){
-        var newKey = ctPrompt("What do you want to track?","label");
+        var newKey = ctPrompt("What do you want to track? ( "+comp.type+" )","default label");
 
         if(newKey){
           comp.updateKey(k,newKey); // func(old,new)

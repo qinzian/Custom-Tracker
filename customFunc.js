@@ -89,7 +89,7 @@ function objToString(obj){
   var tmp = "";
   for (var i in obj) {
     if (obj.hasOwnProperty(i)){
-      tmp+= strf("{}:-    {}<br>\n",[i,obj[i]]);
+      tmp+= strf("{}:\xa0\xa0\xa0\xa0{}\n",[i,obj[i]]); // the newline "\n" is for alert();
     }
   }
   return tmp;

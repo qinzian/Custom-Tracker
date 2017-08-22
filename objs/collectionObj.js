@@ -25,7 +25,10 @@ function Record(id,template){
 
   this.title = this.dateTime;
 
-  this.components = template;
+  this.components = template; // template =/= form.getComp();
+  // this.template = function(){//create a new obj based on the template thats passed in};
+
+
   /*
   this.updateInfo = function(info,val){
     info.data[1] = val;

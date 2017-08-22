@@ -2,6 +2,16 @@ function Component(type){
   this.type = type;
   this.data = {"default label":0};
 
+  if(type == "info"){
+    this.updateLabel = "+ input";
+  } else if (type == "counter"){
+    this.updateLabel = "+ ?";
+  } else if (type == "poll"){
+    this.updateLabel = "+ 1";
+  } else {
+    alert("illegal component type: "+type);
+  }
+
   this.getType = function(){
     return this.type;
   }
@@ -30,7 +40,7 @@ function Component(type){
 }
 
 function Info(){
-  Component.call(this, "info");
+  Component.call(this, "info","Information");
 
   this.updateVal = function(k,v){
     this.data[k] = v;
@@ -45,7 +55,7 @@ function Counter(){
   Component.call(this, "counter");
 
   this.updateVal = function(k,v){
-    this.data[k] += k;
+    this.data[k] += v;
   }
 }
 Counter.prototype = Object.create(Component.prototype);
