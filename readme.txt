@@ -9,7 +9,7 @@ pictures credits / src:
 	-pics
 
 
-Next v2.4 (forms):
+Next v2.5 (forms):
 - create templates in viewer that's based on info in form obj to make records
 
 - use databinding on DOM's class so that <a> with default labels don't appear
