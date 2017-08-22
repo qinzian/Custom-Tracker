@@ -22,7 +22,7 @@ CTapp.factory("ItemsManipulator",function(){                    //TODO TODO TODO
     }
   }
 
-  factory.setCR = function(record){
+  factory.setCRecord = function(record){
     this.crecord = record;
   }
 

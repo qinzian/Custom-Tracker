@@ -14,7 +14,7 @@ var z_listsHTML = ''+
   '<ul class="item-container">  '+
       '<ol class = "item" ng-repeat="record in records">'+
         '<button id = "{{record.id}}" class = "{{record.highlight}} itemButton" '+
-        'ng-click="selectRecord(record)">{{record.dateTime}}</button>'+
+        'ng-click="selectRecord(record)">{{record.title}}</button>'+
       '</ol>  '+
   '</ul>'+
 '</div>'+
