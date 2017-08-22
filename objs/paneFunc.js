@@ -36,9 +36,27 @@ CTapp.directive('zHomePane', function() {                    //TODO TODO TODO TO
 
     scope: {},
 
-    controller: ["$scope","TabsSelector",function($scope,TabsSelector){
+    controller: ["$scope","TabsSelector","ItemsManipulator",
+    function($scope,TabsSelector,ItemsManipulator){
       $scope.ts = TabsSelector;
+      $scope.im = ItemsManipulator;
       $scope.label = "viewer";
+      $scope.cr = $scope.im.crecord;
+      $scope.cf = $scope.im.cfolder;
+
+      $scope.saveRecord = function(){
+        alert("saving record:"+$scope.cr.id);
+      }
+      $scope.deleteRecord = function(){
+        var randCode = "randomCode"; // replace with generator later
+        var input = prompt("Enter the following code to delete:"+randCode);
+
+        if (input == randCode){
+          alert("Successfully deleted the record");
+        } else {
+          alert("Invalid Code");
+        }
+      }
     }],
 
     template: z_viewerPaneHTML

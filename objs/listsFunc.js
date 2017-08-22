@@ -31,13 +31,14 @@ CTapp.directive("zLists",function(){
         $scope.im.setCForm(obj);
       }
 
-      $scope.setCR = function(obj){
+      $scope.setCRecord = function(obj){
         for (var i = 0; i < $scope.records.length; i++) {
           $scope.records[i].setHighLight(false);
         }
         obj.setHighLight(true);
 
-        $scope.im.setCR(obj);
+        $scope.im.setCRecord(obj);
+        //alert("curr Record is: "+$scope.im.crecord.id);
       }
 
       $scope.addFolder = function(){
@@ -61,6 +62,7 @@ CTapp.directive("zLists",function(){
               alert("select a form for this folder to start data tracking");
             } else {  // Allow user to choose from a list of form titles
               $scope.im.cfolder.initForm($scope.im.forms[0]); // for now just use the first form
+              alert("now using form:"+$scope.im.cfolder.form.title);
             }
           }
         } else {
@@ -85,7 +87,7 @@ CTapp.directive("zLists",function(){
       }
 
       $scope.selectRecord = function(obj){
-        $scope.setCR(obj);
+        $scope.setCRecord(obj);
       }
 
       $scope.selectForm = function(obj){

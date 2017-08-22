@@ -23,8 +23,9 @@ function CollectionObj(type,id){
 function Record(id,template){
   CollectionObj.call(this, "record",id);
 
-  this.components = template;
+  this.title = this.dateTime;
 
+  this.components = template;
   /*
   this.updateInfo = function(info,val){
     info.data[1] = val;
@@ -90,11 +91,11 @@ function Folder(id,title){
   }
 
   this.addRecord = function(){
-    this.records.push(new Record("record-"+this.records.length));
+    this.records.push(new Record("record-"+this.records.length,this.form.getComp()));
   }
 
-  this.rmRecord = function(id){
-    alert("delete record with id: "+id)
+  this.rmRecord = function(index){
+    alert("delete record: "+this.records[index].toString())
   }
 
   this.getRecords = function(){
