@@ -9,7 +9,5 @@ pictures credits / src:
 	-pics
 
 
-Next v2.3 (forms):
+Next v2.4 (forms):
 - create templates in viewer that's based on info in form obj to make records 
-
-- add a help zone that has a help button and a helping description right on top of the panels
