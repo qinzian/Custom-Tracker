@@ -6,11 +6,11 @@ var z_viewerPaneHTML = ''+
       'Date Time: <a class = "zone yellowBG"> {{im.crecord.title}}</a>'+
       '<br><br>'+
       '<div class = "component-container">'+
-        '<div class = "component zone" ng-repeat = "component in im.crecord.components">'+
-          '<div ng-repeat = "(key,val) in component.data">'+
-            '<a ng-click = "alertTotVal(component)">{{key}}</a>'+
-            ':<button ng-click = "updateVal(component,key)">{{component.updateLabel}}</button>'+
-            '\xa0\xa0\xa0\xa0\xa0{{component.data[key]}}'+
+        '<div class = "component zone" ng-repeat = "compData in im.cfolder.template">'+
+          '<div ng-repeat = "(key,val) in compData">'+
+            '<a>{{key}}</a>'+
+            ':<button ng-click = "updateVal($index,key)">{{component.updateLabel}}</button>'+
+            '\xa0\xa0\xa0\xa0\xa0m.crecord.details[key]'+
           '</div>'+
         '</div>'+
       '</div>'+
