@@ -20,7 +20,7 @@ function Component(type){
     return this.data;
   }
 
-  this.updateKey = function(oldKey,newKey){
+  this.updateKey = function(oldKey,newKey){ // only unique keys are allowed
     var tmp = this.data[oldKey];
     delete this.data[oldKey];
     this.data[newKey] = tmp;

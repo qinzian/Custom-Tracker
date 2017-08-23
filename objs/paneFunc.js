@@ -56,10 +56,6 @@ CTapp.directive('zHomePane', function() {                    //TODO TODO TODO TO
         }
       }
 
-      $scope.alertTotVal = function(comp){
-          alert(objToString(comp.getData()));
-      }
-
       $scope.updateVal = function(comp,key){
         switch(comp.type){
           case "info":
@@ -70,7 +66,7 @@ CTapp.directive('zHomePane', function() {                    //TODO TODO TODO TO
             };
             break;
           case "counter":
-            var val = ctPrompt(key+" :"); // val is type String
+            var val = ctPrompt(key+" \xa0\xa0\xa0(number only):","-0.0"); // val is type String
 
             if (val && !isNaN(val)){ // make sure val is a non-empty number
               comp.updateVal(key,Number(val));

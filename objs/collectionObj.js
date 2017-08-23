@@ -25,38 +25,8 @@ function Record(id,template){
 
   this.title = this.dateTime;
 
-  this.components = template; // template =/= form.getComp();
-  // this.template = function(){//create a new obj based on the template thats passed in};
+  this.details = {};
 
-
-  /*
-  this.updateInfo = function(info,val){
-    info.data[1] = val;
-  }
-  this.updateCounter = function(counter){
-    counter.data[1] += val;
-  }
-  this.updatePoll = function(poll){
-
-  }
-  this.updateComponent = function(index,val){
-    var comp = this.components[index];
-
-    switch(comp.type){
-      case "info":
-        this.updateInfo(comp,val);
-        break;
-      case "counter":
-        this.updateCounter(comp,val);
-        break;
-      case "poll":
-        this.updatePoll(comp,val);
-        break;
-      default:
-        alert("trying to update\n"+val+"\n into component with type: "+comp.type);
-        break;
-    }
-  }*/
 }
 Record.prototype = Object.create(CollectionObj.prototype);
 Record.prototype.constructor = Record;
@@ -71,16 +41,25 @@ function Folder(id,title){
 
   this.records = []; // collection of id to RecordObj pairs
 
-  this.form = undefined;
+  this.template = [];
 
-  this.initForm = function(form){ // to make sure that each folder can only have 1 form
-    if (typeof this.form == "undefined"){
-      this.form = form;
-    } else {
-      alert("this folder already has a form, formTitle:"+this.form.title+"formId:"+this.form.id);
+  this.initTemplate = function(form){
+    if (this.template.length !== 0){// to make sure that each folder can only have 1 template
+      alert("this folder already has a form, formTitle:"+this.form.title);
+      return;
     }
+
+    if (form.getComp().length == 0){
+      alert("This form is empty. Edit the form first");
+      return;
+    }
+
+    cloneComponentsList(form.getComp(),this.template); // uses deep cloning to make a duplicate of form.comp[]
   }
 
+  this.hasTemplate = function(){
+    return this.template.length !== 0;
+  }
   this.getForm = function(){
     return this.form;
   }
@@ -150,3 +129,35 @@ function Form(id,title){
 }
 Form.prototype = Object.create(CollectionObj.prototype);
 Form.prototype.constructor = Form;
+
+
+function cloneComponentsList(src,storage){
+  for (var i = 0; i< src.length; i++){ // duplicate the basic format of the form into template
+    var component = src[i];
+
+    switch(component.getType()){
+      case "info":
+        storage.push(new Info());
+        break;
+      case "counter":
+        storage.push(new Counter());
+        break;
+      case "poll":
+        storage.push(new Poll());
+        break;
+      default:
+        alert("cloning invalid comp type: "+formComp[i].getType());
+        break;
+    }
+
+    for (var key in component.getData()){ // comp data is an obj
+      if (compData.hasOwnProperty(key)){
+        var templateCompData = storage[i].getData();
+
+        templateCompData.updateKey("default label",key);
+      }
+    }
+  }
+  alert(src.toString);
+  alert(storage.toString());
+}
