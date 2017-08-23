@@ -1,6 +1,4 @@
 personal project4: custom tracker
-rendered view:
-http://htmlpreview.github.io/?https://github.com/qinzian/Custom-Tracker/blob/master/index.html
 
 Next v2.5 (forms and records):
 - create templates in viewer that's based on info in form obj to make records
@@ -16,3 +14,8 @@ Next v2.5 (forms and records):
 Issue:
 - relationship between Form, Folder, and Record is very messy right now
 (Soln: folder only has connection to record. Records hold one instance of data entry, Folder holds summary of Records, Form provides Folder with init info on Folder.template)
+
+
+
+* since github preview doesn't work with angular scripts, feel free to view this 
+  project by downloading the whole package and open up "index.html"
