@@ -54,14 +54,14 @@ CTapp.directive("zLists",function(){
 
       $scope.addRecord = function(){ // can only add record if cfolder exists and has a form
         if(typeof $scope.im.cfolder !== "undefined"){
-          if (typeof $scope.im.cfolder.getForm() !== "undefined"){
+          if ($scope.im.cfolder.hasTemplate()){
             $scope.im.cfolder.addRecord();
 
           } else { // no form present for this form, need to init form
             if($scope.im.forms.length == 0){
               alert("select a form for this folder to start data tracking");
             } else {  // Allow user to choose from a list of form titles
-              $scope.im.cfolder.initForm($scope.im.forms[0]); // for now just use the first form
+              $scope.im.cfolder.initTemplate($scope.im.forms[0]); // for now just use the first form
               alert("now using form:"+$scope.im.cfolder.form.title);
             }
           }

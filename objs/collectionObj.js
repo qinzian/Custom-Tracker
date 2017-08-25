@@ -132,9 +132,10 @@ Form.prototype.constructor = Form;
 
 
 function cloneComponentsList(src,storage){
-  for (var i = 0; i< src.length; i++){ // duplicate the basic format of the form into template
-    var component = src[i];
+  for (var compIndex = 0; compIndex< src.length; compIndex++){ // duplicate the basic format of the form into template
+    var component = src[compIndex];
 
+    alert(component.getType());
     switch(component.getType()){
       case "info":
         storage.push(new Info());
@@ -146,18 +147,17 @@ function cloneComponentsList(src,storage){
         storage.push(new Poll());
         break;
       default:
-        alert("cloning invalid comp type: "+formComp[i].getType());
+        alert("cloning invalid comp type: "+formComp[compIndex].getType());
         break;
     }
 
-    for (var key in component.getData()){ // comp data is an obj
+    var compData = component.getData();
+    for (var key in compData){ // comp data is an obj
       if (compData.hasOwnProperty(key)){
-        var templateCompData = storage[i].getData();
-
-        templateCompData.updateKey("default label",key);
+        storage[compIndex].updateKey("default label",key);
       }
     }
   }
-  alert(src.toString);
+  alert(src.toString());
   alert(storage.toString());
 }
