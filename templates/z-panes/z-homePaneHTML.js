@@ -6,12 +6,12 @@ var z_homePaneHTML = ''+
   '<br><br><br>'+
   'Folder Description:'+
   '<div id = "folderDescription"  class = "zone" ng-click = "updateFolderDescription()">{{im.cfolder.description}}</div>'+
-  /*'<div class = "component-container">'+
-    '<div class = "component zone" ng-repeat = "compData in im.cfolder.template">'+
-      '<div ng-repeat = "(key,val) in compData">'+
+  /* commented section repr the Form template that this folder is currently using
+  '<div class = "component-container">'+
+    '<div class = "component zone" ng-repeat = "comp in im.cfolder.template">'+
+      '<div ng-repeat = "(key,val) in comp.data">'+
         '<a>{{key}}</a>'+
         ':<button>{{component.updateLabel}}</button>'+
-        '\xa0\xa0\xa0\xa0\xa0m.crecord.details[key]'+
       '</div>'+
     '</div>'+
   '</div>'+ //*/
