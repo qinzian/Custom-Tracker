@@ -16,7 +16,7 @@ var z_viewerPaneHTML = ''+
       '</div>'+
       '<br><br>'+
       'Extra Notes:'+
-      '<div class = "zone" ng-click = "updateExtraNotes()">{{im.crecord.extraNotes}}</div>'+
+      '<div class = "textNewLine zone" ng-click = "updateExtraNotes()">{{im.crecord.extraNotes}}</div>'+
   '</div>'+
   '<button ng-click = "clearFields()"> Clear Fields </button>'+
   '<button ng-click = "deleteRecord()"> Delete Record </button>'+

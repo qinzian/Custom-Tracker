@@ -38,3 +38,8 @@
   background-color:inherit;
   font-size: 30px;
 }
+
+.textNewLine{
+  max-width:550px;
+  word-wrap:break-word;
+}
