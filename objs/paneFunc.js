@@ -41,10 +41,16 @@ CTapp.directive('zHomePane', function() {                    //TODO TODO TODO TO
       $scope.ts = TabsSelector;
       $scope.im = ItemsManipulator;
       $scope.label = "viewer";
+      $scope.ren = $("recordExtras");
 
-      $scope.saveRecord = function(){
-        alert("saving record:"+$scope.im.crecord.id);
+      $scope.clearFields= function(){
+        for (var i = 0; i < $scope.im.crecord.details.length; i++){
+          $scope.im.crecord.details[i].clearComp();
+        }
+
+        $scope.ren.text("");
       }
+
       $scope.deleteRecord = function(){
         var randCode = "randomCode"; // replace with generator later
         var input = prompt("Enter the following code to delete:"+randCode);
@@ -57,6 +63,8 @@ CTapp.directive('zHomePane', function() {                    //TODO TODO TODO TO
       }
 
       $scope.updateVal = function(comp,key){
+        //var comp = $scope.im.crecord.details[compIndex];
+        //alert(key);
         switch(comp.type){
           case "info":
             var val = ctPrompt(key+" :");
@@ -76,7 +84,7 @@ CTapp.directive('zHomePane', function() {                    //TODO TODO TODO TO
             comp.updateVal(key);
             break;
           default:
-            alert("updateVal() of invalid type of comp:"+comp.type);
+            alert("updateVal() of invalid type of comp: "+comp.type);
             break;
         }
       }
