@@ -28,6 +28,22 @@ function Record(id,template){
   this.details = [];
 
   cloneComponentsList(template,this.details);
+
+  this.extraNotes = "";
+
+  this.clearRecord = function(){
+    for (var i = 0; i < this.details.length; i++){
+      this.details[i].clearComp();
+    }
+  }
+
+  this.setExtraNotes = function(s){
+    this.extraNotes = s;
+  }
+
+  this.getExtraNotes = function(){
+    return this.extraNotes;
+  }
 }
 Record.prototype = Object.create(CollectionObj.prototype);
 Record.prototype.constructor = Record;

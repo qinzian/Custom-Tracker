@@ -41,14 +41,9 @@ CTapp.directive('zHomePane', function() {                    //TODO TODO TODO TO
       $scope.ts = TabsSelector;
       $scope.im = ItemsManipulator;
       $scope.label = "viewer";
-      $scope.ren = $("recordExtras");
 
-      $scope.clearFields= function(){
-        for (var i = 0; i < $scope.im.crecord.details.length; i++){
-          $scope.im.crecord.details[i].clearComp();
-        }
-
-        $scope.ren.text("");
+      $scope.clearFields= function(){ // this doesn't clear the extra notes section
+        $scope.im.crecord.clearRecord();
       }
 
       $scope.deleteRecord = function(){
@@ -62,9 +57,15 @@ CTapp.directive('zHomePane', function() {                    //TODO TODO TODO TO
         }
       }
 
+      $scope.updateExtraNotes = function(){
+        var val = ctPrompt("Extra Notes for this record:",$scope.im.crecord.getExtraNotes());
+
+        if (val){
+          $scope.im.crecord.setExtraNotes(val);
+        };
+      }
+
       $scope.updateVal = function(comp,key){
-        //var comp = $scope.im.crecord.details[compIndex];
-        //alert(key);
         switch(comp.type){
           case "info":
             var val = ctPrompt(key+" :");
