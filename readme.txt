@@ -1,8 +1,6 @@
 personal project4: custom tracker
 
-Next v2.5 (forms and records):
-- clear fields
-
+Next v2.6 (forms and records):
 - delete records
 
 - use databinding on DOM's class so that <a> with default labels don't appear
@@ -15,7 +13,7 @@ Next v2.5 (forms and records):
 Issue:
 - relationship between Form, Folder, and Record is very messy right now
 (Soln proposed: folder only has connection to record. Records hold one instance of data entry, Folder holds summary of Records, Form provides Folder with init info on Folder.template)
-
+(may need to simplify Folder.template later on, because it isn't actually used )
 
 * since github preview doesn't work with angular scripts, feel free to view this 
   project by downloading the whole package and open up "index.html"
