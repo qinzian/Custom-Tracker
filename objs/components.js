@@ -34,6 +34,14 @@ function Component(type){
     return this.data[k];
   }
 
+  this.clearComp = function(){
+    for (var key in this.data){
+      if (this.data.hasOwnProperty(key)){
+        this.data[key] = 0;
+      }
+    }
+  }
+
   this.toString = function(){
     return objToString(this.data);
   }
@@ -55,7 +63,7 @@ function Counter(){
   Component.call(this, "counter");
 
   this.updateVal = function(k,v){
-    this.data[k] += v;
+    this.data[k] = v;
   }
 }
 Counter.prototype = Object.create(Component.prototype);

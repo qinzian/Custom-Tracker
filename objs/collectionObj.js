@@ -25,8 +25,9 @@ function Record(id,template){
 
   this.title = this.dateTime;
 
-  this.details = {};
+  this.details = [];
 
+  cloneComponentsList(template,this.details);
 }
 Record.prototype = Object.create(CollectionObj.prototype);
 Record.prototype.constructor = Record;
@@ -41,11 +42,17 @@ function Folder(id,title){
 
   this.records = []; // collection of id to RecordObj pairs
 
+  this.formUsedTitle = undefined;
+
   this.template = [];
 
+  this.hasTemplate = function(){
+    return typeof this.formUsedTitle == "string";
+  }
+
   this.initTemplate = function(form){
-    if (this.template.length !== 0){// to make sure that each folder can only have 1 template
-      alert("this folder already has a form, formTitle:"+this.form.title);
+    if (this.hasTemplate()){// to make sure that each folder can only have 1 template
+      alert("this folder already has a form, formTitle:"+this.formUsedTitle);
       return;
     }
 
@@ -54,12 +61,10 @@ function Folder(id,title){
       return;
     }
 
+    this.formUsedTitle = form.title;
     cloneComponentsList(form.getComp(),this.template); // uses deep cloning to make a duplicate of form.comp[]
   }
 
-  this.hasTemplate = function(){
-    return this.template.length !== 0;
-  }
   this.getForm = function(){
     return this.form;
   }
@@ -73,7 +78,11 @@ function Folder(id,title){
   }
 
   this.addRecord = function(){
-    this.records.push(new Record("record-"+this.records.length,this.form.getComp()));
+    if (!this.hasTemplate()){
+      alert("Folder.addRecord() is called somehow with empty template");
+      return;
+    }
+    this.records.push(new Record("record-"+this.records.length,this.template));
   }
 
   this.rmRecord = function(index){
@@ -135,7 +144,7 @@ function cloneComponentsList(src,storage){
   for (var compIndex = 0; compIndex< src.length; compIndex++){ // duplicate the basic format of the form into template
     var component = src[compIndex];
 
-    alert(component.getType());
+    //alert(component.getType());
     switch(component.getType()){
       case "info":
         storage.push(new Info());
@@ -158,6 +167,6 @@ function cloneComponentsList(src,storage){
       }
     }
   }
-  alert(src.toString());
-  alert(storage.toString());
+  //alert(src.toString());
+  //alert(storage.toString());
 }
