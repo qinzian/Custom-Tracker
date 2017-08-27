@@ -46,8 +46,12 @@ CTapp.directive("zLists",function(){
         var folderTitle = ctPrompt("Name of new Folder:",currFolderId);
 
         if (folderTitle){
-          $scope.folders.push(new Folder(currFolderId,folderTitle));
+          if ($scope.im.folderExists(folderTitle)){
+            alert("Folder with title: '"+folderTitle+"' already exists");
+            return;
+          }
 
+          $scope.folders.push(new Folder(currFolderId,folderTitle));
           $scope.folderC++;
         }
       }
@@ -61,8 +65,18 @@ CTapp.directive("zLists",function(){
             if($scope.im.forms.length == 0){
               alert("select a form for this folder to start data tracking");
             } else {  // Allow user to choose from a list of form titles
-              $scope.im.cfolder.initTemplate($scope.im.forms[0]); // for now just use the first form
-              alert("now using form:"+$scope.im.cfolder.form.title);
+              var formTitle = ctPrompt("Choose a form to use:",$scope.im.forms[0].getTitle());
+
+              if (folderTitle){
+                var formObj = $scope.im.getForm(formTitle);
+
+                if(formObj){
+                  $scope.im.cfolder.initTemplate(formObj); // for now just use the first form
+                } else {
+                  alert("The form: '"+formTitle+"' doesn't exist");
+                }
+
+              }
             }
           }
         } else {
@@ -75,19 +89,27 @@ CTapp.directive("zLists",function(){
         var formTitle = ctPrompt("Name of new Form:",currFormId);
 
         if (formTitle){
+          if ($scope.im.formExists(formTitle)){
+            alert("Form with title: '"+formTitle+"' already exists");
+            return;
+          }
+
           $scope.forms.push(new Form(currFormId,formTitle));
           $scope.formC++;
         }
       }
 
+      $scope.selectRecord = function(obj){
+        $scope.setCRecord(obj);
+      }
+      
       $scope.selectFolder = function(obj){
         $scope.setCFolder(obj);
 
         $scope.records = obj.getRecords();
-      }
 
-      $scope.selectRecord = function(obj){
-        $scope.setCRecord(obj);
+        $scope.im.clearCRecord();
+        $scope.selectRecord($scope.records[0]);
       }
 
       $scope.selectForm = function(obj){

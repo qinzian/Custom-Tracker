@@ -53,7 +53,7 @@ CTapp.directive('zHomePane', function() {                    //TODO TODO TODO TO
         if (input && input == randCode){
           $scope.im.cfolder.rmRecord($scope.im.crecord.getId());
 
-          // select the last record
+          $scope.im.clearCRecord();
 
           alert("Successfully deleted the record");
         } else {

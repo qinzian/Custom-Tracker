@@ -34,6 +34,36 @@ CTapp.factory("ItemsManipulator",function(){                    //TODO TODO TODO
     this.cform = form;
   }
 
+  factory.clearCRecord = function(){
+    this.crecord = undefined;
+  }
+
+  factory.formExists = function(formTitle){
+    for (var i = 0; i < this.forms.length; i++) {
+      if(this.forms[i].getTitle() == formTitle){
+        return true;
+      }
+    }
+    return false;
+  }
+
+  factory.getForm = function(formTitle){
+    for (var i = 0; i < this.forms.length; i++) {
+      if(this.forms[i].getTitle() == formTitle){
+        return this.forms[i];
+      }
+    }
+  }
+
+  factory.folderExists = function(folderTitle){
+    for (var i = 0; i < this.folders.length; i++) {
+      if(this.folders[i].getTitle() == folderTitle){
+        return true;
+      }
+    }
+    return false;
+  }
+
   return factory;
 })
 .factory("TabsSelector",function(){

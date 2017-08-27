@@ -3,6 +3,15 @@ function CollectionObj(type,id){
   this.id = id;
   this.type = type;
   this.highlight = "";
+  this.title = "";
+
+  this.getTitle = function(){
+    return this.title;
+  }
+
+  this.setTitle = function(t){
+    this.title = t;
+  }
 
   this.getId = function(){
     return this.id;
@@ -87,14 +96,6 @@ function Folder(id,title){
 
   this.getForm = function(){
     return this.form;
-  }
-
-  this.getTitle = function(){
-    return this.title;
-  }
-
-  this.setTitle = function(t){
-    this.title = t;
   }
 
   this.addRecord = function(){
