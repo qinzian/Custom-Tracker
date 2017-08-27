@@ -1,10 +1,11 @@
 personal project4: custom tracker
 
-Next v2.7 (forms and records):
+Next v2.8 (forms and records):
 - use databinding on DOM's class so that <a> with default labels don't appear
 
-- design solution to attaching a form to a folder
+- <helper> section's msgs and info
 
+- simpify objs designs and code (remove uneccessary stuff and simplify duplicate codes)
 
 Issue:
 - relationship between Form, Folder, and Record is very messy right now
