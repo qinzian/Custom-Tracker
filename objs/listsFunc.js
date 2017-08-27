@@ -102,7 +102,7 @@ CTapp.directive("zLists",function(){
       $scope.selectRecord = function(obj){
         $scope.setCRecord(obj);
       }
-      
+
       $scope.selectFolder = function(obj){
         $scope.setCFolder(obj);
 

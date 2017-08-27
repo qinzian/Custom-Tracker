@@ -8,7 +8,7 @@ CTapp.directive('zHelper', function() {
     function($scope,TabsSelector,ItemsManipulator){
       $scope.ts = TabsSelector;
       $scope.im = ItemsManipulator;
-
+      
       $scope.displayInstr = function(tab){
         alert("helper msg for the tab:"+tab);
       }

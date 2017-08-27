@@ -1,7 +1,6 @@
 var z_helperHTML = ''+
-'<div class = "currsDisplayer">'+
+'<div id = "helperSpace">'+
   '<button ng-click = "displayInstr(ts.selectedTab)">Help with {{ts.selectedTab}}</button>'+
-  '<br><br>'+
-  'Selected Folder: <a class = "yellowBG">{{im.cfolder.title}}</a>'+
-  ' \xa0\xa0\xa0\xa0Amt of Records: <a class = "yellowBG">{{im.cfolder.records.length}}</a>'+
+  'Selected Folder: <a class = "yellowBG">\xa0\xa0{{im.cfolder.title}}\xa0\xa0</a>'+
+  '\xa0\xa0\xa0\xa0Amt of Records: <a class = "yellowBG">\xa0\xa0{{im.cfolder.records.length}}\xa0\xa0</a>'+
 '</div>';

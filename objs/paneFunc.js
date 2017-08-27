@@ -42,6 +42,9 @@ CTapp.directive('zHomePane', function() {                    //TODO TODO TODO TO
       $scope.im = ItemsManipulator;
       $scope.label = "viewer";
 
+      $scope.isDefaultLabel =function(key){
+        return key == "default label";
+      }
       $scope.clearFields= function(){ // this doesn't clear the extra notes section
         $scope.im.crecord.clearRecord();
       }
