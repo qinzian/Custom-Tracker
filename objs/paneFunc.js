@@ -50,7 +50,11 @@ CTapp.directive('zHomePane', function() {                    //TODO TODO TODO TO
         var randCode = "randomCode"; // replace with generator later
         var input = prompt("Enter the following code to delete:"+randCode);
 
-        if (input == randCode){
+        if (input && input == randCode){
+          $scope.im.cfolder.rmRecord($scope.im.crecord.getId());
+
+          // select the last record
+
           alert("Successfully deleted the record");
         } else {
           alert("Invalid Code");
@@ -77,8 +81,12 @@ CTapp.directive('zHomePane', function() {                    //TODO TODO TODO TO
           case "counter":
             var val = ctPrompt(key+" \xa0\xa0\xa0(number only):","-0.0"); // val is type String
 
-            if (val && !isNaN(val)){ // make sure val is a non-empty number
-              comp.updateVal(key,Number(val));
+            if (val){ // make sure val is a non-empty number
+              if (!isNaN(val)){
+                comp.updateVal(key,Number(val));
+              } else {
+                alert("please enter a number");
+              }
             };
             break;
           case "poll":

@@ -4,6 +4,10 @@ function CollectionObj(type,id){
   this.type = type;
   this.highlight = "";
 
+  this.getId = function(){
+    return this.id;
+  }
+
   this.setHighLight = function(h){
       this.highlight = h? "selectedItem":"";
   }
@@ -101,8 +105,14 @@ function Folder(id,title){
     this.records.push(new Record("record-"+this.records.length,this.template));
   }
 
-  this.rmRecord = function(index){
-    alert("delete record: "+this.records[index].toString())
+  this.rmRecord = function(recordId){
+    for(var i = 0; i < this.records.length; i++){
+      if (this.records[i].getId() == recordId){
+        this.records.splice(i,1);
+        return;
+      }
+    }
+    alert("record id: "+recordId+" doesn't exist");
   }
 
   this.getRecords = function(){
