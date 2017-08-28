@@ -4,7 +4,7 @@ var z_homePaneHTML = ''+
   '<br><br>'+
   '<a id = "folderDate" class = "zone yellowBG">{{im.cfolder.dateTime}}</a>'+
   '<br><br><br>'+
-  'Folder Description:'+
+  '<big><big><big>Folder Description :</big></big></big>'+
   '<div id = "folderDescription"  class = "textNewLine zone" '+
   'ng-click = "updateFolderDescription()">{{im.cfolder.description}}</div>'+
 '</div>';
