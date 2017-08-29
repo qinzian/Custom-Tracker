@@ -1,11 +1,9 @@
 personal project4: custom tracker
 
-Next v2.8 (forms and records):
+Next v2.9 (forms and records):
 - <helper> section's msgs and info
 
 - simpify objs designs and code (remove uneccessary stuff and simplify duplicate codes)
-
-- implement ItemsManipulator ".getItemById()" and ".itemsContain"
 
 - create my own "prompt() method that shows a pop up window (by using css animation)"
 
