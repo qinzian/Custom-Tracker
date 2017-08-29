@@ -6,13 +6,21 @@ CTapp.directive("zLists",function(){
     controller: ["$scope","ItemsManipulator",
     function($scope,ItemsManipulator){
       $scope.im = ItemsManipulator; // the following is to copy the pointer to zList's ctrler
-      $scope.folders = $scope.im.folders;
-      $scope.forms = $scope.im.forms;
+      $scope.folders = $scope.im.itemLists.folders;
+      $scope.forms = $scope.im.itemLists.forms;
 
-      $scope.folderC = 0;
-      $scope.records = [];
-      $scope.formC = 0;
+      $scope.setCItem = function(type,obj){
+        var aList = $scope.im.itemLists[type];
 
+        for (var i = 0; i < aList.length; i++) {
+          aList[i].setHighLight(false);
+        }
+        obj.setHighLight(true);
+
+        $scope.im.setCItem(type,obj);
+      }
+
+      /*
       $scope.setCFolder = function(obj){
         for (var i = 0; i < $scope.folders.length; i++) {
           $scope.folders[i].setHighLight(false);
@@ -39,10 +47,10 @@ CTapp.directive("zLists",function(){
 
         $scope.im.setCRecord(obj);
         //alert("curr Record is: "+$scope.im.crecord.id);
-      }
+      }*/
 
       $scope.addFolder = function(){
-        var currFolderId = "folder-"+$scope.folderC;
+        var currFolderId = "folder-"+$scope.im.getFolderC();
         var folderTitle = ctPrompt("Name of new Folder:",currFolderId);
 
         if (folderTitle){
@@ -56,36 +64,39 @@ CTapp.directive("zLists",function(){
         }
       }
 
-      $scope.addRecord = function(){ // can only add record if cfolder exists and has a form
-        if(typeof $scope.im.cfolder !== "undefined"){
-          if ($scope.im.cfolder.hasTemplate()){
+      $scope.addRecord = function(){
+        if(typeof $scope.im.cfolder == "undefined"){ // didn't choose a folder
+          alert("Select a folder first before making records");
+          return;
+        }
+
+        if ($scope.im.getFormC() == 0){ // no forms to put in folder
+          alert("Make a form first before making records");
+          return;
+        }
+
+        if ($scope.im.cfolder.hasTemplate()){ // choice of folder has template already
             $scope.im.cfolder.addRecord();
+            return;
+        }
 
-          } else { // no form present for this form, need to init form
-            if($scope.im.forms.length == 0){
-              alert("select a form for this folder to start data tracking");
-            } else {  // Allow user to choose from a list of form titles
-              var formTitle = ctPrompt("Choose a form to use:",$scope.im.forms[0].getTitle());
+        // choose a form for your folder, the most recently created form is chosen as default
+        var formTitle = ctPrompt("Choose a form for '"+$scope.im.cfolder.getTitle()+"' to use:",$scope.forms.get(-1).getTitle());
 
-              if (folderTitle){
-                var formObj = $scope.im.getForm(formTitle);
+        if (folderTitle){
+          var formObj = $scope.im.getForm(formTitle);
 
-                if(formObj){
-                  $scope.im.cfolder.initTemplate(formObj); // for now just use the first form
-                } else {
-                  alert("The form: '"+formTitle+"' doesn't exist");
-                }
-
-              }
-            }
+          if(formObj){
+            $scope.im.cfolder.initTemplate(formObj);
+          } else {
+            alert("The form: '"+formTitle+"' doesn't exist");
           }
-        } else {
-          alert("select a folder to add the records into");
+
         }
       }
 
       $scope.addForm = function(){
-        var currFormId = "form-"+$scope.formC;
+        var currFormId = "form-"+$scope.im.getFormC();
         var formTitle = ctPrompt("Name of new Form:",currFormId);
 
         if (formTitle){
@@ -99,23 +110,30 @@ CTapp.directive("zLists",function(){
         }
       }
 
-      $scope.selectRecord = function(obj){
-        $scope.setCRecord(obj);
+      $scope.addItem = function(type){
+        if (type == "folders"){
+          $scope.addFolder();
+        } else if (type == "records"){
+          $scope.addRecord();
+        } else if (type == "forms"){
+          $scope.addForm();
+        } else {
+          alert("addItem() of invalid type: "+type);
+        }
       }
 
-      $scope.selectFolder = function(obj){
-        $scope.setCFolder(obj);
+      $scope.selectItem = function(type,obj){
+        $scope.setCItem(type,obj);
 
-        $scope.records = obj.getRecords();
+        if(type == "folders"){
+          $scope.im.clearCRecord();
 
-        $scope.im.clearCRecord();
-        $scope.selectRecord($scope.records[0]);
+          // the first line would have already updated im.itemLists.records
+          $scope.selectItem("records",$scope.im.itemLists.records[0]);
+        } else if (!$scope.im.validModes.contains(type)) {
+          alert("listsFunc selected invalid item type: "+type);
+        }
       }
-
-      $scope.selectForm = function(obj){
-        $scope.setCForm(obj);
-      }
-
     }],
 
     template:z_listsHTML

@@ -45,11 +45,13 @@ CTapp.directive('zHomePane', function() {                    //TODO TODO TODO TO
       $scope.isDefaultLabel =function(key){
         return key == "default label";
       }
+
       $scope.clearFields= function(){ // this doesn't clear the extra notes section
         $scope.im.crecord.clearRecord();
       }
 
       $scope.deleteRecord = function(){
+        /*
         var randCode = "randomCode"; // replace with generator later
         var input = prompt("Enter the following code to delete:"+randCode);
 
@@ -61,7 +63,11 @@ CTapp.directive('zHomePane', function() {                    //TODO TODO TODO TO
           alert("Successfully deleted the record");
         } else {
           alert("Invalid Code");
-        }
+        }/*/
+
+        $scope.im.cfolder.rmRecord($scope.im.crecord.getId());
+
+        $scope.im.clearCRecord();//*/
       }
 
       $scope.updateExtraNotes = function(){

@@ -1,10 +1,10 @@
-var z_listsHTML = ''+
-'<div ng-show = "im.mode == \'folders\'">'+
+var z_listsHTML = ''+/*
+'<div ng-show = "im.mode !== \'folders\'">'+
   '<a class = "addItemButton" ng-click = "addFolder()">New Folder</a>'+
   '<ul class="item-container">  '+
       '<ol class = "item" ng-repeat="folder in folders">'+
-        '<button id = "{{folder.id}}" class = "{{folder.highlight}} itemButton" '+
-        'ng-click = "selectFolder(folder)">{{folder.title}}</button>'+
+        '<button class = "{{folder.highlight}} itemButton" '+
+        'ng-click = "selectFolder(\"folder\",folder)">{{folder.title}}</button>'+
       '</ol>  '+
   '</ul>'+
 '</div>'+
@@ -13,8 +13,8 @@ var z_listsHTML = ''+
   '<a class = "addItemButton" ng-click = "addRecord()">New Record</a>'+
   '<ul class="item-container">  '+
       '<ol class = "item" ng-repeat="record in records">'+
-        '<button id = "{{record.id}}" class = "{{record.highlight}} itemButton" '+
-        'ng-click="selectRecord(record)">{{record.title}}</button>'+
+        '<button class = "{{record.highlight}} itemButton" '+
+        'ng-click="selectItem(\"record\",record)">{{record.title}}</button>'+
       '</ol>  '+
   '</ul>'+
 '</div>'+
@@ -23,8 +23,19 @@ var z_listsHTML = ''+
   '<a class = "addItemButton" ng-click = "addForm()">New Form</a>'+
   '<ul class="item-container">  '+
       '<ol class = "item" ng-repeat="form in forms">'+
-        '<button id = "{{form.id}}" class = "{{form.highlight}} itemButton" '+
-        'ng-click="selectForm(form)">{{form.title}}</button>'+
+        '<button class = "{{form.highlight}} itemButton" '+
+        'ng-click="selectItem(\"form\",form)">{{form.title}}</button>'+
       '</ol>  '+
   '</ul>'+
 '</div>';
+/*/
+'<div ng-show = "im.mode !== \'void\'">'+
+  '<a class = "addItemButton" ng-click = "addItem(im.mode)">New {{im.mode}}</a>'+
+  '<ul class="item-container">  '+
+      '<ol class = "item" ng-repeat="item in im.cItemList">'+
+        '<button class = "{{item.highlight}} itemButton" '+
+        'ng-click = "selectItem(im.mode,item)">{{item.title}}</button>'+
+      '</ol>  '+
+  '</ul>'+
+'</div>'
+//*/
