@@ -6,7 +6,7 @@ var z_createPaneHTML = ''+
         '<div class = "component zone" ng-repeat = "component in im.cform.getComp()">'+
           '<a ng-click = "rmComponent($index)">X</a>'+
           '<div ng-repeat = "(key,val) in component.getData()">'+
-            '<a ng-click = "updateKey(key,component)">{{key}}</a>:<button>{{component.updateLabel}}</button>'+
+            '<a ng-click = "updateKey(key,component)">{{key}}</a>:<button>{{component.getUpdateLabel()}}</button>'+
           '</div>'+
         '</div>'+
       '</div>'+

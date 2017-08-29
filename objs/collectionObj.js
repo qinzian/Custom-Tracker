@@ -30,12 +30,14 @@ function CollectionObj(type,id){
                                                today.getMinutes()]);
   }
   this.initDate();
+
+  this.getDateTime = function(){
+    return this.dateTime;
+  }
 }
 
 function Record(id,template){
   CollectionObj.call(this, "record",id);
-
-  this.title = this.dateTime;
 
   this.details = [];
 
@@ -59,6 +61,10 @@ function Record(id,template){
 
   this.getTitle = function(){
     return this.dateTime;
+  }
+
+  this.getDetails = function(){
+    return this.details;
   }
 }
 Record.prototype = Object.create(CollectionObj.prototype);
@@ -91,8 +97,12 @@ function Folder(id){
       return;
     }
 
-    this.formUsedTitle = form.getId();
+    this.formUsedTitle = form.getTitle();
     cloneComponentsList(form.getComp(),this.template); // uses deep cloning to make a duplicate of form.comp[]
+  }
+
+  this.getFormUsedTitle = function(){
+    return this.formUsedTitle;
   }
 
   this.addRecord = function(){

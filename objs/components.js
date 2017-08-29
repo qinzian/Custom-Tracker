@@ -20,6 +20,10 @@ function Component(type){
     return this.data;
   }
 
+  this.getUpdateLabel = function(){
+    return this.updateLabel;
+  }
+
   this.updateKey = function(oldKey,newKey){ // only unique keys are allowed
     var tmp = this.data[oldKey];
     delete this.data[oldKey];
