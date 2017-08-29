@@ -20,48 +20,19 @@ CTapp.directive("zLists",function(){
         $scope.im.setCItem(type,obj);
       }
 
-      /*
-      $scope.setCFolder = function(obj){
-        for (var i = 0; i < $scope.folders.length; i++) {
-          $scope.folders[i].setHighLight(false);
-        }
-        obj.setHighLight(true);
-
-        $scope.im.setCFolder(obj);
-      }
-
-      $scope.setCForm = function(obj){
-        for (var i = 0; i < $scope.forms.length; i++) {
-          $scope.forms[i].setHighLight(false);
-        }
-        obj.setHighLight(true);
-
-        $scope.im.setCForm(obj);
-      }
-
-      $scope.setCRecord = function(obj){
-        for (var i = 0; i < $scope.records.length; i++) {
-          $scope.records[i].setHighLight(false);
-        }
-        obj.setHighLight(true);
-
-        $scope.im.setCRecord(obj);
-        //alert("curr Record is: "+$scope.im.crecord.id);
-      }*/
-
       $scope.addFolder = function(){
-        var defaultFolderId = "folder-"+$scope.im.getFolderC();
-        var folderId = ctPrompt("Name of new Folder:",defaultFolderId);
-        if (!folderId){
+        var defaultFolderTitle = "folder-"+$scope.im.getFolderC();
+        var folderTitle = ctPrompt("Name of new Folder:",defaultFolderTitle);
+        if (!folderTitle){
           return;
         }
 
-        if ($scope.im.folderExists(folderId)){
-          alert("Folder with title: '"+folderId+"' already exists");
+        if ($scope.im.itemExistsWithTitle("folders",folderTitle)){
+          alert("Folder with title: '"+folderTitle+"' already exists");
           return;
         }
 
-        $scope.folders.push(new Folder(folderId));
+        $scope.folders.push(new Folder(folderTitle)); // folder's title = id
       }
 
       $scope.addRecord = function(){
@@ -81,14 +52,14 @@ CTapp.directive("zLists",function(){
         }
 
         // choose a form for your folder, the most recently created form is chosen as default
-        var formId = ctPrompt("Choose a form for '"+$scope.im.cfolder.getTitle()+"' to use:",$scope.forms.get(-1).getTitle());
-        if (!formId){
+        var formTitle = ctPrompt("Choose a form for ' "+$scope.im.cfolder.getTitle()+" ' to use:",$scope.forms.get(-1).getTitle());
+        if (!formTitle){
           return;
         }
 
-        var formObj = $scope.im.getForm(formId);
+        var formObj = $scope.im.getItemByTitle("forms",formTitle);
         if(!formObj){
-          alert("The form: '"+formId+"' doesn't exist");
+          alert("The form: '"+formTitle+"' doesn't exist");
           return;
         }
 
@@ -96,18 +67,18 @@ CTapp.directive("zLists",function(){
       }
 
       $scope.addForm = function(){
-        var defaultFormId = "form-"+$scope.im.getFormC();
-        var formId = ctPrompt("Name of new Form:",defaultFormId);
-        if (!formId){
+        var defaultFormTitle = "form-"+$scope.im.getFormC();
+        var formTitle = ctPrompt("Name of new Form:",defaultFormTitle);
+        if (!formTitle){
           return;
         }
 
-        if ($scope.im.formExists(formId)){
-            alert("Form with title: '"+formId+"' already exists");
+        if ($scope.im.itemExistsWithTitle("forms",formTitle)){
+            alert("Form with title: '"+formTitle+"' already exists");
             return;
         }
 
-        $scope.forms.push(new Form(formId));
+        $scope.forms.push(new Form(formTitle)); // forms' title = id
       }
 
       $scope.addItem = function(type){

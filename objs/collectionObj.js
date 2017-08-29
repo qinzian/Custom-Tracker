@@ -214,6 +214,4 @@ function cloneComponentsList(src,storage){
       }
     }
   }
-  //alert(src.toString());
-  //alert(storage.toString());
 }
