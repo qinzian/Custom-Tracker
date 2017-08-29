@@ -36,57 +36,32 @@ CTapp.factory("ItemsManipulator",function(){                    //TODO TODO TODO
     }
   }
 
-  /*
-  factory.setCRecord = function(record){
-    this.crecord = record;
-  }
-
-  factory.setCFolder = function(folder){
-    this.cfolder = folder;
-
-    $scope.records = folder.getRecords();
-  }
-
-  factory.setCForm = function(form){
-    this.cform = form;
-  }*/
-
   factory.clearCRecord = function(){
     this.crecord = undefined;
   }
 
   factory.getFolderC = function(){
     return this.itemLists.folders.length;
-  };
+  }
 
   factory.getFormC = function(){
     return this.itemLists.forms.length;
-  };
-
-  factory.formExists = function(formTitle){
-    for (var i = 0; i < this.getFormC(); i++) {
-      if(this.itemLists.forms[i].getTitle() == formTitle){
-        return true;
-      }
-    }
-    return false;
   }
 
-  factory.getForm = function(formTitle){
-    for (var i = 0; i < this.getFormC(); i++) {
-      if(this.itemLists.forms[i].getTitle() == formTitle){
-        return this.itemLists.forms[i];
+  factory.getItemByTitle = function(type,title){
+    var aList = this.itemLists[type];
+
+    for (var i = 0; i < aList.length; i++) {
+      if(aList[i].getTitle() == title){
+        return aList[i];
       }
     }
+    return null;
   }
 
-  factory.folderExists = function(folderTitle){
-    for (var i = 0; i < this.getFolderC(); i++) {
-      if(this.itemLists.folders[i].getTitle() == folderTitle){
-        return true;
-      }
-    }
-    return false;
+  factory.itemExistsWithTitle = function(type,title){
+    // alert("in itemExistsWithTitle() with: "+type+" "+title);
+    return this.getItemByTitle(type,title) !== null;
   }
 
   return factory;
