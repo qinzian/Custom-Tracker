@@ -34,7 +34,7 @@ var z_listsHTML = ''+/*
   '<ul class="item-container">  '+
       '<ol class = "item" ng-repeat="item in im.cItemList">'+
         '<button class = "{{item.highlight}} itemButton" '+
-        'ng-click = "selectItem(im.mode,item)">{{item.title}}</button>'+
+        'ng-click = "selectItem(im.mode,item)">{{item.getTitle()}}</button>'+
       '</ol>  '+
   '</ul>'+
 '</div>'

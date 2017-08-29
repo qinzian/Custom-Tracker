@@ -3,18 +3,17 @@ function CollectionObj(type,id){
   this.id = id;
   this.type = type;
   this.highlight = "";
-  this.title = "";
-
-  this.getTitle = function(){
-    return this.title;
-  }
-
-  this.setTitle = function(t){
-    this.title = t;
-  }
 
   this.getId = function(){
     return this.id;
+  }
+
+  this.setTitle = function(s){
+    alert("abstract CollectionObj.getTitle(), input: "+s);
+  }
+
+  this.getTitle = function(){
+    alert("abstract CollectionObj.getTitle()");
   }
 
   this.setHighLight = function(h){
@@ -57,15 +56,17 @@ function Record(id,template){
   this.getExtraNotes = function(){
     return this.extraNotes;
   }
+
+  this.getTitle = function(){
+    return this.dateTime;
+  }
 }
 Record.prototype = Object.create(CollectionObj.prototype);
 Record.prototype.constructor = Record;
 
 
-function Folder(id,title){
+function Folder(id){
   CollectionObj.call(this, "folder",id);
-
-  this.title = title; // by default
 
   this.description = "[Click to Edit]";
 
@@ -75,7 +76,7 @@ function Folder(id,title){
 
   this.template = [];
 
-  this.hasTemplate = function(){
+  this.hasTemplate = function(){ // return !this.template[].contains(only "default labels")
     return typeof this.formUsedTitle == "string";
   }
 
@@ -90,12 +91,8 @@ function Folder(id,title){
       return;
     }
 
-    this.formUsedTitle = form.title;
+    this.formUsedTitle = form.getId();
     cloneComponentsList(form.getComp(),this.template); // uses deep cloning to make a duplicate of form.comp[]
-  }
-
-  this.getForm = function(){
-    return this.form;
   }
 
   this.addRecord = function(){
@@ -128,6 +125,14 @@ function Folder(id,title){
     return this.description;
   }
 
+  this.getTitle = function(){
+    return this.id;
+  }
+
+  this.setTitle = function(t){
+    this.id = t;
+  }
+
   this.toString = function(){
     return strf("{}     id:{}     title:{}",[this.type,this.id,this.title]);
   }
@@ -137,10 +142,8 @@ Folder.prototype.constructor = Folder;
 
 
 
-function Form(id,title){
+function Form(id){
   CollectionObj.call(this, "form",id);
-
-  this.title = title;
 
   this.components = []; // the following functions will add objs into this list
 
@@ -162,6 +165,13 @@ function Form(id,title){
     this.components.push(new Poll());
   }
 
+  this.getTitle = function(){
+    return this.id;
+  }
+
+  this.setTitle = function(t){
+    this.id = t;
+  }
 }
 Form.prototype = Object.create(CollectionObj.prototype);
 Form.prototype.constructor = Form;
