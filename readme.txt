@@ -1,9 +1,7 @@
 personal project4: custom tracker
 
-Next v2.9 (forms and records):
+Next v2.10 (forms and records):
 - <helper> section's msgs and info
-
-- simpify objs designs and code (remove uneccessary stuff and simplify duplicate codes)
 
 - create my own "prompt() method that shows a pop up window (by using css animation)"
 
