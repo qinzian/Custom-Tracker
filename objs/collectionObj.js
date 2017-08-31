@@ -92,7 +92,7 @@ function Folder(id){
       return;
     }
 
-    if (form.getComp().length == 0){
+    if (form.isEmpty()){
       alert("This form is empty. Edit the form first");
       return;
     }
@@ -181,6 +181,18 @@ function Form(id){
 
   this.setTitle = function(t){
     this.id = t;
+  }
+
+  this.isEmpty = function(){
+    for (var i = 0; i< this.components.length; i++){
+      var compData = this.components[i].getData();
+      for (var key in compData){
+        if (key !== "default label"){
+          return false; // non-empty => there exists non-"default label"
+        }
+      }
+    }
+    return true;
   }
 }
 Form.prototype = Object.create(CollectionObj.prototype);
