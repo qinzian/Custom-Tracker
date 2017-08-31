@@ -12,8 +12,12 @@ CTapp.factory("ItemsManipulator",function(){                    //TODO TODO TODO
   factory.crecord = undefined; // currRecord obj
   factory.validModes = ["folders","records","forms","void"];
 
+  factory.isValidType = function(type){
+    return this.validModes.contains(type)
+  }
+
   factory.setMode = function(mode){
-    if (this.validModes.contains(mode)){
+    if (this.isValidType(mode)){
       this.mode = mode;
 
       this.cItemList = this.itemLists[mode];
