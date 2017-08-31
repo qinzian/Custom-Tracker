@@ -16,7 +16,9 @@
 }
 .formTitle{
   position: relative;
-  left:200px;
+  left:220px;
+
+  font-size: 30px;
 }
 
 #folderDate{

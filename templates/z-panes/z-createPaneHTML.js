@@ -11,6 +11,7 @@ var z_createPaneHTML = ''+
         '</div>'+
       '</div>'+
   '</div>'+
+  '<br>'+
   '<button ng-click = "newInfo()"> Add Info </button>'+
   '<button ng-click = "newCounter()">Add Counter</button>'+
   '<button ng-click = "newPoll()">Add Poll</button>'+
