@@ -20,6 +20,19 @@ CTapp.directive("zLists",function(){
         $scope.im.setCItem(type,obj);
       }
 
+      $scope.selectItem = function(type,obj){
+        $scope.setCItem(type,obj);
+
+        if(type == "folders"){
+          $scope.im.clearCRecord();
+
+          // the first line would have already updated im.itemLists.records
+          $scope.selectItem("records",$scope.im.itemLists.records[0]);
+        } else if (!$scope.im.isValidType(type)) {
+          alert("listsFunc selected invalid item type: "+type);
+        }
+      }
+
       $scope.addFolder = function(){
         var defaultFolderTitle = "folder-"+$scope.im.getFolderC();
         var folderTitle = ctPrompt("Name of new Folder:",defaultFolderTitle);
@@ -52,14 +65,14 @@ CTapp.directive("zLists",function(){
         }
 
         // choose a form for your folder, the most recently created form is chosen as default
-        var formTitle = ctPrompt("Choose a form for ' "+$scope.im.cfolder.getTitle()+" ' to use:",$scope.forms.get(-1).getTitle());
+        var formTitle = ctPrompt("Choose a form for \""+$scope.im.cfolder.getTitle()+"\" to use:",$scope.forms.get(-1).getTitle());
         if (!formTitle){
           return;
         }
 
         var formObj = $scope.im.getItemByTitle("forms",formTitle);
         if(!formObj){
-          alert("The form: '"+formTitle+"' doesn't exist");
+          alert("The form: \""+formTitle+"\" doesn't exist");
           return;
         }
 
@@ -82,29 +95,29 @@ CTapp.directive("zLists",function(){
       }
 
       $scope.addItem = function(type){
+        if (!$scope.im.isValidType(type)){
+          alert("addItem() of invalid type: "+type);
+          return;
+        }
+
+        var newestObj;
+
         if (type == "folders"){
           $scope.addFolder();
+          newestObj = $scope.folders.get(-1);
+
         } else if (type == "records"){
           $scope.addRecord();
+          newestObj = $scope.im.itemLists.records.get(-1);
+
         } else if (type == "forms"){
           $scope.addForm();
-        } else {
-          alert("addItem() of invalid type: "+type);
+          newestObj = $scope.forms.get(-1);
         }
+
+        $scope.selectItem(type,newestObj);
       }
 
-      $scope.selectItem = function(type,obj){
-        $scope.setCItem(type,obj);
-
-        if(type == "folders"){
-          $scope.im.clearCRecord();
-
-          // the first line would have already updated im.itemLists.records
-          $scope.selectItem("records",$scope.im.itemLists.records[0]);
-        } else if (!$scope.im.validModes.contains(type)) {
-          alert("listsFunc selected invalid item type: "+type);
-        }
-      }
     }],
 
     template:z_listsHTML
