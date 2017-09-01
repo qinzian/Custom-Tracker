@@ -1,9 +1,16 @@
 personal project4: custom tracker
 
-Next v2.10 (forms and records):
+Next v3.1 (summary):
+- <z-summary-pane> design layout
+
+- 
+
+Additions:
+- databind to TabsSelector's $scope var to highlight tabs upon page loading (also to replace the JQuery highlight soln)
+
 - <helper> section's msgs and info
 
-- create my own "prompt() method that shows a pop up window (by using css animation)"
+- create my own prompt() method that shows a pop up window (by using css animation)
 
 Issue:
 - relationship between Form, Folder, and Record is very messy right now
