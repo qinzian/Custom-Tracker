@@ -18,13 +18,7 @@ function range(p1,p2){
 }
 
 Array.prototype.contains = function(obj) {
-    var i = this.length;
-    while (i--) {
-        if (this[i] === obj) {
-            return true;
-        }
-    }
-    return false;
+    return this.indexOf(obj) !== -1;
 }
 
 Array.prototype.replace = function(oldItem,newItem) {
