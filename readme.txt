@@ -1,9 +1,7 @@
 personal project4: custom tracker
 
-Next v3.2 (summary):
-- need solution to how to tally up and display the results of the records
-
-- save the totals of a set of records in their respective folder
+Next v3.3 (summary):
+- make things a bit more pretty / less ugly
 
 Additions:
 - databind to TabsSelector's $scope var to highlight tabs upon page loading (also to replace the JQuery highlight soln)
