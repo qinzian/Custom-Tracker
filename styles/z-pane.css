@@ -21,6 +21,14 @@
   font-size: 30px;
 }
 
+.component-outter{
+  border: 2px solid brown;
+}
+.component-inner{
+  margin: 10px;
+  font-size: 20px;
+}
+
 #folderDate{
   height:30px;
   font-size:20px;

@@ -129,7 +129,8 @@ CTapp.directive('zHomePane', function() {                    //TODO TODO TODO TO
       $scope.label = "create";
 
       $scope.deleteCForm = function(){
-        $scope.im.deleteCItem("forms");
+        alert("delete cform");
+        //$scope.im.deleteCItem("forms");
       }
 
       $scope.updateKey = function(k,comp){
