@@ -52,6 +52,32 @@ CTapp.factory("ItemsManipulator",function(){                    //TODO TODO TODO
     return this.itemLists.forms.length;
   }
 
+  factory.deleteCItem = function(type){
+    if (!isValidType(type)){
+      alert("deleteCItem() invalid type: "+type);
+      return;
+    }
+
+    /* mini secure check
+    var randCode = "randomCode"; // replace with generator later
+    var input = ctPrompt("Enter the following code to delete:"+randCode);
+
+    if (!input || input !== randCode){
+      alert("Invalid Code");
+      return;
+    }//*/
+
+    if (type == "folders"){
+      this.itemLists[type].remove(this.cfolder);
+    } else if (type == "forms"){
+      this.itemLists[type].remove(this.cform);
+    } else if (type == "records"){
+      this.itemLists[type].remove(this.crecord);
+    }
+
+    alert("Successfully deleted the record");
+  }
+
   factory.getItemByTitle = function(type,title){
     var aList = this.itemLists[type];
 

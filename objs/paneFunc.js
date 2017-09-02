@@ -50,24 +50,8 @@ CTapp.directive('zHomePane', function() {                    //TODO TODO TODO TO
         $scope.im.crecord.clearRecord();
       }
 
-      $scope.deleteRecord = function(){
-        /*
-        var randCode = "randomCode"; // replace with generator later
-        var input = prompt("Enter the following code to delete:"+randCode);
-
-        if (input && input == randCode){
-          $scope.im.cfolder.rmRecord($scope.im.crecord.getId());
-
-          $scope.im.clearCRecord();
-
-          alert("Successfully deleted the record");
-        } else {
-          alert("Invalid Code");
-        }/*/
-
-        $scope.im.cfolder.rmRecord($scope.im.crecord.getId());
-
-        $scope.im.clearCRecord();//*/
+      $scope.deleteCRecord = function(){
+        $scope.im.deleteCItem("records");
       }
 
       $scope.updateExtraNotes = function(){
@@ -143,7 +127,10 @@ CTapp.directive('zHomePane', function() {                    //TODO TODO TODO TO
       $scope.ts = TabsSelector;
       $scope.im = ItemsManipulator;
       $scope.label = "create";
-      $scope.forms = $scope.im.forms;
+
+      $scope.deleteCForm = function(){
+        $scope.im.deleteCItem("forms");
+      }
 
       $scope.updateKey = function(k,comp){
         var newKey = ctPrompt("What do you want to track? ( "+comp.type+" )","default label");
