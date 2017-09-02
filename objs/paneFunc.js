@@ -118,9 +118,15 @@ CTapp.directive('zHomePane', function() {                    //TODO TODO TODO TO
 
     scope: {},
 
-    controller: ["$scope","TabsSelector",function($scope,TabsSelector){
+    controller: ["$scope","ItemsManipulator","TabsSelector",
+    function($scope,ItemsManipulator,TabsSelector){
+      $scope.im = ItemsManipulator;
       $scope.ts = TabsSelector;
       $scope.label = "summary";
+
+      $scope.updateSum = function(){
+        $scope.im.cfolder.updateSum();
+      }
     }],
 
     template: z_summaryPaneHTML

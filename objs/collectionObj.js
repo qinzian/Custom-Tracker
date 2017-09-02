@@ -82,6 +82,33 @@ function Folder(id){
 
   this.template = [];
 
+  this.totals = []; // this is a list of lists for each comp in this.templates
+
+  this.getTotals = function(){
+    return this.totals;
+  }
+
+  this.initTotals = function(){
+    //alert("Folder.initTotals()");
+    for (var i = 0; i < this.template.length; i++) {
+      this.totals.push({});
+
+      var compData = this.template[i].getData();
+      for (var key in compData){
+        if (!compData.hasOwnProperty(key) || key == "default label"){
+          continue;
+        }
+
+        if (this.template[i].getType() == "poll"){
+          this.totals.get(-1)[key] = 0;
+        } else {
+          this.totals.get(-1)[key] = [];
+        }
+      }
+    }
+    //alert("done Folder.initTotals()");
+  }
+
   this.hasTemplate = function(){ // return !this.template[].contains(only "default labels")
     return typeof this.formUsedTitle == "string";
   }
@@ -99,6 +126,12 @@ function Folder(id){
 
     this.formUsedTitle = form.getTitle();
     cloneComponentsList(form.getComp(),this.template); // uses deep cloning to make a duplicate of form.comp[]
+
+    this.initTotals();
+  }
+
+  this.getTemplate = function(){
+    return this.template;
   }
 
   this.getFormUsedTitle = function(){
@@ -141,6 +174,32 @@ function Folder(id){
 
   this.setTitle = function(t){
     this.id = t;
+  }
+
+  this.updateSum = function(){
+    alert(this.totals.length);
+    for (var recordIndex = 0; recordIndex < this.records.length; recordIndex++) {
+      var crecordDetails = this.records[recordIndex].getDetails();
+
+      for (var compIndex = 0; compIndex < crecordDetails.length; compIndex++) {
+        var crecordComp = crecordDetails[compIndex];
+
+        var crecordData = crecordComp.getData();
+        for (var key in crecordData) {
+          if (!crecordData.hasOwnProperty(key) || key == "default label"){
+            continue;
+          }
+
+          if (crecordComp.getType() == "poll"){
+            this.totals[compIndex][key] = this.totals[compIndex][key]+crecordData[key];
+          } else { // for info and counter
+            this.totals[compIndex][key].push(crecordData[key]);
+          }
+
+        } // loop over keys of a comp
+      } // loop over comps of a record
+    } // loop over records of a folder
+    alert(this.totals.toString());
   }
 
   this.toString = function(){
